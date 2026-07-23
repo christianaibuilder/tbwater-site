@@ -1,0 +1,6 @@
+# Preview/review build — not the launched site yet.
+# Keeps the shareable link out of search results until Dave signs off.
+# AT LAUNCH: replace the two lines below with "Allow: /" and remove the
+# noindex meta tag in index.html.
+User-agent: *
+Disallow: /
