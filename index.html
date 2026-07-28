@@ -256,41 +256,26 @@
       <div class="section-inner">
         <div class="check-copy" data-reveal>
           <p class="eyebrow eyebrow-light">Check my water</p>
-          <h2>Start with your ZIP code, not a sales appointment.</h2>
-          <p>Tell Dave where you are and what you&rsquo;re noticing. He can use local water concerns, your water source, and your symptoms to point you toward the upfront-priced system that fits.</p>
+          <h2>See what&rsquo;s really in your city&rsquo;s water.</h2>
+          <p>Enter your ZIP code and see your local utility&rsquo;s latest water quality testing data &mdash; the contaminants detected, and how they compare to health guidelines. Real data, no appointment needed.</p>
           <ul class="check-steps">
-            <li><span>1</span>Send your ZIP and what you&rsquo;re noticing</li>
-            <li><span>2</span>Get a free water test &mdash; no obligation</li>
-            <li><span>3</span>See exact pricing before anyone visits</li>
+            <li><span>1</span>Enter your ZIP &mdash; see your utility&rsquo;s contaminant report</li>
+            <li><span>2</span>Get a free water test to confirm what&rsquo;s at YOUR tap</li>
+            <li><span>3</span>See exact system pricing before anyone visits</li>
           </ul>
         </div>
-        <form class="check-form" data-mailto="dave@tbwater.com" data-subject="Water check request from tbwater.com" data-reveal data-reveal-delay="1">
+        <form class="check-form" id="water-check-form" data-reveal data-reveal-delay="1" novalidate>
           <label for="zip-code">ZIP code</label>
-          <input id="zip-code" name="ZIP code" inputmode="numeric" autocomplete="postal-code" placeholder="34689" required>
+          <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
+          <p class="field-error" id="zip-error" hidden>Enter a 5-digit ZIP code.</p>
 
-          <label for="water-source">Water source</label>
-          <select id="water-source" name="Water source">
-            <option>City water</option>
-            <option>Well water</option>
-            <option>Not sure</option>
-          </select>
+          <label for="check-email">Email <span class="label-optional">(optional &mdash; for your free test follow-up)</span></label>
+          <input id="check-email" name="email" type="email" autocomplete="email" placeholder="you@email.com">
 
-          <label for="water-concern">What are you noticing?</label>
-          <select id="water-concern" name="Concern">
-            <option>Hard water or scale</option>
-            <option>Chlorine taste or smell</option>
-            <option>Sulfur odor</option>
-            <option>Iron stains</option>
-            <option>Drinking water taste</option>
-            <option>Not sure yet</option>
-          </select>
-
-          <label for="check-contact">Phone or email</label>
-          <input id="check-contact" name="Reach me at" placeholder="Best way for Dave to reach you" required>
-
-          <button class="button button-primary button-lg" type="submit">Send Water Details</button>
-          <p class="form-note" role="status">Opens your email app with the details filled in &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
+          <button class="button button-primary button-lg" type="submit">See My Water Report</button>
+          <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
         </form>
+        <div class="water-report" id="water-report" hidden aria-live="polite"></div>
       </div>
     </section>
 
@@ -817,6 +802,7 @@
     </div>
   </footer>
 
+  <script src="public/data/water-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -264,6 +264,131 @@
     });
   });
 
+  /* ---------- Check My Water: ZIP -> EWG-style contaminant report ----------
+     Data lives in public/data/water-data.js (window.TB_WATER_DATA), scraped
+     from the EWG Tap Water Database. No backend: the report renders locally
+     and the CTA carries the lead to Dave through the existing mailto flow. */
+  const waterForm = document.querySelector("#water-check-form");
+  const waterReport = document.querySelector("#water-report");
+  const waterData = window.TB_WATER_DATA;
+
+  if (waterForm && waterReport && waterData) {
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
+      { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+    ));
+    const timesNum = (t) => parseFloat(String(t).replace(/,/g, "")) || 0;
+
+    const contaminantCard = (c, isExceed) => `
+      <article class="wr-card">
+        <h4>${esc(c.name)}</h4>
+        ${c.effect ? `<p class="wr-effect">Potential effect: ${esc(c.effect)}</p>` : ""}
+        <div class="wr-chips">
+          <span>This utility: ${esc(c.level)}</span>
+          <span>${c.legal ? `Legal limit: ${esc(c.legal)}` : "No legal limit"}</span>
+        </div>
+        ${isExceed && c.times ? `
+        <div class="wr-times">
+          <strong>${esc(c.times)}x</strong>
+          <small>EWG's health guideline${c.guideline ? `: ${esc(c.guideline)}` : ""}</small>
+        </div>` : (c.guideline ? `
+        <div class="wr-times"><small>EWG's health guideline: ${esc(c.guideline)}</small></div>` : "")}
+      </article>`;
+
+    const renderReport = (key, zip, email) => {
+      const u = waterData.utilities[key];
+      const ewgUrl = `https://www.ewg.org/tapwater/system.php?pws=${u.pws}`;
+      const exceed = [...u.exceed].sort((a, b) => timesNum(b.times) - timesNum(a.times));
+      const top = exceed.slice(0, 3).map((c) => `${c.name} (${c.times}x the health guideline)`).join(", ");
+
+      const mailBody = [
+        `ZIP code: ${zip}`,
+        email ? `Email: ${email}` : null,
+        `Utility: ${u.name}`,
+        `Top concerns from the report: ${top}`,
+        "", "I'd like a free water test.", "", "Sent from the TB Water website water report."
+      ].filter((l) => l !== null).join("\n");
+      const mailHref = `mailto:dave@tbwater.com?subject=${encodeURIComponent(`Free water test request (ZIP ${zip})`)}&body=${encodeURIComponent(mailBody)}`;
+
+      waterReport.innerHTML = `
+        <div class="wr-head">
+          <h3>${esc(u.name)}</h3>
+          <span class="wr-pop">Serves about ${esc(u.pop)} people &middot; ZIP ${esc(zip)}</span>
+        </div>
+        <p class="wr-overview">${esc(waterData.source.compliance)}</p>
+        <div class="wr-summary">
+          <strong>${u.exceed.length}</strong>
+          <span>contaminants detected above EWG health guidelines in this utility's water &mdash; all while staying legally compliant.</span>
+        </div>
+        <div class="wr-tabs" role="tablist" aria-label="Contaminant lists">
+          <button class="wr-tab is-active" type="button" data-wr-tab="exceed" role="tab" aria-selected="true">Exceed guidelines (${u.exceed.length})</button>
+          <button class="wr-tab" type="button" data-wr-tab="other" role="tab" aria-selected="false">Other detected (${u.other.length})</button>
+        </div>
+        <div class="wr-grid" data-wr-panel="exceed" role="tabpanel">
+          ${exceed.map((c) => contaminantCard(c, true)).join("")}
+        </div>
+        <div class="wr-grid" data-wr-panel="other" role="tabpanel" hidden>
+          ${u.other.map((c) => contaminantCard(c, false)).join("")}
+        </div>
+        <div class="wr-cta">
+          <p>This is exactly what Dave's systems are built to remove.
+            <small>Free water test at your tap &mdash; no obligation, upfront pricing, no pushy pitch.</small>
+          </p>
+          <div class="wr-cta-actions">
+            <a class="button button-primary" href="${mailHref}">Get My Free Water Test</a>
+            <a class="button button-outline" href="tel:+17275858686">Call (727) 585-8686</a>
+          </div>
+        </div>
+        <p class="wr-foot">Source: <a href="${ewgUrl}" target="_blank" rel="noopener noreferrer">EWG Tap Water Database &mdash; ${esc(u.name)}</a>. ${esc(waterData.source.period)} On a private well? These reports cover city utilities only &mdash; well water needs its own free test.</p>`;
+
+      waterReport.hidden = false;
+      waterReport.querySelectorAll(".wr-tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          waterReport.querySelectorAll(".wr-tab").forEach((t) => {
+            const active = t === tab;
+            t.classList.toggle("is-active", active);
+            t.setAttribute("aria-selected", String(active));
+          });
+          waterReport.querySelectorAll("[data-wr-panel]").forEach((p) => {
+            p.hidden = p.dataset.wrPanel !== tab.dataset.wrTab;
+          });
+        });
+      });
+      waterReport.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+    };
+
+    const renderUnknown = (zip) => {
+      const mailHref = `mailto:dave@tbwater.com?subject=${encodeURIComponent(`Water report request (ZIP ${zip})`)}&body=${encodeURIComponent(`ZIP code: ${zip}\n\nMy ZIP wasn't in the site's report database - I'd like a free water test and my utility's report.\n\nSent from the TB Water website water report.`)}`;
+      waterReport.innerHTML = `
+        <div class="wr-empty">
+          <h3>We don't have ZIP ${esc(zip)} on file yet.</h3>
+          <p>Our instant reports cover the major Tampa Bay utilities. Dave can pull the water quality report for your exact utility &mdash; and test what's actually coming out of your tap &mdash; for free.</p>
+          <div class="wr-cta-actions" style="justify-content:center">
+            <a class="button button-primary" href="${mailHref}">Request My Report + Free Test</a>
+            <a class="button button-outline" href="tel:+17275858686">Call (727) 585-8686</a>
+          </div>
+        </div>`;
+      waterReport.hidden = false;
+      waterReport.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+    };
+
+    waterForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const zipInput = waterForm.querySelector("#zip-code");
+      const zipError = waterForm.querySelector("#zip-error");
+      const zip = zipInput.value.trim();
+      if (!/^\d{5}$/.test(zip)) {
+        zipError.hidden = false;
+        zipInput.focus();
+        return;
+      }
+      zipError.hidden = true;
+      const email = (waterForm.querySelector("#check-email")?.value || "").trim();
+      const key = waterData.zipMap[zip] || waterData.prefixMap[zip.slice(0, 3)] || null;
+      if (key && waterData.utilities[key]) renderReport(key, zip, email);
+      else renderUnknown(zip);
+    });
+  }
+
   /* ---------- Review rotator ----------
      All reviews live in the markup, so without JS the section is
      simply the full list. JS pages through them three at a time. */
