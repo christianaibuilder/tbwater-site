@@ -294,20 +294,10 @@
         <div class="wr-times"><small>EWG's health guideline: ${esc(c.guideline)}</small></div>` : "")}
       </article>`;
 
-    const renderReport = (key, zip, email) => {
+    const renderReport = (key, zip) => {
       const u = waterData.utilities[key];
       const ewgUrl = `https://www.ewg.org/tapwater/system.php?pws=${u.pws}`;
       const exceed = [...u.exceed].sort((a, b) => timesNum(b.times) - timesNum(a.times));
-      const top = exceed.slice(0, 3).map((c) => `${c.name} (${c.times}x the health guideline)`).join(", ");
-
-      const mailBody = [
-        `ZIP code: ${zip}`,
-        email ? `Email: ${email}` : null,
-        `Utility: ${u.name}`,
-        `Top concerns from the report: ${top}`,
-        "", "I'd like a free water test.", "", "Sent from the TB Water website water report."
-      ].filter((l) => l !== null).join("\n");
-      const mailHref = `mailto:dave@tbwater.com?subject=${encodeURIComponent(`Free water test request (ZIP ${zip})`)}&body=${encodeURIComponent(mailBody)}`;
 
       waterReport.innerHTML = `
         <div class="wr-head">
@@ -330,11 +320,11 @@
           ${u.other.map((c) => contaminantCard(c, false)).join("")}
         </div>
         <div class="wr-cta">
-          <p>This is exactly what Dave's systems are built to remove.
-            <small>Free water test at your tap &mdash; no obligation, upfront pricing, no pushy pitch.</small>
+          <p>This is exactly what our systems are built to remove.
+            <small>Upfront pricing, honest recommendations, and a system matched to your exact water &mdash; no pushy pitch.</small>
           </p>
           <div class="wr-cta-actions">
-            <a class="button button-primary" href="${mailHref}">Get My Free Water Test</a>
+            <a class="button button-primary" href="#products">See Systems &amp; Pricing</a>
             <a class="button button-outline" href="tel:+17275858686">Call (727) 585-8686</a>
           </div>
         </div>
@@ -357,13 +347,13 @@
     };
 
     const renderUnknown = (zip) => {
-      const mailHref = `mailto:dave@tbwater.com?subject=${encodeURIComponent(`Water report request (ZIP ${zip})`)}&body=${encodeURIComponent(`ZIP code: ${zip}\n\nMy ZIP wasn't in the site's report database - I'd like a free water test and my utility's report.\n\nSent from the TB Water website water report.`)}`;
+      const mailHref = `mailto:dave@tbwater.com?subject=${encodeURIComponent(`Water report request (ZIP ${zip})`)}&body=${encodeURIComponent(`ZIP code: ${zip}\n\nMy ZIP wasn't in the site's instant report database - I'd like the water quality report for my utility.\n\nSent from the TB Water website water report.`)}`;
       waterReport.innerHTML = `
         <div class="wr-empty">
           <h3>We don't have ZIP ${esc(zip)} on file yet.</h3>
-          <p>Our instant reports cover the major Tampa Bay utilities. Dave can pull the water quality report for your exact utility &mdash; and test what's actually coming out of your tap &mdash; for free.</p>
+          <p>Our instant reports cover 22 utilities across Tampa Bay and surrounding counties. Send us your ZIP and we'll pull the water quality data for your exact utility &mdash; no obligation.</p>
           <div class="wr-cta-actions" style="justify-content:center">
-            <a class="button button-primary" href="${mailHref}">Request My Report + Free Test</a>
+            <a class="button button-primary" href="${mailHref}">Request My Water Report</a>
             <a class="button button-outline" href="tel:+17275858686">Call (727) 585-8686</a>
           </div>
         </div>`;
@@ -373,18 +363,47 @@
 
     waterForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      const zipInput = waterForm.querySelector("#zip-code");
+      const first = (waterForm.querySelector("#check-first")?.value || "").trim();
+      const last = (waterForm.querySelector("#check-last")?.value || "").trim();
+      const email = (waterForm.querySelector("#check-email")?.value || "").trim();
+      const zip = (waterForm.querySelector("#zip-code")?.value || "").trim();
       const zipError = waterForm.querySelector("#zip-error");
-      const zip = zipInput.value.trim();
-      if (!/^\d{5}$/.test(zip)) {
+
+      const valid = first && last && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && /^\d{5}$/.test(zip);
+      if (!valid) {
         zipError.hidden = false;
-        zipInput.focus();
+        (!first ? waterForm.querySelector("#check-first")
+          : !last ? waterForm.querySelector("#check-last")
+          : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? waterForm.querySelector("#check-email")
+          : waterForm.querySelector("#zip-code")).focus();
         return;
       }
       zipError.hidden = true;
-      const email = (waterForm.querySelector("#check-email")?.value || "").trim();
+
       const key = waterData.zipMap[zip] || waterData.prefixMap[zip.slice(0, 3)] || null;
-      if (key && waterData.utilities[key]) renderReport(key, zip, email);
+      const utility = key && waterData.utilities[key] ? waterData.utilities[key] : null;
+
+      // Silent lead capture once a CRM endpoint is configured (see the TODO
+      // on the form in index.html). Fire-and-forget; never blocks the report.
+      const endpoint = waterForm.dataset.leadEndpoint;
+      if (endpoint) {
+        const topConcerns = utility
+          ? [...utility.exceed].sort((a, b) => timesNum(b.times) - timesNum(a.times))
+              .slice(0, 3).map((c) => `${c.name} (${c.times}x)`).join(", ")
+          : "";
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            first, last, email, zip,
+            utility: utility ? utility.name : "(not in database)",
+            topConcerns,
+            source: "tbwater.com water report"
+          })
+        }).catch(() => {});
+      }
+
+      if (utility) renderReport(key, zip);
       else renderUnknown(zip);
     });
   }

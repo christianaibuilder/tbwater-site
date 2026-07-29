@@ -259,18 +259,33 @@
           <h2>See what&rsquo;s really in your city&rsquo;s water.</h2>
           <p>Enter your ZIP code and see your local utility&rsquo;s latest water quality testing data &mdash; the contaminants detected, and how they compare to health guidelines. Real data, no appointment needed.</p>
           <ul class="check-steps">
-            <li><span>1</span>Enter your ZIP &mdash; see your utility&rsquo;s contaminant report</li>
-            <li><span>2</span>Get a free water test to confirm what&rsquo;s at YOUR tap</li>
-            <li><span>3</span>See exact system pricing before anyone visits</li>
+            <li><span>1</span>Enter your info &mdash; your report appears instantly</li>
+            <li><span>2</span>See every contaminant above health guidelines in your city&rsquo;s water</li>
+            <li><span>3</span>See exact system pricing &mdash; no pushy pitch</li>
           </ul>
         </div>
-        <form class="check-form" id="water-check-form" data-reveal data-reveal-delay="1" novalidate>
+        <!-- TODO(Christian): to wire the CRM, create a Formspree form and put its
+             endpoint URL in data-lead-endpoint (e.g. https://formspree.io/f/abcd1234).
+             Leads then POST silently on every report view. Until then the form
+             still works - it just only renders the report. -->
+        <form class="check-form" id="water-check-form" data-lead-endpoint="" data-reveal data-reveal-delay="1" novalidate>
+          <div class="form-row">
+            <div>
+              <label for="check-first">First name</label>
+              <input id="check-first" name="first" autocomplete="given-name" placeholder="Jane" required>
+            </div>
+            <div>
+              <label for="check-last">Last name</label>
+              <input id="check-last" name="last" autocomplete="family-name" placeholder="Smith" required>
+            </div>
+          </div>
+
+          <label for="check-email">Email</label>
+          <input id="check-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+
           <label for="zip-code">ZIP code</label>
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
-          <p class="field-error" id="zip-error" hidden>Enter a 5-digit ZIP code.</p>
-
-          <label for="check-email">Email <span class="label-optional">(optional &mdash; for your free test follow-up)</span></label>
-          <input id="check-email" name="email" type="email" autocomplete="email" placeholder="you@email.com">
+          <p class="field-error" id="zip-error" hidden>Please fill in every field (ZIP is 5 digits).</p>
 
           <button class="button button-primary button-lg" type="submit">See My Water Report</button>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
@@ -767,9 +782,8 @@
     <div class="section-inner">
       <div class="footer-brand">
         <a class="brand" href="#home" aria-label="TB Water home">
-          <img src="assets/tb-water-logo.png" alt="TB Water Technologies" width="120" height="95">
+          <img src="assets/tb-water-logo.png" alt="TB Water Technologies — Better Water, Better Life" width="472" height="371">
         </a>
-        <p class="footer-tagline">Better Water | Better Life&reg;</p>
         <nav class="social-links" aria-label="Social links">
           <a class="social-icon" href="https://www.facebook.com/premiumwatertreatment/" aria-label="Visit TB Water on Facebook">
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.2 8.6V7.1c0-.7.5-.9 1-.9h1.6V3.4L14.5 3c-2.6 0-4.2 1.6-4.2 4.4v1.2H7.7v3.2h2.6V21h3.4v-9.2h2.6l.5-3.2h-3.1Z"></path></svg>
@@ -796,9 +810,22 @@
         <a href="mailto:dave@tbwater.com">dave@tbwater.com</a>
         <span>140 Oscar Hill Rd #22<br>Tarpon Springs, FL 34689</span>
       </address>
+      <div class="footer-area">
+        <p class="footer-heading">Serving</p>
+        <span>Pinellas County</span>
+        <span>Hillsborough County</span>
+        <span>Pasco County</span>
+        <span>Hernando County</span>
+        <span>Manatee &amp; Sarasota</span>
+        <span>Polk County</span>
+        <span>Orlando &amp; Kissimmee</span>
+      </div>
     </div>
     <div class="footer-bottom">
-      <p class="copyright">&copy; 2026 TB Water Technologies. All rights reserved.</p>
+      <div class="footer-bottom-inner">
+        <p class="copyright">&copy; 2026 TB Water Technologies. All rights reserved.</p>
+        <p class="footer-credit">Water quality data: <a href="https://www.ewg.org/tapwater/" target="_blank" rel="noopener noreferrer">EWG Tap Water Database</a></p>
+      </div>
     </div>
   </footer>
 

@@ -6,7 +6,7 @@
 window.TB_WATER_DATA = {
   source: {
     label: "EWG Tap Water Database",
-    period: "Utility water testing data from 2021–2023, as compiled by the Environmental Working Group from Florida DEP and U.S. EPA records.",
+    period: "Utility water testing data from 2021–2023 — the latest published in EWG's Tap Water Database, compiled from Florida DEP and U.S. EPA records.",
     compliance: "For the latest quarter assessed by the U.S. EPA (April 2024 – June 2024), tap water provided by this utility was in compliance with federal health-based drinking water standards. Legal doesn’t always mean ideal — the levels below are compared against EWG’s stricter health guidelines."
   },
   utilities: {
@@ -375,6 +375,262 @@ window.TB_WATER_DATA = {
         { name: "Manganese", level: "0.520 ppb", legal: null, guideline: "100 ppb" },
         { name: "Strontium", level: "0.0695 ppb", legal: null, guideline: "1,500 ppb" }
       ]
+    },
+    manatee: {
+      name: "Manatee County Utilities", pws: "FL6411132", pop: "347,800",
+      exceed: [
+        { name: "Chromium (hexavalent)", effect: "Cancer", level: "0.0615 ppb", legal: null, times: "3.1", guideline: "0.02 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "29.5 ppb", legal: "60 ppb", times: "295", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "61.7 ppb", legal: null, times: "1,029", guideline: "0.06 ppb" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.87 pCi/L", legal: "5 pCi/L", times: "17", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "33.5 ppb", legal: "80 ppb", times: "224", guideline: "0.15 ppb" }
+      ],
+      other: [
+        { name: "Aluminum", level: "25.0 ppb", legal: null, guideline: "600 ppb" },
+        { name: "Barium", level: "12.0 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chlorate", level: "276.3 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Fluoride", level: "0.250 ppm", legal: "4 ppm", guideline: null },
+        { name: "Manganese", level: "6.60 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "2.26 ppb", legal: null, guideline: "40 ppb" },
+        { name: "Nitrate", level: "0.120 ppm", legal: "10 ppm", guideline: "0.14 ppm" },
+        { name: "Strontium", level: "1.91 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Vanadium", level: "1.78 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    sarasotaco: {
+      name: "Sarasota County Utilities", pws: "FL6581591", pop: "267,171",
+      exceed: [
+        { name: "Bromodichloromethane", effect: "Cancer", level: "12.7 ppb", legal: null, times: "212", guideline: "0.06 ppb" },
+        { name: "Bromoform", effect: "Cancer", level: "2.37 ppb", legal: null, times: "4.7", guideline: "0.5 ppb" },
+        { name: "Chlorate", effect: "Harm to the thyroid", level: "471.8 ppb", legal: null, times: "2.2", guideline: "210 ppb" },
+        { name: "Chloroform", effect: "Cancer", level: "21.4 ppb", legal: null, times: "53", guideline: "0.4 ppb" },
+        { name: "Dibromoacetic acid", effect: "", level: "2.99 ppb", legal: null, times: "100", guideline: "0.03 ppb" },
+        { name: "Dibromochloromethane", effect: "Cancer", level: "5.71 ppb", legal: null, times: "57", guideline: "0.1 ppb" },
+        { name: "Dichloroacetic acid", effect: "Cancer", level: "17.0 ppb", legal: null, times: "85", guideline: "0.2 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "28.0 ppb", legal: "60 ppb", times: "280", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "42.4 ppb", legal: null, times: "706", guideline: "0.06 ppb" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.72 pCi/L", legal: "5 pCi/L", times: "14", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "42.1 ppb", legal: "80 ppb", times: "281", guideline: "0.15 ppb" },
+        { name: "Trichloroacetic acid", effect: "Cancer", level: "6.95 ppb", legal: null, times: "70", guideline: "0.1 ppb" }
+      ],
+      other: [
+        { name: "Aluminum", level: "26.4 ppb", legal: null, guideline: "600 ppb" },
+        { name: "Barium", level: "12.5 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chromium (hexavalent)", level: "0.0356 ppb", legal: null, guideline: "0.02 ppb" },
+        { name: "Di(2-ethylhexyl) phthalate", level: "0.113 ppb", legal: "6 ppb", guideline: "3 ppb" },
+        { name: "Fluoride", level: "0.411 ppm", legal: "4 ppm", guideline: null },
+        { name: "Hexachlorocyclopentadiene", level: "0.00436 ppb", legal: "50 ppb", guideline: "2 ppb" },
+        { name: "Manganese", level: "5.63 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "2.02 ppb", legal: null, guideline: "40 ppb" },
+        { name: "Monobromoacetic acid", level: "0.0763 ppb", legal: null, guideline: "25 ppb" },
+        { name: "Monochloroacetic acid", level: "1.45 ppb", legal: null, guideline: "53 ppb" },
+        { name: "Nitrate", level: "0.218 ppm", legal: "10 ppm", guideline: "0.14 ppm" },
+        { name: "Strontium", level: "3.47 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Vanadium", level: "0.863 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    lakeland: {
+      name: "City of Lakeland", pws: "FL6531014", pop: "193,297",
+      exceed: [
+        { name: "Chromium (hexavalent)", effect: "Cancer", level: "0.0704 ppb", legal: null, times: "3.5", guideline: "0.02 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "19.3 ppb", legal: "60 ppb", times: "193", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "32.0 ppb", legal: null, times: "533", guideline: "0.06 ppb" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.45 pCi/L", legal: "5 pCi/L", times: "9", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "36.7 ppb", legal: "80 ppb", times: "245", guideline: "0.15 ppb" }
+      ],
+      other: [
+        { name: "1,4-Dioxane", level: "0.0645 ppb", legal: null, guideline: "0.35 ppb" },
+        { name: "Aluminum", level: "10.5 ppb", legal: null, guideline: "600 ppb" },
+        { name: "Barium", level: "4.40 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chlorate", level: "9.68 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Fluoride", level: "0.640 ppm", legal: "4 ppm", guideline: null },
+        { name: "Manganese", level: "0.247 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "8.15 ppb", legal: null, guideline: "40 ppb" },
+        { name: "Strontium", level: "0.152 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Uranium", level: "0.02 pCi/L", legal: "20 pCi/L", guideline: "0.43 pCi/L" },
+        { name: "Vanadium", level: "0.249 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    winterhaven: {
+      name: "Winter Haven Water Department", pws: "FL6531992", pop: "87,537",
+      exceed: [
+        { name: "Arsenic", effect: "Cancer", level: "0.189 ppb", legal: "10 ppb", times: "47", guideline: "0.004 ppb" },
+        { name: "Chlorate", effect: "Harm to the thyroid", level: "700.6 ppb", legal: null, times: "3.3", guideline: "210 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "26.6 ppb", legal: "60 ppb", times: "266", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "47.7 ppb", legal: null, times: "795", guideline: "0.06 ppb" },
+        { name: "PFHxS (a “forever chemical”)", effect: "Harm to immune & hormone systems", level: "0.667 ppt", legal: "10 ppt", times: "667", guideline: "0.001 ppt" },
+        { name: "PFOS (a “forever chemical”)", effect: "Harm to immune system", level: "1.20 ppt", legal: null, times: "4", guideline: "0.3 ppt" },
+        { name: "PFOA (a “forever chemical”)", effect: "Cancer", level: "0.644 ppt", legal: null, times: "7.2", guideline: "0.09 ppt" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.64 pCi/L", legal: "5 pCi/L", times: "13", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "57.4 ppb", legal: "80 ppb", times: "383", guideline: "0.15 ppb" }
+      ],
+      other: [
+        { name: "Aluminum", level: "0.833 ppb", legal: null, guideline: "600 ppb" },
+        { name: "Barium", level: "15.4 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chromium (hexavalent)", level: "0.0142 ppb", legal: null, guideline: "0.02 ppb" },
+        { name: "Fluoride", level: "0.611 ppm", legal: "4 ppm", guideline: null },
+        { name: "Manganese", level: "1.92 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "11.7 ppb", legal: null, guideline: "40 ppb" },
+        { name: "Nitrate", level: "0.0470 ppm", legal: "10 ppm", guideline: "0.14 ppm" },
+        { name: "PFBS (forever chemical)", level: "0.506 ppt", legal: null, guideline: "2,000 ppt" },
+        { name: "Strontium", level: "0.137 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Vanadium", level: "0.588 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    ouc: {
+      name: "Orlando Utilities Commission", pws: "FL3480962", pop: "456,036",
+      exceed: [
+        { name: "1,3-Butadiene", effect: "Cancer", level: "0.0229 ppb", legal: null, times: "2.2", guideline: "0.0103 ppb" },
+        { name: "Bromate", effect: "Cancer", level: "3.52 ppb", legal: "10 ppb", times: "35", guideline: "0.1 ppb" },
+        { name: "Chromium (hexavalent)", effect: "Cancer", level: "0.0456 ppb", legal: null, times: "2.3", guideline: "0.02 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "23.8 ppb", legal: "60 ppb", times: "238", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "32.7 ppb", legal: null, times: "544", guideline: "0.06 ppb" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.84 pCi/L", legal: "5 pCi/L", times: "17", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "53.4 ppb", legal: "80 ppb", times: "356", guideline: "0.15 ppb" }
+      ],
+      other: [
+        { name: "Barium", level: "20.6 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Fluoride", level: "0.733 ppm", legal: "4 ppm", guideline: null },
+        { name: "Manganese", level: "0.697 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "1.69 ppb", legal: null, guideline: "40 ppb" },
+        { name: "Nitrate", level: "0.0283 ppm", legal: "10 ppm", guideline: "0.14 ppm" },
+        { name: "Strontium", level: "0.535 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Vanadium", level: "0.0154 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    toho: {
+      name: "Toho Water Authority (Kissimmee)", pws: "FL3490751", pop: "110,102",
+      exceed: [
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "29.3 ppb", legal: "60 ppb", times: "293", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "32.9 ppb", legal: null, times: "548", guideline: "0.06 ppb" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "49.3 ppb", legal: "80 ppb", times: "328", guideline: "0.15 ppb" }
+      ],
+      other: [
+        { name: "Barium", level: "13.7 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chlorate", level: "269.7 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Chromium (hexavalent)", level: "0.00708 ppb", legal: null, guideline: "0.02 ppb" },
+        { name: "Fluoride", level: "0.244 ppm", legal: "4 ppm", guideline: null },
+        { name: "Manganese", level: "0.698 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "4.06 ppb", legal: null, guideline: "40 ppb" },
+        { name: "Strontium", level: "0.558 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Vanadium", level: "0.0833 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    hernando: {
+      name: "Hernando County Utilities", pws: "FL6277059", pop: "135,207",
+      exceed: [
+        { name: "Arsenic", effect: "Cancer", level: "0.345 ppb", legal: "10 ppb", times: "86", guideline: "0.004 ppb" },
+        { name: "Chromium (hexavalent)", effect: "Cancer", level: "0.668 ppb", legal: null, times: "33", guideline: "0.02 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "3.43 ppb", legal: "60 ppb", times: "34", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "3.92 ppb", legal: null, times: "65", guideline: "0.06 ppb" },
+        { name: "Nitrate", effect: "Cancer", level: "0.876 ppm", legal: "10 ppm", times: "6.3", guideline: "0.14 ppm" },
+        { name: "PFOS (a “forever chemical”)", effect: "Harm to immune system", level: "1.10 ppt", legal: null, times: "3.7", guideline: "0.3 ppt" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.74 pCi/L", legal: "5 pCi/L", times: "15", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "8.59 ppb", legal: "80 ppb", times: "57", guideline: "0.15 ppb" },
+        { name: "Uranium", effect: "Cancer", level: "1.93 pCi/L", legal: "20 pCi/L", times: "4.5", guideline: "0.43 pCi/L" }
+      ],
+      other: [
+        { name: "Barium", level: "3.44 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chlorate", level: "201.5 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Chromium (total)", level: "0.0727 ppb", legal: "100 ppb", guideline: null },
+        { name: "Manganese", level: "0.404 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "4.02 ppb", legal: null, guideline: "40 ppb" },
+        { name: "PFBS (forever chemical)", level: "1.93 ppt", legal: null, guideline: "2,000 ppt" },
+        { name: "PFPeA (forever chemical)", level: "0.760 ppt", legal: null, guideline: "1,000 ppt" },
+        { name: "Strontium", level: "0.205 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Vanadium", level: "2.61 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    plantcity: {
+      name: "City of Plant City Utility", pws: "FL6290323", pop: "42,536",
+      exceed: [
+        { name: "Bromodichloromethane", effect: "Cancer", level: "13.8 ppb", legal: null, times: "230", guideline: "0.06 ppb" },
+        { name: "Chloroform", effect: "Cancer", level: "44.5 ppb", legal: null, times: "111", guideline: "0.4 ppb" },
+        { name: "Dibromoacetic acid", effect: "", level: "1.02 ppb", legal: null, times: "34", guideline: "0.03 ppb" },
+        { name: "Dibromochloromethane", effect: "Cancer", level: "6.03 ppb", legal: null, times: "60", guideline: "0.1 ppb" },
+        { name: "Dichloroacetic acid", effect: "Cancer", level: "19.0 ppb", legal: null, times: "95", guideline: "0.2 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "34.4 ppb", legal: "60 ppb", times: "344", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "38.5 ppb", legal: null, times: "641", guideline: "0.06 ppb" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "1.29 pCi/L", legal: "5 pCi/L", times: "26", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "62.1 ppb", legal: "80 ppb", times: "414", guideline: "0.15 ppb" },
+        { name: "Trichloroacetic acid", effect: "Cancer", level: "15.9 ppb", legal: null, times: "159", guideline: "0.1 ppb" }
+      ],
+      other: [
+        { name: "Barium", level: "10.6 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Bromoform", level: "0.0888 ppb", legal: null, guideline: "0.5 ppb" },
+        { name: "Chlorate", level: "375.3 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Chloromethane", level: "0.333 ppb", legal: null, guideline: "2.69 ppb" },
+        { name: "Chromium (hexavalent)", level: "0.00194 ppb", legal: null, guideline: "0.02 ppb" },
+        { name: "Chromium (total)", level: "3.95 ppb", legal: "100 ppb", guideline: null },
+        { name: "Fluoride", level: "0.515 ppm", legal: "4 ppm", guideline: null },
+        { name: "Manganese", level: "7.32 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Monobromoacetic acid", level: "1.60 ppb", legal: null, guideline: "25 ppb" },
+        { name: "Monochloroacetic acid", level: "0.639 ppb", legal: null, guideline: "53 ppb" },
+        { name: "Strontium", level: "0.199 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Uranium", level: "0.03 pCi/L", legal: "20 pCi/L", guideline: "0.43 pCi/L" }
+      ]
+    },
+    temple: {
+      name: "City of Temple Terrace Utility", pws: "FL6291791", pop: "31,250",
+      exceed: [
+        { name: "Arsenic", effect: "Cancer", level: "1.65 ppb", legal: "10 ppb", times: "413", guideline: "0.004 ppb" },
+        { name: "Bromodichloromethane", effect: "Cancer", level: "11.3 ppb", legal: null, times: "188", guideline: "0.06 ppb" },
+        { name: "Bromoform", effect: "Cancer", level: "2.14 ppb", legal: null, times: "4.3", guideline: "0.5 ppb" },
+        { name: "Chloroform", effect: "Cancer", level: "10.8 ppb", legal: null, times: "27", guideline: "0.4 ppb" },
+        { name: "Chromium (hexavalent)", effect: "Cancer", level: "0.360 ppb", legal: null, times: "18", guideline: "0.02 ppb" },
+        { name: "Dibromoacetic acid", effect: "", level: "3.28 ppb", legal: null, times: "109", guideline: "0.03 ppb" },
+        { name: "Dibromochloromethane", effect: "Cancer", level: "10.3 ppb", legal: null, times: "103", guideline: "0.1 ppb" },
+        { name: "Dichloroacetic acid", effect: "Cancer", level: "4.65 ppb", legal: null, times: "23", guideline: "0.2 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "10.7 ppb", legal: "60 ppb", times: "107", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "18.6 ppb", legal: null, times: "309", guideline: "0.06 ppb" },
+        { name: "Nitrate", effect: "Cancer", level: "1.81 ppm", legal: "10 ppm", times: "13", guideline: "0.14 ppm" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "1.30 pCi/L", legal: "5 pCi/L", times: "26", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "34.5 ppb", legal: "80 ppb", times: "230", guideline: "0.15 ppb" },
+        { name: "Trichloroacetic acid", effect: "Cancer", level: "2.53 ppb", legal: null, times: "25", guideline: "0.1 ppb" },
+        { name: "Uranium", effect: "Cancer", level: "3.85 pCi/L", legal: "20 pCi/L", times: "9", guideline: "0.43 pCi/L" }
+      ],
+      other: [
+        { name: "Barium", level: "17.0 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chlorate", level: "73.7 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Chromium (total)", level: "0.250 ppb", legal: "100 ppb", guideline: null },
+        { name: "Fluoride", level: "0.636 ppm", legal: "4 ppm", guideline: null },
+        { name: "Manganese", level: "0.625 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "7.74 ppb", legal: null, guideline: "40 ppb" },
+        { name: "Selenium", level: "2.95 ppb", legal: "50 ppb", guideline: "30 ppb" },
+        { name: "Strontium", level: "0.847 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Thallium", level: "0.150 ppb", legal: "2 ppb", guideline: "0.1 ppb" },
+        { name: "Vanadium", level: "9.39 ppb", legal: null, guideline: "21 ppb" }
+      ]
+    },
+    zephyrhills: {
+      name: "City of Zephyrhills", pws: "FL6512020", pop: "29,117",
+      exceed: [
+        { name: "PFHxS (a “forever chemical”)", effect: "Harm to immune & hormone systems", level: "3.85 ppt", legal: "10 ppt", times: "3,850", guideline: "0.001 ppt" },
+        { name: "PFOS (a “forever chemical”)", effect: "Harm to immune system", level: "6.39 ppt", legal: null, times: "21", guideline: "0.3 ppt" },
+        { name: "PFOA (a “forever chemical”)", effect: "Cancer", level: "1.35 ppt", legal: null, times: "15", guideline: "0.09 ppt" },
+        { name: "Arsenic", effect: "Cancer", level: "0.286 ppb", legal: "10 ppb", times: "71", guideline: "0.004 ppb" },
+        { name: "Chromium (hexavalent)", effect: "Cancer", level: "1.18 ppb", legal: null, times: "59", guideline: "0.02 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "2.75 ppb", legal: "60 ppb", times: "27", guideline: "0.1 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "1.41 ppb", legal: null, times: "24", guideline: "0.06 ppb" },
+        { name: "Nitrate", effect: "Cancer", level: "1.90 ppm", legal: "10 ppm", times: "14", guideline: "0.14 ppm" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "1.16 pCi/L", legal: "5 pCi/L", times: "23", guideline: "0.05 pCi/L" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "6.88 ppb", legal: "80 ppb", times: "46", guideline: "0.15 ppb" }
+      ],
+      other: [
+        { name: "1,4-Dioxane", level: "0.0106 ppb", legal: null, guideline: "0.35 ppb" },
+        { name: "Barium", level: "5.57 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chlorate", level: "58.0 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Cobalt", level: "0.0484 ppb", legal: null, guideline: "70 ppb" },
+        { name: "Manganese", level: "11.9 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "3.23 ppb", legal: null, guideline: "40 ppb" },
+        { name: "PFBS (forever chemical)", level: "2.94 ppt", legal: null, guideline: "2,000 ppt" },
+        { name: "PFHpA (forever chemical)", level: "0.429 ppt", legal: null, guideline: "1,000 ppt" },
+        { name: "PFHxA (forever chemical)", level: "1.52 ppt", legal: null, guideline: "1,000 ppt" },
+        { name: "PFPeA (forever chemical)", level: "3.15 ppt", legal: null, guideline: "1,000 ppt" },
+        { name: "Strontium", level: "0.483 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Uranium", level: "0.43 pCi/L", legal: "20 pCi/L", guideline: "0.43 pCi/L" },
+        { name: "Vanadium", level: "4.87 ppb", legal: null, guideline: "21 ppb" }
+      ]
     }
   },
   zipMap: {
@@ -407,7 +663,33 @@ window.TB_WATER_DATA = {
     "34654": "pasco", "34655": "pasco", "34667": "pasco", "34668": "pasco",
     "34669": "pasco", "34690": "pasco", "34691": "pasco", "34610": "pasco",
     "34637": "pasco", "34638": "pasco", "34639": "pasco",
-    "33543": "pasco", "33544": "pasco", "33545": "pasco"
+    "33543": "pasco", "33544": "pasco", "33545": "pasco",
+    "33617": "temple", "33637": "temple",
+    "33563": "plantcity", "33565": "plantcity", "33566": "plantcity", "33567": "plantcity",
+    "33540": "zephyrhills", "33541": "zephyrhills", "33542": "zephyrhills",
+    "34601": "hernando", "34602": "hernando", "34604": "hernando", "34606": "hernando",
+    "34607": "hernando", "34608": "hernando", "34609": "hernando", "34613": "hernando", "34614": "hernando",
+    "34201": "manatee", "34202": "manatee", "34203": "manatee", "34205": "manatee",
+    "34207": "manatee", "34208": "manatee", "34209": "manatee", "34210": "manatee",
+    "34211": "manatee", "34212": "manatee", "34219": "manatee", "34221": "manatee",
+    "34222": "manatee", "34243": "manatee", "34251": "manatee",
+    "34229": "sarasotaco", "34231": "sarasotaco", "34232": "sarasotaco", "34233": "sarasotaco",
+    "34234": "sarasotaco", "34235": "sarasotaco", "34236": "sarasotaco", "34237": "sarasotaco",
+    "34238": "sarasotaco", "34239": "sarasotaco", "34240": "sarasotaco", "34241": "sarasotaco",
+    "34242": "sarasotaco", "34275": "sarasotaco", "34285": "sarasotaco", "34287": "sarasotaco",
+    "34288": "sarasotaco", "34289": "sarasotaco", "34292": "sarasotaco", "34293": "sarasotaco",
+    "33801": "lakeland", "33803": "lakeland", "33805": "lakeland", "33809": "lakeland",
+    "33810": "lakeland", "33811": "lakeland", "33812": "lakeland", "33813": "lakeland", "33815": "lakeland",
+    "33880": "winterhaven", "33881": "winterhaven", "33884": "winterhaven",
+    "32801": "ouc", "32803": "ouc", "32804": "ouc", "32805": "ouc", "32806": "ouc",
+    "32807": "ouc", "32808": "ouc", "32809": "ouc", "32810": "ouc", "32811": "ouc",
+    "32812": "ouc", "32814": "ouc", "32822": "ouc", "32824": "ouc", "32827": "ouc",
+    "32829": "ouc", "32832": "ouc", "32839": "ouc",
+    "34741": "toho", "34743": "toho", "34744": "toho", "34746": "toho",
+    "34747": "toho", "34758": "toho", "34759": "toho"
   },
-  prefixMap: { "337": "pinellas", "346": "pasco", "336": "tampa", "335": "hillssc" }
+  /* Prefix fallbacks only where one utility clearly dominates the range.
+     Fragmented areas (Polk 338xx beyond Lakeland/WH, greater Orlando)
+     intentionally fall through to the "we don't have your ZIP" path. */
+  prefixMap: { "337": "pinellas", "346": "pasco", "336": "tampa", "335": "hillssc", "342": "sarasotaco", "347": "toho" }
 };
