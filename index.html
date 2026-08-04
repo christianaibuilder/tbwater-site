@@ -266,11 +266,10 @@
             <li><span>3</span>See exact system pricing &mdash; no pushy pitch</li>
           </ul>
         </div>
-        <!-- TODO(Christian): to wire the CRM, create a Formspree form and put its
-             endpoint URL in data-lead-endpoint (e.g. https://formspree.io/f/abcd1234).
-             Leads then POST silently on every report view. Until then the form
-             still works - it just only renders the report. -->
-        <form class="check-form" id="water-check-form" data-lead-endpoint="" data-reveal data-reveal-delay="1" novalidate>
+        <!-- Lead capture: every report view silently POSTs {first,last,email,zip,
+             utility,topConcerns} to Formspree ("TB Water" form in Christian's
+             account). Submissions tab: https://formspree.io/forms/xvkppydy -->
+        <form class="check-form" id="water-check-form" data-lead-endpoint="https://formspree.io/f/xvkppydy" data-reveal data-reveal-delay="1" novalidate>
           <div class="form-row">
             <div>
               <label for="check-first">First name</label>
