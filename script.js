@@ -401,18 +401,30 @@
           ? [...utility.exceed].sort((a, b) => timesNum(b.times) - timesNum(a.times))
               .slice(0, 3).map((c) => `${c.name} (${c.times}x)`).join(", ")
           : "";
+        // Field NAMES become the labels in the notification email, and the
+        // order here is the order Dave reads them - so put what he acts on
+        // first. `_subject` makes each email self-triaging in the inbox, and
+        // `email` (when given) is what makes Reply go to the customer.
+        const who = `${first} ${last}`.trim();
+        const where = utility ? utility.name : `ZIP ${zip}`;
+        const lead = {
+          _subject: contact
+            ? `New water lead: ${who} - ${zip} ${where}`
+            : `New water lead (no contact info) - ${zip} ${where}`,
+          "Name": who,
+        };
+        if (isEmail) lead.email = contact;            // also sets Reply-To
+        else if (isPhone) lead["Phone"] = contact;
+        else lead["How to reach them"] = "They did not leave contact info - report only";
+        lead["ZIP"] = zip;
+        lead["Their water utility"] = utility ? utility.name : "(not in our database)";
+        lead["Worst in their water"] = topConcerns || "(no report generated)";
+        lead["Came from"] = "tbwater.com water report";
+
         fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify({
-            first, last, zip,
-            email: isEmail ? contact : "",
-            phone: isPhone ? contact : "",
-            reachable: contact ? (isEmail ? "email" : "phone") : "NO CONTACT GIVEN",
-            utility: utility ? utility.name : "(not in database)",
-            topConcerns,
-            source: "tbwater.com water report"
-          })
+          body: JSON.stringify(lead)
         }).catch(() => {});
       }
 
