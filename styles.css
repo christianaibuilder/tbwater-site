@@ -1112,12 +1112,14 @@ a { color: var(--brand-deep); }
   padding-top: 0.35rem;
 }
 
+/* The multiplier is the whole point of the card - it carries the same red
+   as the "potential effect" line so the number reads as the warning. */
 .wr-times strong {
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 3vw, 2.4rem);
   font-weight: 800;
   line-height: 1;
-  color: var(--ink);
+  color: #c0392b;
 }
 
 .wr-times small {

@@ -281,12 +281,12 @@
             </div>
           </div>
 
-          <label for="check-email">Email</label>
-          <input id="check-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+          <label for="check-contact">Email or phone <span class="label-optional">(optional &mdash; only if you want your free water test)</span></label>
+          <input id="check-contact" name="contact" type="text" autocomplete="email" placeholder="you@email.com or (727) 555-0123">
 
           <label for="zip-code">ZIP code</label>
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
-          <p class="field-error" id="zip-error" hidden>Please fill in every field (ZIP is 5 digits).</p>
+          <p class="field-error" id="zip-error" hidden>Please add your name and a 5-digit ZIP.</p>
 
           <button class="button button-primary button-lg" type="submit">See My Water Report</button>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>

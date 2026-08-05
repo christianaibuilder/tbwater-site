@@ -365,16 +365,26 @@
       event.preventDefault();
       const first = (waterForm.querySelector("#check-first")?.value || "").trim();
       const last = (waterForm.querySelector("#check-last")?.value || "").trim();
-      const email = (waterForm.querySelector("#check-email")?.value || "").trim();
+      const contact = (waterForm.querySelector("#check-contact")?.value || "").trim();
       const zip = (waterForm.querySelector("#zip-code")?.value || "").trim();
       const zipError = waterForm.querySelector("#zip-error");
 
-      const valid = first && last && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && /^\d{5}$/.test(zip);
-      if (!valid) {
+      // Contact is deliberately optional - Dave would rather see the lead with
+      // just a ZIP than scare someone off asking for their number. But if they
+      // do type something, it has to be a usable email or phone.
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+      const digits = contact.replace(/\D/g, "");
+      const isPhone = !isEmail && digits.length >= 10 && digits.length <= 11;
+      const contactOk = !contact || isEmail || isPhone;
+
+      if (!first || !last || !/^\d{5}$/.test(zip) || !contactOk) {
+        zipError.textContent = !contactOk
+          ? "That doesn't look like an email or a phone number."
+          : "Please add your name and a 5-digit ZIP.";
         zipError.hidden = false;
         (!first ? waterForm.querySelector("#check-first")
           : !last ? waterForm.querySelector("#check-last")
-          : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? waterForm.querySelector("#check-email")
+          : !contactOk ? waterForm.querySelector("#check-contact")
           : waterForm.querySelector("#zip-code")).focus();
         return;
       }
@@ -383,8 +393,8 @@
       const key = waterData.zipMap[zip] || waterData.prefixMap[zip.slice(0, 3)] || null;
       const utility = key && waterData.utilities[key] ? waterData.utilities[key] : null;
 
-      // Silent lead capture once a CRM endpoint is configured (see the TODO
-      // on the form in index.html). Fire-and-forget; never blocks the report.
+      // Silent lead capture. Fire-and-forget; never blocks the report, and a
+      // failure here is invisible to the visitor - they still get their report.
       const endpoint = waterForm.dataset.leadEndpoint;
       if (endpoint) {
         const topConcerns = utility
@@ -395,7 +405,10 @@
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify({
-            first, last, email, zip,
+            first, last, zip,
+            email: isEmail ? contact : "",
+            phone: isPhone ? contact : "",
+            reachable: contact ? (isEmail ? "email" : "phone") : "NO CONTACT GIVEN",
             utility: utility ? utility.name : "(not in database)",
             topConcerns,
             source: "tbwater.com water report"
