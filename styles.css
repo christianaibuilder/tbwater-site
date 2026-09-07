@@ -538,6 +538,25 @@ a { color: var(--brand-deep); }
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.12);
+  opacity: 1;
+  transform: none;
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+
+/* While the video plays the bar gets out of the way; hovering, tabbing to a
+   control, or tapping the video (which pauses it) brings it straight back.
+   .is-playing is already toggled on .media-frame by the play/pause handlers. */
+.media-frame.is-playing .video-controls {
+  opacity: 0;
+  transform: translateY(0.55rem);
+  pointer-events: none;
+}
+
+.media-frame.is-playing:hover .video-controls,
+.media-frame.is-playing:focus-within .video-controls {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
 .video-controls button {
