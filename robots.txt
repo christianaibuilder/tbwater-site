@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://christianaibuilder.github.io/tbwater-site/sitemap.xml
+Sitemap: https://tbwater.com/sitemap.xml
