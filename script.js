@@ -150,7 +150,7 @@
     const track = media.querySelector(".carousel-track");
     const slides = Array.from(media.querySelectorAll(".carousel-slide"));
     const dotsWrap = media.querySelector(".carousel-dots");
-    if (!track || slides.length < 2) return;
+    if (!track || !slides.length) return;
 
     // Inject real images where a path has been provided (lazy-loaded).
     slides.forEach((slide) => {
@@ -165,6 +165,13 @@
         slide.prepend(img); // prepend keeps any .slide-caption overlay intact
       }
     });
+
+    // A single-photo card still needs its image, but no arrows or dots.
+    if (slides.length < 2) {
+      media.querySelectorAll(".carousel-arrow").forEach((btn) => btn.remove());
+      if (dotsWrap) dotsWrap.remove();
+      return;
+    }
 
     let index = 0;
     const dots = slides.map((_, i) => {

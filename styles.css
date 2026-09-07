@@ -727,6 +727,10 @@ a { color: var(--brand-deep); }
 
 .path-card:hover .path-photo img { transform: scale(1.05); }
 
+/* Tall portrait shots lose their equipment tops to a centred 4/3 crop —
+   anchor them near the top so control heads stay in frame. */
+.path-photo-topcrop img { object-position: center 5%; }
+
 .photo-badge {
   position: absolute;
   left: 0.8rem; bottom: 0.8rem;
@@ -751,74 +755,16 @@ a { color: var(--brand-deep); }
 
 .path-body p { font-size: 0.94rem; flex: 1; margin-bottom: 1.1rem; }
 
-/* ---------- Before / after ---------- */
-.before-after { padding: var(--section-pad) 0; }
-
-.ba-grid {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: clamp(1rem, 2.5vw, 2rem);
-  align-items: center;
-}
-
-.ba-card {
-  margin: 0;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--line-soft);
-  box-shadow: var(--shadow-md);
-  background: var(--surface);
-}
-
-.ba-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 30%; }
-
-.ba-card figcaption {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.95rem 1.2rem;
-  font-size: 0.92rem;
-  font-weight: 500;
-  color: var(--ink-2);
-}
-
-.ba-tag {
-  display: inline-flex;
-  padding: 0.22rem 0.68rem;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: #fbe9e7;
-  color: #b3482f;
-}
-
-.ba-tag-after { background: #e2f6ec; color: #157a4e; }
-
-.ba-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px; height: 52px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand), var(--brand-deep));
-  box-shadow: var(--shadow-brand);
-}
-
-.ba-arrow svg {
-  width: 1.4rem; height: 1.4rem;
-  fill: none; stroke: #fff;
-  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
-}
-
 /* ---------- Check my water ---------- */
 .check-water {
   position: relative;
-  padding: var(--section-pad) 0;
+  /* Deliberately taller than the surrounding sections — this is the page's
+     primary conversion moment, so it gets its own breathing room. */
+  padding: calc(var(--section-pad) * 1.35) 0;
   color: #fff;
   background: linear-gradient(150deg, var(--ink) 0%, var(--ink-3) 70%, var(--brand-dark) 130%);
   overflow: hidden;
+  border-top: 3px solid var(--aqua);
 }
 
 .check-backdrop {
@@ -830,46 +776,202 @@ a { color: var(--brand-deep); }
   pointer-events: none;
 }
 
+/* Soft aqua spotlight behind the form so the eye lands there first. */
+.check-glow {
+  position: absolute;
+  top: 50%;
+  right: -6%;
+  width: min(46rem, 70%);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, rgba(111, 212, 242, 0.26) 0%, rgba(111, 212, 242, 0) 62%);
+  pointer-events: none;
+}
+
 .check-water .section-inner {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: clamp(2.5rem, 5vw, 4.5rem);
   align-items: center;
 }
 
-.check-water h2 { color: #fff; }
-.check-copy > p { color: rgba(255, 255, 255, 0.8); max-width: 32rem; }
+.check-water h2 {
+  color: #fff;
+  font-size: clamp(2.1rem, 4.1vw, 3.5rem);
+  line-height: 1.08;
+  margin-bottom: 0.9rem;
+}
+
+.check-water h2 em { font-style: normal; color: var(--aqua); }
+
+.check-free {
+  display: block;
+  color: var(--aqua);
+}
+
+.check-lede {
+  color: rgba(255, 255, 255, 0.84);
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.6;
+}
+
+/* "Nobody else does this" ribbon above the headline. */
+.check-unique {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.1rem;
+  padding: 0.42rem 1rem 0.42rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(111, 212, 242, 0.14);
+  border: 1px solid rgba(111, 212, 242, 0.42);
+  color: var(--aqua);
+  font-size: 0.79rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.check-unique-dot {
+  width: 8px; height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--aqua);
+  box-shadow: 0 0 0 0 rgba(111, 212, 242, 0.65);
+  animation: check-pulse 2.4s ease-out infinite;
+}
+
+@keyframes check-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(111, 212, 242, 0.6); }
+  70%  { box-shadow: 0 0 0 9px rgba(111, 212, 242, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(111, 212, 242, 0); }
+}
 
 .check-steps {
   list-style: none;
-  margin: 1.8rem 0 0;
+  margin: 1.9rem 0 0;
   padding: 0;
   display: grid;
-  gap: 0.9rem;
+  gap: 1.15rem;
+  counter-reset: none;
 }
 
 .check-steps li {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  font-size: 0.96rem;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  align-items: start;
+  column-gap: 1rem;
+  row-gap: 0.1rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.check-steps li b {
+  grid-column: 2;
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.06rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
 }
 
 .check-steps span {
+  grid-row: span 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px; height: 34px;
+  width: 44px; height: 44px;
   flex: none;
   border-radius: 50%;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 800;
   color: var(--aqua);
-  background: rgba(111, 212, 242, 0.12);
-  border: 1px solid rgba(111, 212, 242, 0.38);
+  background: rgba(111, 212, 242, 0.14);
+  border: 1.5px solid rgba(111, 212, 242, 0.45);
+}
+
+/* Cost-of-entry reassurance chips. */
+.check-proof {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.9rem 0 0;
+  padding: 0;
+}
+
+.check-proof li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.36rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.check-proof li::before {
+  content: "";
+  width: 14px; height: 14px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--aqua);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='m9.6 16.2-3.8-3.8 1.4-1.4 2.4 2.4 6.8-6.8 1.4 1.4z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='m9.6 16.2-3.8-3.8 1.4-1.4 2.4 2.4 6.8-6.8 1.4 1.4z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* The form card itself gets lifted and labelled. */
+.check-water .check-form {
+  position: relative;
+  border: 1px solid rgba(111, 212, 242, 0.35);
+  box-shadow: 0 30px 70px rgba(3, 22, 36, 0.45);
+}
+
+.check-form-head { margin-bottom: 0.4rem; }
+
+.check-form-head h3 {
+  font-size: 1.5rem;
+  margin: 0 0 0.15rem;
+  color: var(--ink);
+}
+
+.check-form-head p {
+  margin: 0;
+  font-size: 0.87rem;
+  color: var(--body-text);
+}
+
+.check-form-ribbon {
+  position: absolute;
+  top: -0.85rem;
+  right: 1.4rem;
+  padding: 0.3rem 0.95rem;
+  border-radius: 999px;
+  /* Starts at brand-deep so white text clears AA across the whole pill. */
+  background: linear-gradient(135deg, var(--brand-deep), #0b5586);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-brand);
+}
+
+.check-submit { font-size: 1.06rem; }
+
+.check-reassure {
+  margin: 0.7rem 0 0;
+  text-align: center;
+  font-size: 0.81rem;
+  font-weight: 600;
+  color: var(--ink-2);
 }
 
 /* Forms (shared) */
@@ -1306,7 +1408,8 @@ a { color: var(--brand-deep); }
   z-index: 3;
   padding: 0.3rem 0.85rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+  /* Starts at brand-deep so the white label clears AA across the whole pill. */
+  background: linear-gradient(135deg, var(--brand-deep), #0b5586);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 700;
@@ -1327,7 +1430,8 @@ a { color: var(--brand-deep); }
 
 .price {
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  white-space: nowrap;
   font-weight: 800;
   color: var(--ink);
   margin: 0.15rem 0 0.65rem;
@@ -1413,6 +1517,41 @@ ul.card-panel li::before {
   background: var(--aqua);
   box-shadow: 0 0 0 2px var(--foam-2);
 }
+
+/* Inline emphasis for a must-read line inside card copy. */
+.note-blue { color: var(--brand-deep); font-weight: 700; }
+
+/* Two-price option comparison (Standard Series $2,500 / $2,200). */
+.price-sep { margin: 0 0.12em; color: var(--brand); }
+
+.price-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  margin: 0 0 0.9rem;
+}
+
+.price-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--foam);
+}
+
+.price-option-amount {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.price-option-size { font-size: 0.82rem; font-weight: 700; color: var(--brand-deep); }
+.price-option-note { font-size: 0.75rem; color: var(--ink-2); }
 
 .badges {
   display: flex;
@@ -1735,8 +1874,9 @@ body.layout-c .product-card .button { padding: 0.58rem 0.9rem; font-size: 0.84re
 
 .lease-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.9rem;
+  grid-template-columns: repeat(2, 1fr);
+  /* Extra row gap clears the -0.7rem "Best deal" badge on wrapped rows. */
+  gap: 1.7rem 0.9rem;
 }
 
 .lease-grid article {
@@ -1747,6 +1887,32 @@ body.layout-c .product-card .button { padding: 0.58rem 0.9rem; font-size: 0.84re
   border: 1px solid rgba(255, 255, 255, 0.14);
   transition: background-color 200ms ease, transform 200ms ease;
 }
+
+.lease-grid .lease-best {
+  position: relative;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.lease-grid article > span.lease-flag {
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd257, #ffb020);
+  color: #4a2d00;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.lease-grid .lease-best > span b { font-weight: 800; color: #fff; }
 
 .lease-grid article:hover { background: rgba(255, 255, 255, 0.11); transform: translateY(-3px); }
 
@@ -1759,7 +1925,7 @@ body.layout-c .product-card .button { padding: 0.58rem 0.9rem; font-size: 0.84re
   margin-bottom: 0.3rem;
 }
 
-.lease-grid strong span { font-size: 0.55em; font-weight: 600; color: rgba(255, 255, 255, 0.7); }
+.lease-grid strong span { font-size: 0.55em; font-weight: 600; color: rgba(255, 255, 255, 0.82); }
 
 .lease-grid article > span { font-size: 0.83rem; color: rgba(255, 255, 255, 0.8); line-height: 1.4; display: block; }
 
@@ -2156,11 +2322,13 @@ textarea:focus-visible {
 
   .about-media { max-width: 30rem; }
   .lease-options { grid-template-columns: 1fr; }
+  .lease-grid { grid-template-columns: repeat(4, 1fr); }
 
   .site-footer .section-inner { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 860px) {
+  .lease-grid { grid-template-columns: repeat(2, 1fr); }
   .menu-toggle { display: flex; }
 
   .nav-menu {
@@ -2205,6 +2373,11 @@ textarea:focus-visible {
   .feature-grid, .path-grid { grid-template-columns: 1fr; }
   .product-grid { grid-template-columns: 1fr; }
   .lease-grid { grid-template-columns: 1fr; }
+  .price-options { grid-template-columns: 1fr; }
+  .check-steps li { grid-template-columns: 38px 1fr; column-gap: 0.8rem; }
+  .check-unique { align-items: flex-start; padding-top: 0.5rem; }
+  .check-unique-dot { margin-top: 0.32rem; }
+  .check-steps span { width: 38px; height: 38px; font-size: 1rem; }
   .review-grid { grid-template-columns: 1fr; }
   .customer-strip { grid-template-columns: repeat(4, 1fr); }
   .gallery-grid { grid-template-columns: 1fr; }
@@ -2216,8 +2389,6 @@ textarea:focus-visible {
   .trust-stat { padding: 1.1rem 0.8rem; }
   .trust-stat p { font-size: 0.8rem; }
 
-  .ba-grid { grid-template-columns: 1fr; }
-  .ba-arrow { transform: rotate(90deg); justify-self: center; }
 
   .hero-actions .button { width: 100%; }
 
@@ -2269,4 +2440,30 @@ textarea:focus-visible {
   }
 
   [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* ---- Touch targets on any coarse-pointer device, not just phone widths.
+   The <=640px block covers narrow screens; a tablet is touch-driven but
+   wider than that, so it kept the 32px desktop controls. ---- */
+@media (hover: none) and (pointer: coarse) {
+  .carousel-arrow { width: 44px; height: 44px; }
+  .review-arrow { width: 44px; height: 44px; }
+  .card-tab { min-height: 44px; }
+  .video-controls button { width: 44px; height: 44px; }
+
+  .carousel-dot,
+  .review-dot { position: relative; }
+
+  .carousel-dot::after,
+  .review-dot::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 44px;
+  }
+
+  .carousel-dots { gap: 0.65rem; }
 }
