@@ -181,6 +181,21 @@ a { color: var(--brand-deep); }
   transform: translateY(-2px);
 }
 
+/* Outline CTA for LIGHT sections. .button-outline is white-on-transparent and
+   only works over the dark hero; on a white background it vanishes. */
+.button-line {
+  background: #fff;
+  color: var(--brand-deep);
+  border-color: var(--brand);
+}
+
+.button-line:hover {
+  background: var(--foam);
+  border-color: var(--brand-deep);
+  color: var(--brand-dark);
+  transform: translateY(-2px);
+}
+
 .button-ghost {
   background: transparent;
   color: var(--ink);
