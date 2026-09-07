@@ -1438,7 +1438,9 @@ a { color: var(--brand-deep); }
 .product-flag {
   position: absolute;
   top: -0.85rem;
-  left: 1.2rem;
+  /* Sits top-right so it never collides with a .slide-caption, which is
+     pinned to the top-left of the media. */
+  right: 1.2rem;
   z-index: 3;
   padding: 0.3rem 0.85rem;
   border-radius: 999px;
@@ -1554,6 +1556,7 @@ ul.card-panel li::before {
 
 /* Inline emphasis for a must-read line inside card copy. */
 .note-blue { color: var(--brand-deep); font-weight: 700; }
+.note-red { color: #c0392b; font-weight: 700; }
 
 /* Two-price option (Standard Series $2,500 / $2,200) — the sizes live in the
    card copy so this card stays the same height as its row-mates. */
