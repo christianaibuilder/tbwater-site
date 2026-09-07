@@ -1521,37 +1521,9 @@ ul.card-panel li::before {
 /* Inline emphasis for a must-read line inside card copy. */
 .note-blue { color: var(--brand-deep); font-weight: 700; }
 
-/* Two-price option comparison (Standard Series $2,500 / $2,200). */
+/* Two-price option (Standard Series $2,500 / $2,200) — the sizes live in the
+   card copy so this card stays the same height as its row-mates. */
 .price-sep { margin: 0 0.12em; color: var(--brand); }
-
-.price-options {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.6rem;
-  margin: 0 0 0.9rem;
-}
-
-.price-option {
-  display: flex;
-  flex-direction: column;
-  gap: 0.12rem;
-  padding: 0.65rem 0.75rem;
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-sm);
-  background: var(--foam);
-}
-
-.price-option-amount {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-  line-height: 1.1;
-}
-
-.price-option-size { font-size: 0.82rem; font-weight: 700; color: var(--brand-deep); }
-.price-option-note { font-size: 0.75rem; color: var(--ink-2); }
 
 .badges {
   display: flex;
@@ -2373,7 +2345,6 @@ textarea:focus-visible {
   .feature-grid, .path-grid { grid-template-columns: 1fr; }
   .product-grid { grid-template-columns: 1fr; }
   .lease-grid { grid-template-columns: 1fr; }
-  .price-options { grid-template-columns: 1fr; }
   .check-steps li { grid-template-columns: 38px 1fr; column-gap: 0.8rem; }
   .check-unique { align-items: flex-start; padding-top: 0.5rem; }
   .check-unique-dot { margin-top: 0.32rem; }
