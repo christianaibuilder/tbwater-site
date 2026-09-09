@@ -402,6 +402,8 @@
 
       // Silent lead capture. Fire-and-forget; never blocks the report, and a
       // failure here is invisible to the visitor - they still get their report.
+      const consentBox = waterForm.querySelector("#check-consent");
+      const consentOK = !!(consentBox && consentBox.checked);
       const endpoint = waterForm.dataset.leadEndpoint;
       if (endpoint) {
         const topConcerns = utility
@@ -426,6 +428,7 @@
         lead["ZIP"] = zip;
         lead["Their water utility"] = utility ? utility.name : "(not in our database)";
         lead["Worst in their water"] = topConcerns || "(no report generated)";
+        lead["OK to contact later"] = consentOK ? "Yes - they ticked the box" : "Not given - report only";
         lead["Came from"] = "tbwater.com water report";
 
         fetch(endpoint, {
@@ -556,8 +559,13 @@
 
       form.querySelectorAll("input, select, textarea").forEach((field) => {
         const label = field.getAttribute("name");
+        if (!label) return;
+        if (field.type === "checkbox") {
+          lines.push(`${label}: ${field.checked ? "Yes - they ticked the box" : "Not given"}`);
+          return;
+        }
         const value = field.value.trim();
-        if (label && value) lines.push(`${label}: ${value}`);
+        if (value) lines.push(`${label}: ${value}`);
       });
 
       lines.push("", "Sent from the TB Water website.");

@@ -331,6 +331,7 @@
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
           <p class="field-error" id="zip-error" hidden>Please add your name and a 5-digit ZIP.</p>
 
+          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent"><span>Yes, TB Water can follow up with me about my water &mdash; and remind me when a filter or service is due. <b>No spam, no mailing lists</b>, and you can tell Dave to stop any time.</span></label>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
           <p class="check-reassure">No obligation. Nobody will show up at your door.</p>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
@@ -464,7 +465,7 @@
             <div class="product-media" data-carousel aria-label="Platinum ProSeries Twin Tank photos">
               <div class="carousel-track">
                 <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/twin-tank/twin-install-7.jpg" data-alt="Platinum ProSeries twin tank system installed in a Tampa Bay garage"></figure>
-                <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/twin-tank/twin-install-4.jpg" data-alt="Platinum ProSeries twin tank system installed at a customer home"></figure>
+                <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/twin-tank/twin-install-4-closeup.jpg" data-alt="Platinum ProSeries twin tank system installed at a customer home"></figure>
                 <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/twin-tank/twin-install-1.jpg" data-alt="TB Water twin tank whole home system installed in a Tampa Bay garage"></figure>
               </div>
               <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
@@ -915,6 +916,7 @@
           </select>
           <label for="message">Message</label>
           <textarea id="message" name="Message" rows="5" placeholder="Tell Dave what you're noticing in your water&hellip;"></textarea>
+          <label class="consent" for="contact-consent"><input type="checkbox" id="contact-consent" name="Contact consent"><span>Yes, TB Water can follow up with me about my water &mdash; and remind me when a filter or service is due. <b>No spam, no mailing lists</b>, and you can tell Dave to stop any time.</span></label>
           <button class="button button-primary button-lg" type="submit">Send My Water Info</button>
           <p class="form-note" role="status">Opens your email app with the details filled in &mdash; nothing is stored on this site.</p>
         </form>

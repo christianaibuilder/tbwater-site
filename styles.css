@@ -1062,6 +1062,39 @@ a { color: var(--brand-deep); }
   .hardness-stack { display: block; }
 }
 
+/* Permission to follow up. Deliberately unticked by default - a pre-ticked
+   consent box is exactly the sort of thing this market has learned to distrust. */
+.consent {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 0.6rem;
+  margin: 0.2rem 0 0.9rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--foam);
+  cursor: pointer;
+  font-size: 0.83rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: var(--body-text);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.consent input[type="checkbox"] {
+  width: 18px; height: 18px;
+  margin: 0.1rem 0 0;
+  flex: none;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.consent b { color: var(--ink); font-weight: 700; }
+.consent:hover { border-color: var(--brand); background: var(--foam-2); }
+.consent:focus-within { outline: 2px solid var(--brand); outline-offset: 2px; }
+
 /* The form card itself gets lifted and labelled. */
 .check-water .check-form {
   position: relative;
