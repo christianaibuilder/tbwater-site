@@ -341,9 +341,8 @@
           <div class="hardness-band" data-reveal>
             <div class="hardness-copy">
               <p class="hardness-eyebrow">Why it matters here</p>
-              <h3>Tampa Bay water is <em>extremely</em> hard.</h3>
+              <h3>Tampa Bay water is <em>EXTREMELY</em> hard.</h3>
               <p>Hardness around Tampa Bay typically runs <strong>10 to 20 grains per gallon</strong>. Anything over 10 is classed as very hard &mdash; the top of the scale. It&rsquo;s the white film on the shower door, the spots on your glasses, and the scale building up inside your water heater.</p>
-              <p class="hardness-note">Want your exact number? Dave tests it at your home and writes it down for you &mdash; yours to keep.</p>
             </div>
             <svg class="hardness-chart" viewBox="0 0 760 340" role="img" aria-labelledby="hc-title hc-desc" xmlns="http://www.w3.org/2000/svg">
               <title id="hc-title">Water hardness scale, in grains per gallon</title>
@@ -358,6 +357,11 @@
               <text x="52" y="38" class="hc-title">WATER HARDNESS SCALE</text>
               <text x="732" y="38" text-anchor="end" class="hc-unit">grains per gallon (gpg)</text>
               <g clip-path="url(#hcBar)"><rect x="36.0" y="172" width="132.8" height="34" fill="#4fc3ea"/><rect x="174.8" y="172" width="132.8" height="34" fill="#7ccba6"/><rect x="313.6" y="172" width="132.8" height="34" fill="#f1c46b"/><rect x="452.4" y="172" width="132.8" height="34" fill="#ee9a5c"/><rect x="591.2" y="172" width="132.8" height="34" fill="#d9605b"/></g>
+              <g class="hc-pin hc-pin-tb">
+                <rect x="36" y="98" width="184" height="36" rx="18" fill="#1b87c9"/>
+                <text x="128" y="121" text-anchor="middle"><tspan class="hc-pin-a">WITH TB WATER</tspan><tspan class="hc-pin-c" dx="8">under 1</tspan></text>
+                <path d="M94.4 134h16l-8 10z" fill="#1b87c9"/>
+              </g>
               <g class="hc-pin">
                 <rect x="562.6" y="98" width="190" height="36" rx="18" fill="#0a2536"/>
                 <text x="657.6" y="121" text-anchor="middle"><tspan class="hc-pin-a">TAMPA BAY</tspan><tspan class="hc-pin-b" dx="8">10–20 gpg</tspan></text>
@@ -374,7 +378,7 @@
             <div class="hardness-stack" aria-hidden="true">
               <div class="hardness-stack-head"><span>Water hardness scale</span><small>grains per gallon (gpg)</small></div>
               <ul>
-                <li><i style="background:#4fc3ea" aria-hidden="true"></i><span><b>Soft</b><small>Under 1 gpg &middot; under 17 mg/L</small></span></li>
+                <li class="is-tb-row"><i style="background:#4fc3ea" aria-hidden="true"></i><span><b>Soft</b><small>Under 1 gpg &middot; under 17 mg/L</small></span><em class="is-tb">With TB Water</em></li>
                 <li><i style="background:#7ccba6" aria-hidden="true"></i><span><b>Slightly hard</b><small>1 – 3.5 gpg &middot; 17 – 60 mg/L</small></span></li>
                 <li><i style="background:#f1c46b" aria-hidden="true"></i><span><b>Moderately hard</b><small>3.5 – 7 gpg &middot; 60 – 120 mg/L</small></span></li>
                 <li><i style="background:#ee9a5c" aria-hidden="true"></i><span><b>Hard</b><small>7 – 10 gpg &middot; 120 – 180 mg/L</small></span></li>
@@ -559,7 +563,6 @@
             <div class="product-media" data-carousel aria-label="Standard series water conditioner photos">
               <div class="carousel-track">
                 <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/standard/standard-install-4-midplate.jpg" data-alt="Standard Series water conditioner with mid-plate tank and black brine tank installed against a block wall"></figure>
-                <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/standard/standard-install-5-black-9x48.jpg" data-alt="Standard Series 9x48 black tank with square brine tank installed indoors"></figure>
                 <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/standard/standard-install-1.jpg" data-alt="Standard series water conditioner installed"></figure>
                 <figure class="carousel-slide slide-fit-contain" data-image-src="public/images/tbwater-photos/standard/standard-studio-tan.png" data-alt="Standard series water conditioner in almond">
                   <figcaption class="slide-caption">Outside installations only</figcaption>
@@ -595,6 +598,7 @@
             <div class="product-media" data-carousel aria-label="Entry standard series water softener photos">
               <div class="carousel-track">
                 <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/standard/standard-install-2.jpg" data-alt="Standard series softener installed at a Tampa Bay home"></figure>
+                <figure class="carousel-slide slide-fit-install" data-image-src="public/images/tbwater-photos/standard/standard-install-5-black-9x48.jpg" data-alt="Standard Series 9x48 black tank with square brine tank installed indoors"></figure>
                 <figure class="carousel-slide slide-fit-contain" data-image-src="public/images/tbwater-photos/standard/standard-studio-black-2.png" data-alt="Entry standard series water softener in black"></figure>
               </div>
               <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
@@ -610,11 +614,12 @@
                 <button class="card-tab" type="button" data-tab="inside">What&rsquo;s Inside</button>
               </div>
               <div class="card-panels">
-                <p class="card-panel card-panel-overview is-active">An entry whole-home softener for basic hardness and comfort improvements. <strong class="note-blue">Tank size is the only difference between the two prices.</strong> <strong class="note-red">Softening only &mdash; this system does not remove chlorine.</strong></p>
+                <p class="card-panel card-panel-overview is-active">An entry whole-home softener for basic hardness and comfort improvements. <strong class="note-blue">Tank size is the only difference between the two prices.</strong></p>
                 <ul class="card-panel card-panel-inside">
                   <li>WS-1 digital metered softener &mdash; <strong>9&times;48 tank ($2,500)</strong> or <strong>8&times;44 tank ($2,200)</strong></li>
                   <li>1 cu. ft. 8% cross-link resin + 10 lbs gravel</li>
                   <li>15&times;17 brine tank with salt grid &amp; safety float &mdash; 200 lbs salt included</li>
+                  <li class="note-red-item"><strong class="note-red">Softening only &mdash; this system does not remove chlorine.</strong></li>
                 </ul>
               </div>
               <div class="badges"><span>Best starting point</span><span>Does not remove chlorine</span><span>Free basic installation</span><span class="chip-colors"><i class="color-dot color-dot-black" aria-hidden="true"></i><i class="color-dot color-dot-almond" aria-hidden="true"></i>Black or Almond</span></div>

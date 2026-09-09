@@ -1026,6 +1026,7 @@ a { color: var(--brand-deep); }
 .hc-mgl   { font-size: 12px; font-weight: 500; fill: #6b8597; font-family: var(--font-body); }
 .hc-pin-a { font-size: 12.5px; font-weight: 800; fill: #fff; letter-spacing: 1px; }
 .hc-pin-b { font-size: 13px; font-weight: 700; fill: var(--aqua); font-family: var(--font-body); }
+.hc-pin-c { font-size: 13px; font-weight: 700; fill: #eaf7ff; font-family: var(--font-body); }
 .hc-axis  { font-size: 11.5px; font-weight: 600; fill: #8aa3b5; font-family: var(--font-body); }
 .hc-foot  { font-size: 11.5px; font-weight: 500; fill: #6b8597; font-family: var(--font-body); }
 .hc-brand { fill: var(--brand-deep); font-weight: 700; }
@@ -1040,16 +1041,20 @@ a { color: var(--brand-deep); }
 }
 .hardness-stack-head small { font-family: var(--font-body); font-weight: 600; font-size: 0.76rem; letter-spacing: 0; text-transform: none; color: var(--aqua); }
 .hardness-stack ul { list-style: none; margin: 0; padding: 0.5rem 0.9rem 0.25rem; }
-.hardness-stack li { display: grid; grid-template-columns: 14px 1fr auto; align-items: center; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line-soft); }
+.hardness-stack li { display: grid; grid-template-columns: 14px minmax(0, 1fr); align-items: center; column-gap: 0.8rem; row-gap: 0.4rem; padding: 0.65rem 0; border-bottom: 1px solid var(--line-soft); }
 .hardness-stack li:last-child { border-bottom: 0; }
 .hardness-stack li i { display: block; width: 14px; height: 34px; border-radius: 7px; }
 .hardness-stack li b { display: block; font-family: var(--font-display); font-size: 1rem; color: var(--ink); line-height: 1.15; }
 .hardness-stack li small { display: block; font-size: 0.8rem; color: #6b8597; margin-top: 0.1rem; }
 .hardness-stack li em {
-  font-style: normal; font-family: var(--font-display); font-weight: 800; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase;
-  color: #fff; background: var(--ink); padding: 0.35rem 0.6rem; border-radius: 999px; white-space: nowrap;
+  grid-column: 2; justify-self: start;
+  font-style: normal; font-family: var(--font-display); font-weight: 800; font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #fff; background: var(--ink); padding: 0.32rem 0.65rem; border-radius: 999px; white-space: nowrap;
 }
 .hardness-stack li.is-tampa b { color: var(--brand-deep); }
+.hardness-stack li em.is-tb { background: var(--brand); }
+.hardness-stack li.is-tb-row b { color: var(--brand-deep); }
+.note-red-item { list-style: none; margin-left: -1.1rem; }
 .hardness-stack-foot { margin: 0; padding: 0.55rem 1rem 0.9rem; font-size: 0.76rem; color: #6b8597; }
 
 @media (max-width: 720px) {
