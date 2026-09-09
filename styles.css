@@ -1691,6 +1691,9 @@ ul.card-panel li::before {
 /* Inline emphasis for a must-read line inside card copy. */
 .note-blue { color: var(--brand-deep); font-weight: 700; }
 .note-red { color: #c0392b; font-weight: 700; }
+.note-blue.note-strong { font-weight: 800; font-size: 1.03em; line-height: 1.4; }
+.note-blue-item { list-style: none; margin-left: -1.1rem; }
+.chip-colors em { font-style: normal; font-weight: 600; color: var(--tx2, #5b7488); }
 
 /* Two-price option (Standard Series $2,500 / $2,200) — the sizes live in the
    card copy so this card stays the same height as its row-mates. */
