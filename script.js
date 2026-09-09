@@ -57,10 +57,41 @@
             }
           });
         },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        // Fire when the block reaches the reading zone rather than the instant it
+        // clips the bottom edge — a 40px margin meant a section had finished
+        // animating before anyone looked at it. Threshold stays tiny so tall
+        // blocks still qualify.
+        { threshold: 0.02, rootMargin: "0px 0px -24% 0px" }
       );
       revealTargets.forEach((el) => observer.observe(el));
     }
+  }
+
+  /* ---------- Hero headline: the words arrive one at a time ----------
+     Same pass as Waterline. <em>your</em> keeps its emphasis by being treated as
+     one word rather than being split through. */
+  const heroTitle = document.querySelector("#hero-title");
+  if (heroTitle && !prefersReducedMotion) {
+    const splitWords = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const frag = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          const w = document.createElement("span");
+          w.className = "w";
+          w.textContent = part;
+          frag.appendChild(w);
+        });
+        node.replaceWith(frag);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName === "EM" || node.tagName === "STRONG") { node.classList.add("w"); return; }
+        Array.from(node.childNodes).forEach(splitWords);
+      }
+    };
+    Array.from(heroTitle.childNodes).forEach(splitWords);
+    heroTitle.querySelectorAll(".w").forEach((w, i) => w.style.setProperty("--i", i));
+    heroTitle.classList.add("words-ready");
   }
 
   /* ---------- Hero video controls ---------- */

@@ -2421,19 +2421,54 @@ body.layout-c .product-card .button { padding: 0.58rem 0.9rem; font-size: 0.84re
 }
 
 /* ---------- Reveal animation ---------- */
-[data-reveal] {
+/* Doubled attribute on purpose: a component rule like `.grid article` sits at (0,1,1)
+   and would outrank a plain [data-reveal] at (0,1,0), leaving the element at opacity:0
+   with no transition so it snaps instead of fading. That exact clash bit the Waterline
+   Why cards. (0,2,0) keeps the reveal above component rules without !important. */
+[data-reveal][data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 640ms ease, transform 640ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(30px);
+  transition: opacity 1000ms ease, transform 1000ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-reveal-delay="1"] { transition-delay: 110ms; }
-[data-reveal-delay="2"] { transition-delay: 220ms; }
-[data-reveal-delay="3"] { transition-delay: 330ms; }
+[data-reveal][data-reveal-delay="1"] { transition-delay: 150ms; }
+[data-reveal][data-reveal-delay="2"] { transition-delay: 300ms; }
+[data-reveal][data-reveal-delay="3"] { transition-delay: 450ms; }
 
-[data-reveal].is-revealed {
+[data-reveal][data-reveal].is-revealed {
   opacity: 1;
   transform: none;
+}
+
+/* ---------- Hero choreography (ScrollCraft pass, 2026-09-09) ----------
+   Same treatment as Waterline: the headline words land one at a time, then the
+   lede and buttons follow, and on scroll the copy lifts and fades faster than
+   the panel behind it. Nothing new was added to the page - this is the type
+   and the layout that were already here, arriving in an order. */
+#hero-title .w { display: inline-block; }
+#hero-title.words-ready .w {
+  opacity: 0;
+  transform: translateY(0.38em);
+  animation: tbwordin 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(160ms + var(--i, 0) * 100ms);
+}
+@keyframes tbwordin { to { opacity: 1; transform: none; } }
+.hero-copy .eyebrow,
+.hero-copy .lede,
+.hero-copy .hero-actions,
+.hero-copy .hero-call { animation: tbfadeup 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-copy .eyebrow { animation-delay: 60ms; }
+.hero-copy .lede { animation-delay: 820ms; }
+.hero-copy .hero-actions { animation-delay: 1000ms; }
+.hero-copy .hero-call { animation-delay: 1180ms; }
+@keyframes tbfadeup { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: scroll()) {
+  .hero-copy {
+    animation: tbherodrift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 115vh;
+  }
+  @keyframes tbherodrift { to { transform: translateY(-56px); opacity: 0; } }
 }
 
 /* ---------- Focus visibility ---------- */
@@ -2585,7 +2620,13 @@ textarea:focus-visible {
     transition-delay: 0ms !important;
   }
 
-  [data-reveal] { opacity: 1; transform: none; }
+  [data-reveal][data-reveal] { opacity: 1; transform: none; transition: none; }
+  #hero-title .w,
+  .hero-copy,
+  .hero-copy .eyebrow,
+  .hero-copy .lede,
+  .hero-copy .hero-actions,
+  .hero-copy .hero-call { animation: none; opacity: 1; transform: none; }
 }
 
 /* ---- Touch targets on any coarse-pointer device, not just phone widths.
