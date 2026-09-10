@@ -575,39 +575,74 @@
     }
   }
 
-  /* ---------- Mailto form composer ----------
-     No backend yet: forms compose a prefilled email in the
-     visitor's mail app. Nothing is stored on the site. */
-  document.querySelectorAll("form[data-mailto]").forEach((form) => {
-    form.addEventListener("submit", (event) => {
+  /* ---------- Contact form -> Formspree ----------
+     Same Formspree form as the water report. Email OR phone is enough;
+     names are required by the markup. The email field becomes Reply-To. */
+  const contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (!contactForm.reportValidity()) return;          // names + email format
 
-      if (!form.reportValidity()) return;
+      const val = (name) => ((contactForm.querySelector(`[name="${name}"]`) || {}).value || "").trim();
+      const first = val("First name"), last = val("Last name");
+      const email = val("Email"), phone = val("Phone");
+      const reachError = contactForm.querySelector("#reach-error");
+      const phoneDigits = phone.replace(/\D/g, "");
 
-      const address = form.dataset.mailto;
-      const subject = form.dataset.subject || "Website inquiry";
-      const lines = [];
+      if (!email && !phone) {
+        reachError.textContent = "Add an email or a phone number so Dave can get back to you.";
+        reachError.hidden = false;
+        contactForm.querySelector("#email").focus();
+        return;
+      }
+      if (phone && (phoneDigits.length < 10 || phoneDigits.length > 11)) {
+        reachError.textContent = "That phone number looks incomplete - check it, or use an email instead.";
+        reachError.hidden = false;
+        contactForm.querySelector("#phone").focus();
+        return;
+      }
+      reachError.hidden = true;
 
-      form.querySelectorAll("input, select, textarea").forEach((field) => {
-        const label = field.getAttribute("name");
-        if (!label) return;
-        if (field.type === "checkbox") {
-          lines.push(`${label}: ${field.checked ? "Yes - they ticked the box" : "Not given"}`);
-          return;
-        }
-        const value = field.value.trim();
-        if (value) lines.push(`${label}: ${value}`);
-      });
+      const consentBox = contactForm.querySelector("#contact-consent");
+      const who = `${first} ${last}`.trim();
+      const lead = {
+        _subject: `New website message: ${who}${email ? "" : " (phone only - call or text)"}`,
+        "Name": who,
+      };
+      if (email) lead.email = email;                       // also sets Reply-To
+      if (phone) lead["Phone"] = phone;
+      lead["How to reach them"] = email && phone ? "Email or phone" : email ? "Email only" : "Phone only - call or text them";
+      lead["Water type"] = val("Water type");
+      lead["Their message"] = val("Message") || "(no message)";
+      lead["OK to contact later"] = consentBox && consentBox.checked ? "Yes - they ticked the box" : "Not given";
+      lead["Came from"] = "tbwater.com contact form";
 
-      lines.push("", "Sent from the TB Water website.");
+      const button = contactForm.querySelector('button[type="submit"]');
+      const note = contactForm.querySelector(".form-note");
+      button.disabled = true;
+      const label = button.textContent;
+      button.textContent = "Sending...";
 
-      const href = `mailto:${address}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
-      window.location.href = href;
-
-      const note = form.querySelector(".form-note");
-      if (note) {
-        note.textContent = "Your email app should have opened with everything filled in. If not, call (727) 585-8686.";
+      try {
+        const res = await fetch(contactForm.dataset.leadEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(lead)
+        });
+        if (!res.ok) throw new Error(`Formspree ${res.status}`);
+        const how = email && phone ? "by email or phone" : email ? "by email" : "by phone";
+        contactForm.innerHTML =
+          `<div class="contact-sent" role="status">` +
+          `<span class="contact-sent-mark" aria-hidden="true">&#10003;</span>` +
+          `<h3>Sent &mdash; thanks, ${first.replace(/[<>&"]/g, "")}.</h3>` +
+          `<p>Dave will get back to you ${how}. Need him sooner? Call <a href="tel:+17275858686">(727) 585-8686</a>.</p>` +
+          `</div>`;
+      } catch (err) {
+        button.disabled = false;
+        button.textContent = label;
+        if (note) note.innerHTML = 'That didn&rsquo;t go through. Please call or text Dave at <a href="tel:+17275858686">(727) 585-8686</a>.';
       }
     });
-  });
+  }
 })();

@@ -1207,6 +1207,39 @@ a { color: var(--brand-deep); }
 
 .form-note a { font-weight: 600; }
 
+/* Contact form: email OR phone. The "or" sits between the two fields so the
+   either-or reads at a glance, and stacks between them on phones. */
+.reach-either {
+  margin: 0.95rem 0 0;
+  font-size: 0.83rem;
+  color: var(--body-text);
+}
+.reach-either b { color: var(--ink-2); font-weight: 700; }
+.form-row.form-row-either { grid-template-columns: 1fr auto 1fr; align-items: end; }
+.either-or {
+  align-self: end;
+  margin-bottom: 0.72rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: var(--foam-2);
+  border-radius: 999px;
+  padding: 0.28rem 0.6rem;
+}
+.contact-sent { text-align: center; padding: clamp(1.5rem, 4vw, 2.75rem) 0.5rem; }
+.contact-sent-mark {
+  display: inline-grid; place-items: center;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--brand); color: #fff; font-size: 1.5rem; font-weight: 800;
+  box-shadow: var(--shadow-brand);
+}
+.contact-sent h3 { margin: 1rem 0 0.4rem; font-family: var(--font-display); color: var(--ink); }
+.contact-sent p { margin: 0; color: var(--body-text); }
+
+
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2566,6 +2599,8 @@ textarea:focus-visible {
   .gallery-big { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
   .about-trust { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+  .form-row.form-row-either { grid-template-columns: 1fr; }
+  .either-or { justify-self: center; margin: 0.4rem 0 -0.2rem; }
   .trust-band .section-inner { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
   .trust-stat { padding: 1.1rem 0.8rem; }
   .trust-stat p { font-size: 0.8rem; }

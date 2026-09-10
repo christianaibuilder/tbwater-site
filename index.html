@@ -52,7 +52,7 @@
         {"@type": "Offer", "price": "4800", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "Platinum ProSeries Twin Tank Whole Home Water Treatment System", "description": "Whole-home twin tank system for average-sized homes, 3 to 4 people."}},
         {"@type": "Offer", "price": "4500", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "Platinum ProSeries Larger Capacity Dual-Media Upflow Valve", "description": "Dual-media conditioning for larger homes or higher water-use households."}},
         {"@type": "Offer", "price": "3800", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "Platinum ProSeries Dual-Media Upflow Valve", "description": "All-around conditioner for hardness, chlorine taste, and scale buildup."}},
-        {"@type": "Offer", "price": "3000", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "ProSeries Upflow Valve", "description": "ProSeries upflow valve on a single tank, at a practical price."}},
+        {"@type": "Offer", "price": "3000", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "Standard Upflow Valve", "description": "Standard upflow valve on a single tank, at a practical price."}},
         {"@type": "Offer", "price": "2500", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "Standard Series Water Softener (larger tank)", "description": "Entry whole-home softener for basic hardness. Tank size is the only difference between the two prices."}},
         {"@type": "Offer", "price": "2200", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "Standard Series Water Softener (standard tank)", "description": "Entry whole-home softener for basic hardness."}},
         {"@type": "Offer", "price": "6000", "priceCurrency": "USD", "itemOffered": {"@type": "Product", "name": "Hydrogen Peroxide Injection Well Water Treatment System", "description": "For well water concerns like sulfur odor and staining."}},
@@ -579,17 +579,17 @@
               <div class="carousel-dots"></div>
             </div>
             <div class="product-body">
-              <span class="product-tag">Single-tank ProSeries</span>
-              <h3>ProSeries Upflow Valve</h3>
+              <span class="product-tag">Standard series</span>
+              <h3>Standard Upflow Valve</h3>
               <p class="price">$3,000</p>
               <div class="card-tabs">
                 <button class="card-tab is-active" type="button" data-tab="overview">Overview</button>
                 <button class="card-tab" type="button" data-tab="inside">What&rsquo;s Inside</button>
               </div>
               <div class="card-panels">
-                <p class="card-panel card-panel-overview is-active">A reliable ProSeries upflow system for homeowners who want cleaner-feeling water at a practical price. <strong class="note-blue">ProSeries upflow valve &mdash; 30% less salt and 30% less water than a standard control valve.</strong></p>
+                <p class="card-panel card-panel-overview is-active">A reliable standard upflow system for homeowners who want cleaner-feeling water at a practical price. <strong class="note-blue">Upflow valve &mdash; 30% less salt and 30% less water than a standard control valve.</strong></p>
                 <ul class="card-panel card-panel-inside">
-                  <li>ProSeries Upflow Valve &mdash; 10&times;54 Vortech tank</li>
+                  <li>Standard Upflow Valve &mdash; 10&times;54 Vortech tank</li>
                   <li>0.5 cu. ft. standard activated carbon filter + standard 8% cross-link resin</li>
                 </ul>
               </div>
@@ -888,7 +888,8 @@
             <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>140 Oscar Hill Rd #22, Tarpon Springs, FL 34689</span>
           </address>
         </div>
-        <form class="contact-form" data-mailto="dave@tbwater.com" data-subject="Website inquiry from tbwater.com" data-reveal data-reveal-delay="1">
+        <!-- Posts to the same Formspree form as the water report ("TB Water" in Christian's account). -->
+        <form class="contact-form" id="contact-form" data-lead-endpoint="https://formspree.io/f/xvkppydy" data-reveal data-reveal-delay="1">
           <div class="form-row">
             <div>
               <label for="first-name">First name</label>
@@ -899,16 +900,19 @@
               <input id="last-name" name="Last name" type="text" autocomplete="family-name" required>
             </div>
           </div>
-          <div class="form-row">
+          <p class="reach-either">How should Dave reach you? <b>Email or phone &mdash; you only need one.</b></p>
+          <div class="form-row form-row-either">
             <div>
               <label for="email">Email</label>
-              <input id="email" name="Email" type="email" autocomplete="email" required>
+              <input id="email" name="Email" type="email" autocomplete="email" placeholder="you@email.com" aria-describedby="reach-error">
             </div>
+            <span class="either-or" aria-hidden="true">or</span>
             <div>
               <label for="phone">Phone</label>
-              <input id="phone" name="Phone" type="tel" autocomplete="tel">
+              <input id="phone" name="Phone" type="tel" autocomplete="tel" placeholder="(727) 555-0123" aria-describedby="reach-error">
             </div>
           </div>
+          <p class="field-error" id="reach-error" role="alert" hidden>Add an email or a phone number so Dave can get back to you.</p>
           <label for="water-type">Water type</label>
           <select id="water-type" name="Water type">
             <option value="City Water">City Water</option>
@@ -917,10 +921,10 @@
             <option value="Not sure yet">Not sure yet</option>
           </select>
           <label for="message">Message</label>
-          <textarea id="message" name="Message" rows="5" placeholder="Tell Dave what you're noticing in your water&hellip;"></textarea>
+          <textarea id="message" name="Message" rows="5" placeholder="Ask Dave about your water concerns"></textarea>
           <label class="consent" for="contact-consent"><input type="checkbox" id="contact-consent" name="Contact consent"><span>Yes, TB Water can follow up with me about my water &mdash; and remind me when a filter or service is due. <b>No spam, no mailing lists</b>, and you can tell Dave to stop any time.</span></label>
           <button class="button button-primary button-lg" type="submit">Send My Water Info</button>
-          <p class="form-note" role="status">Opens your email app with the details filled in &mdash; nothing is stored on this site.</p>
+          <p class="form-note" role="status">Goes straight to Dave. Rather talk now? Call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
         </form>
       </div>
     </section>
