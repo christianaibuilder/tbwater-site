@@ -2689,3 +2689,43 @@ textarea:focus-visible {
 
   .carousel-dots { gap: 0.65rem; }
 }
+
+/* ---------- Privacy page (privacy.html) ---------- */
+.privacy-page {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) var(--section-pad);
+  background: linear-gradient(180deg, var(--foam) 0, var(--surface) 24rem);
+}
+.privacy-inner { width: min(46rem, calc(100% - 2.5rem)); margin-inline: auto; }
+.privacy-inner h1 { font-size: clamp(2.1rem, 5vw, 3.1rem); }
+.privacy-inner h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); margin-top: 2.6rem; }
+.privacy-inner h3 { font-size: 1.05rem; margin: 1.4rem 0 0.35rem; }
+.privacy-inner ul { padding-left: 1.2rem; margin: 0 0 1em; }
+.privacy-inner li + li { margin-top: 0.4rem; }
+.privacy-lede { font-size: 1.12rem; color: var(--ink-3); }
+.privacy-date { margin-top: 0.4rem; font-size: 0.88rem; font-weight: 600; color: var(--brand-deep); }
+.privacy-inner .privacy-summary {
+  list-style: none;
+  margin: 2rem 0 0.5rem;
+  padding: 1.35rem 1.5rem;
+  display: grid;
+  gap: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.privacy-inner .privacy-summary li { display: flex; gap: 0.7rem; align-items: flex-start; margin: 0; color: var(--ink-2); font-weight: 600; }
+.privacy-summary svg { width: 1.15rem; height: 1.15rem; flex: none; margin-top: 0.2rem; fill: none; stroke: var(--brand); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.privacy-contact {
+  margin-top: 2.8rem;
+  padding: 1.3rem 1.5rem;
+  font-style: normal;
+  background: var(--foam);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+.privacy-contact p { margin: 0 0 0.3rem; }
+.privacy-contact-title { font-family: var(--font-display); font-weight: 700; color: var(--ink); }
+.privacy-contact a { font-weight: 600; }
+.copyright a { margin-left: 0.55rem; color: rgba(255, 255, 255, 0.72); font-weight: 600; }
+.copyright a:hover { color: var(--aqua); }
