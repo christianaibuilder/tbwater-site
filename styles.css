@@ -1984,7 +1984,6 @@ body.layout-a .product-card { grid-column: span 2; }
 body.layout-a .product-card:nth-last-child(2):nth-child(3n + 1) { grid-column: 2 / span 2; }
 body.layout-a .product-media { aspect-ratio: 4 / 5; }
 body.layout-a .product-body { padding: 1.1rem 1.15rem 1.25rem; }
-body.layout-a ul.card-panel { max-height: 10.5em; overflow-y: auto; padding-right: 0.3rem; }
 body.layout-a .badges { margin: 0.75rem 0 0.95rem; }
 body.layout-a .badges span { white-space: nowrap; }
 
