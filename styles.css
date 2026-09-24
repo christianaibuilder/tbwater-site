@@ -1054,7 +1054,7 @@ a { color: var(--brand-deep); }
 .hardness-stack li.is-tampa b { color: var(--brand-deep); }
 .hardness-stack li em.is-tb { background: var(--brand); }
 .hardness-stack li.is-tb-row b { color: var(--brand-deep); }
-.note-red-item { list-style: none; margin-left: -1.1rem; }
+.note-red-item { list-style: none; }
 .hardness-stack-foot { margin: 0; padding: 0.55rem 1rem 0.9rem; font-size: 0.76rem; color: #6b8597; }
 
 @media (max-width: 720px) {
@@ -1725,7 +1725,7 @@ ul.card-panel li::before {
 .note-blue { color: var(--brand-deep); font-weight: 700; }
 .note-red { color: #c0392b; font-weight: 700; }
 .note-blue.note-strong { font-weight: 800; font-size: 1.03em; line-height: 1.4; }
-.note-blue-item { list-style: none; margin-left: -1.1rem; }
+.note-blue-item { list-style: none; }
 .chip-colors em { font-style: normal; font-weight: 600; color: var(--tx2, #5b7488); }
 
 /* Two-price option (Standard Series $2,500 / $2,200) — the sizes live in the
