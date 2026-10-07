@@ -399,35 +399,49 @@
       waterReport.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
     };
 
+    // Hide a field's error as soon as the person starts fixing it.
+    [["#check-first", "#first-error"], ["#check-last", "#last-error"],
+     ["#check-contact", "#contact-error"], ["#zip-code", "#zip-error"]].forEach(([f, e]) => {
+      const field = waterForm.querySelector(f), err = waterForm.querySelector(e);
+      if (field && err) field.addEventListener("input", () => { err.hidden = true; field.removeAttribute("aria-invalid"); });
+    });
+
     waterForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const first = (waterForm.querySelector("#check-first")?.value || "").trim();
       const last = (waterForm.querySelector("#check-last")?.value || "").trim();
       const contact = (waterForm.querySelector("#check-contact")?.value || "").trim();
       const zip = (waterForm.querySelector("#zip-code")?.value || "").trim();
-      const zipError = waterForm.querySelector("#zip-error");
+
+      // Demo code: Christian and Dave type "tbwater" as the email or phone to
+      // show someone the tool. Report only - no name needed, nothing is sent,
+      // so demos don't use up the monthly Formspree submissions.
+      const demo = contact.toLowerCase() === "tbwater";
 
       // Contact is required (since 2026-10-07): the report is worth one real
       // email or phone, and it gives Dave a lead he can actually follow up.
       const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
       const digits = contact.replace(/\D/g, "");
       const isPhone = !isEmail && digits.length >= 10 && digits.length <= 11;
-      const contactOk = isEmail || isPhone;
+      const contactOk = demo || isEmail || isPhone;
 
-      if (!first || !last || !/^\d{5}$/.test(zip) || !contactOk) {
-        zipError.textContent = !contact
-          ? "Add an email or phone number so Dave can send a follow-up about your report."
-          : !contactOk
-          ? "That doesn't look like an email or a phone number."
-          : "Please add your name and a 5-digit ZIP.";
-        zipError.hidden = false;
-        (!first ? waterForm.querySelector("#check-first")
-          : !last ? waterForm.querySelector("#check-last")
-          : !contactOk ? waterForm.querySelector("#check-contact")
-          : waterForm.querySelector("#zip-code")).focus();
-        return;
-      }
-      zipError.hidden = true;
+      // One message under each field that needs fixing.
+      const problems = [
+        ["#check-first", "#first-error", !demo && !first, "Add your first name."],
+        ["#check-last", "#last-error", !demo && !last, "Add your last name."],
+        ["#check-contact", "#contact-error", !contactOk,
+          contact ? "That doesn't look like an email or a phone number." : "Add an email or phone number."],
+        ["#zip-code", "#zip-error", !/^\d{5}$/.test(zip), zip ? "ZIP codes are 5 digits." : "Add your 5-digit ZIP code."],
+      ];
+      let firstBad = null;
+      problems.forEach(([fieldSel, errSel, bad, msg]) => {
+        const field = waterForm.querySelector(fieldSel), err = waterForm.querySelector(errSel);
+        if (!field || !err) return;
+        err.hidden = !bad;
+        if (bad) { err.textContent = msg; field.setAttribute("aria-invalid", "true"); firstBad = firstBad || field; }
+        else field.removeAttribute("aria-invalid");
+      });
+      if (firstBad) { firstBad.focus(); return; }
 
       const key = waterData.zipMap[zip] || waterData.prefixMap[zip.slice(0, 3)] || null;
       const utility = key && waterData.utilities[key] ? waterData.utilities[key] : null;
@@ -436,7 +450,7 @@
       // failure here is invisible to the visitor - they still get their report.
       const consentBox = waterForm.querySelector("#check-consent");
       const consentOK = !!(consentBox && consentBox.checked);
-      const endpoint = waterForm.dataset.leadEndpoint;
+      const endpoint = demo ? null : waterForm.dataset.leadEndpoint;
       if (endpoint) {
         const topConcerns = utility
           ? [...utility.exceed].sort((a, b) => timesNum(b.times) - timesNum(a.times))
@@ -457,7 +471,7 @@
         lead["ZIP"] = zip;
         lead["Their water utility"] = utility ? utility.name : "(not in our database)";
         lead["Worst in their water"] = topConcerns || "(no report generated)";
-        lead["Wants filter/service reminders"] = consentOK ? "Yes - they ticked the box" : "No - follow up once about the report only";
+        lead["OK for Dave to reach out once"] = consentOK ? "Yes - they ticked the box" : "No - they did not tick the box";
         lead["Came from"] = "tbwater.com water report";
 
         fetch(endpoint, {

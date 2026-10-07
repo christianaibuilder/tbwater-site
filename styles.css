@@ -1253,7 +1253,7 @@ a { color: var(--brand-deep); }
   color: #c0392b;
 }
 
-.field-hint { margin: -0.35rem 0 0.7rem; font-size: 0.8rem; color: var(--tx2, #5b7488); }
+.check-form input[aria-invalid="true"] { border-color: #c0392b; }
 
 .label-optional {
   font-weight: 500;

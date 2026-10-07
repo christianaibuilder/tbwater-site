@@ -313,6 +313,9 @@
              utility, topConcerns} to Formspree ("TB Water" form in Christian's
              account). Contact is required since 2026-10-07 (Dave + Christian:
              a real email or phone is a fair trade for the report).
+             Demo code: typing "tbwater" as the email or phone shows the report
+             for the ZIP without sending anything (Christian and Dave showing
+             people the tool, so it doesn't burn the monthly submissions).
              Submissions tab: https://formspree.io/forms/xvkppydy -->
         <form class="check-form" id="water-check-form" data-lead-endpoint="https://formspree.io/f/xvkppydy" data-reveal data-reveal-delay="1" novalidate>
           <div class="check-form-head">
@@ -323,25 +326,26 @@
           <div class="form-row">
             <div>
               <label for="check-first">First name</label>
-              <input id="check-first" name="first" autocomplete="given-name" placeholder="Jane" required>
+              <input id="check-first" name="first" autocomplete="given-name" placeholder="Jane" required aria-describedby="first-error">
+              <p class="field-error" id="first-error" hidden>Add your first name.</p>
             </div>
             <div>
               <label for="check-last">Last name</label>
-              <input id="check-last" name="last" autocomplete="family-name" placeholder="Smith" required>
+              <input id="check-last" name="last" autocomplete="family-name" placeholder="Smith" required aria-describedby="last-error">
+              <p class="field-error" id="last-error" hidden>Add your last name.</p>
             </div>
           </div>
 
           <label for="check-contact">Email or phone</label>
-          <input id="check-contact" name="contact" type="text" autocomplete="email" placeholder="you@email.com or (727) 555-0123" required aria-describedby="contact-hint zip-error">
-          <p class="field-hint" id="contact-hint">Dave may reach out once about your report. That&rsquo;s it.</p>
+          <input id="check-contact" name="contact" type="text" autocomplete="email" placeholder="you@email.com or (727) 555-0123" required aria-describedby="contact-error">
+          <p class="field-error" id="contact-error" hidden>Add an email or phone number.</p>
 
           <label for="zip-code">ZIP code</label>
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
-          <p class="field-error" id="zip-error" hidden>Please add your name, an email or phone, and a 5-digit ZIP.</p>
+          <p class="field-error" id="zip-error" hidden>Add your 5-digit ZIP code.</p>
 
-          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent"><span>Also remind me when a filter or service is due. <b>No spam, no mailing lists</b>, and you can tell Dave to stop any time.</span></label>
+          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent"><span>Dave may reach out once about my report, by the email or phone I gave. <b>No spam, just once.</b></span></label>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
-          <p class="check-reassure">No obligation. Nobody will show up at your door.</p>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
         </form>
         <div class="water-report" id="water-report" hidden aria-live="polite"></div>
