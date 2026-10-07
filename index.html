@@ -296,9 +296,9 @@
             Most water companies won&rsquo;t show you this
           </p>
           <h2>See what&rsquo;s really in <em>your</em> water. <span class="check-free">Free, right now.</span></h2>
-          <p class="check-lede">Type in your name and ZIP code and TB Water pulls your own utility&rsquo;s latest testing data &mdash; every contaminant they detected, how it compares to health guidelines, and what it would cost to fix. No appointment. Nobody at your door. No catch.</p>
+          <p class="check-lede">Type in your name, ZIP code and an email or phone, and TB Water pulls your own utility&rsquo;s latest testing data &mdash; every contaminant they detected, how it compares to health guidelines, and what it would cost to fix. No appointment. Nobody at your door. No catch.</p>
           <ol class="check-steps">
-            <li><span aria-hidden="true">1</span><b>Enter your name and ZIP</b>Your report opens on this page in seconds</li>
+            <li><span aria-hidden="true">1</span><b>Enter your name, ZIP and a way to reach you</b>Your report opens on this page in seconds</li>
             <li><span aria-hidden="true">2</span><b>See what&rsquo;s in it</b>Every contaminant above health guidelines, in plain English</li>
             <li><span aria-hidden="true">3</span><b>See what it costs</b>Exact system pricing &mdash; then decide in your own time</li>
           </ol>
@@ -309,9 +309,11 @@
             <li>No pressure</li>
           </ul>
         </div>
-        <!-- Lead capture: every report view silently POSTs {first,last,email,zip,
-             utility,topConcerns} to Formspree ("TB Water" form in Christian's
-             account). Submissions tab: https://formspree.io/forms/xvkppydy -->
+        <!-- Lead capture: every report view POSTs {name, email or phone, zip,
+             utility, topConcerns} to Formspree ("TB Water" form in Christian's
+             account). Contact is required since 2026-10-07 (Dave + Christian:
+             a real email or phone is a fair trade for the report).
+             Submissions tab: https://formspree.io/forms/xvkppydy -->
         <form class="check-form" id="water-check-form" data-lead-endpoint="https://formspree.io/f/xvkppydy" data-reveal data-reveal-delay="1" novalidate>
           <div class="check-form-head">
             <span class="check-form-ribbon">Free</span>
@@ -329,14 +331,15 @@
             </div>
           </div>
 
-          <label for="check-contact">Email or phone <span class="label-optional">(optional)</span></label>
-          <input id="check-contact" name="contact" type="text" autocomplete="email" placeholder="you@email.com or (727) 555-0123">
+          <label for="check-contact">Email or phone</label>
+          <input id="check-contact" name="contact" type="text" autocomplete="email" placeholder="you@email.com or (727) 555-0123" required aria-describedby="contact-hint zip-error">
+          <p class="field-hint" id="contact-hint">Dave may reach out once about your report. That&rsquo;s it.</p>
 
           <label for="zip-code">ZIP code</label>
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
-          <p class="field-error" id="zip-error" hidden>Please add your name and a 5-digit ZIP.</p>
+          <p class="field-error" id="zip-error" hidden>Please add your name, an email or phone, and a 5-digit ZIP.</p>
 
-          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent"><span>Yes, TB Water can follow up with me about my water &mdash; and remind me when a filter or service is due. <b>No spam, no mailing lists</b>, and you can tell Dave to stop any time.</span></label>
+          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent"><span>Also remind me when a filter or service is due. <b>No spam, no mailing lists</b>, and you can tell Dave to stop any time.</span></label>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
           <p class="check-reassure">No obligation. Nobody will show up at your door.</p>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>

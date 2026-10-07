@@ -407,16 +407,17 @@
       const zip = (waterForm.querySelector("#zip-code")?.value || "").trim();
       const zipError = waterForm.querySelector("#zip-error");
 
-      // Contact is deliberately optional - Dave would rather see the lead with
-      // just a ZIP than scare someone off asking for their number. But if they
-      // do type something, it has to be a usable email or phone.
+      // Contact is required (since 2026-10-07): the report is worth one real
+      // email or phone, and it gives Dave a lead he can actually follow up.
       const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
       const digits = contact.replace(/\D/g, "");
       const isPhone = !isEmail && digits.length >= 10 && digits.length <= 11;
-      const contactOk = !contact || isEmail || isPhone;
+      const contactOk = isEmail || isPhone;
 
       if (!first || !last || !/^\d{5}$/.test(zip) || !contactOk) {
-        zipError.textContent = !contactOk
+        zipError.textContent = !contact
+          ? "Add an email or phone number so Dave can send a follow-up about your report."
+          : !contactOk
           ? "That doesn't look like an email or a phone number."
           : "Please add your name and a 5-digit ZIP.";
         zipError.hidden = false;
@@ -448,18 +449,15 @@
         const who = `${first} ${last}`.trim();
         const where = utility ? utility.name : `ZIP ${zip}`;
         const lead = {
-          _subject: contact
-            ? `New water lead: ${who} - ${zip} ${where}`
-            : `New water lead (no contact info) - ${zip} ${where}`,
+          _subject: `New water lead: ${who} - ${zip} ${where}${isEmail ? "" : " (phone - call or text)"}`,
           "Name": who,
         };
         if (isEmail) lead.email = contact;            // also sets Reply-To
-        else if (isPhone) lead["Phone"] = contact;
-        else lead["How to reach them"] = "They did not leave contact info - report only";
+        else lead["Phone"] = contact;
         lead["ZIP"] = zip;
         lead["Their water utility"] = utility ? utility.name : "(not in our database)";
         lead["Worst in their water"] = topConcerns || "(no report generated)";
-        lead["OK to contact later"] = consentOK ? "Yes - they ticked the box" : "Not given - report only";
+        lead["Wants filter/service reminders"] = consentOK ? "Yes - they ticked the box" : "No - follow up once about the report only";
         lead["Came from"] = "tbwater.com water report";
 
         fetch(endpoint, {
