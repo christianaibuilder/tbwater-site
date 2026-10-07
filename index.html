@@ -344,7 +344,8 @@
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
           <p class="field-error" id="zip-error" hidden>Add your 5-digit ZIP code.</p>
 
-          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent"><span>Dave may reach out once about my report, by the email or phone I gave. <b>No spam, just once.</b></span></label>
+          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent" required aria-describedby="consent-error"><span>Dave may reach out once about my report, by the email or phone I gave. <b>No spam, just once.</b></span></label>
+          <p class="field-error" id="consent-error" hidden>Tick the box to see your report.</p>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
         </form>

@@ -1084,16 +1084,35 @@ a { color: var(--brand-deep); }
 }
 
 .consent input[type="checkbox"] {
-  width: 18px; height: 18px;
-  margin: 0.1rem 0 0;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; height: 20px;
+  min-height: 0;
+  padding: 0;
+  margin: 0.05rem 0 0;
   flex: none;
-  accent-color: var(--brand);
+  box-shadow: none;
+  border: 2px solid #9dbdd1;
+  border-radius: 6px;
+  background: #fff center / 14px 14px no-repeat;
   cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
+.consent input[type="checkbox"]:hover { border-color: var(--brand); }
+.consent input[type="checkbox"]:checked {
+  border-color: var(--brand);
+  background-color: var(--brand);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.4l3 3 6-6.8' fill='none' stroke='white' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+.consent input[type="checkbox"]:focus { outline: none; box-shadow: none; }
+.consent input[type="checkbox"]:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.consent:has(input:checked) { border-color: var(--brand); background: var(--foam-2); }
+.consent.is-invalid { border-color: #c0392b; }
+.consent.is-invalid input[type="checkbox"] { border-color: #c0392b; }
+.consent + .field-error { margin: -0.55rem 0 0.9rem; }
 
 .consent b { color: var(--ink); font-weight: 700; }
 .consent:hover { border-color: var(--brand); background: var(--foam-2); }
-.consent:focus-within { outline: 2px solid var(--brand); outline-offset: 2px; }
 
 /* The form card itself gets lifted and labelled. */
 .check-water .check-form {

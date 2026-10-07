@@ -401,9 +401,12 @@
 
     // Hide a field's error as soon as the person starts fixing it.
     [["#check-first", "#first-error"], ["#check-last", "#last-error"],
-     ["#check-contact", "#contact-error"], ["#zip-code", "#zip-error"]].forEach(([f, e]) => {
+     ["#check-contact", "#contact-error"], ["#zip-code", "#zip-error"], ["#check-consent", "#consent-error"]].forEach(([f, e]) => {
       const field = waterForm.querySelector(f), err = waterForm.querySelector(e);
-      if (field && err) field.addEventListener("input", () => { err.hidden = true; field.removeAttribute("aria-invalid"); });
+      if (!field || !err) return;
+      const clear = () => { err.hidden = true; field.removeAttribute("aria-invalid"); field.closest(".consent")?.classList.remove("is-invalid"); };
+      field.addEventListener("input", clear);
+      field.addEventListener("change", clear);
     });
 
     waterForm.addEventListener("submit", (event) => {
@@ -432,6 +435,7 @@
         ["#check-contact", "#contact-error", !contactOk,
           contact ? "That doesn't look like an email or a phone number." : "Add an email or phone number."],
         ["#zip-code", "#zip-error", !/^\d{5}$/.test(zip), zip ? "ZIP codes are 5 digits." : "Add your 5-digit ZIP code."],
+        ["#check-consent", "#consent-error", !demo && !waterForm.querySelector("#check-consent")?.checked, "Tick the box to see your report."],
       ];
       let firstBad = null;
       problems.forEach(([fieldSel, errSel, bad, msg]) => {
@@ -440,6 +444,7 @@
         err.hidden = !bad;
         if (bad) { err.textContent = msg; field.setAttribute("aria-invalid", "true"); firstBad = firstBad || field; }
         else field.removeAttribute("aria-invalid");
+        if (field.type === "checkbox") field.closest(".consent")?.classList.toggle("is-invalid", bad);
       });
       if (firstBad) { firstBad.focus(); return; }
 
