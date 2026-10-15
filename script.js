@@ -173,6 +173,26 @@
     }
   }
 
+  /* ---------- "Watch how it works" player ----------
+     One <dialog> shared by the cards that show the dual-media upflow system. */
+  const howDialog = document.getElementById("how-video");
+  if (howDialog && typeof howDialog.showModal === "function") {
+    const howVideo = howDialog.querySelector("video");
+    const closeHow = () => { howVideo.pause(); howDialog.close(); };
+    document.querySelectorAll("[data-how-video]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        howDialog.showModal();
+        const played = howVideo.play();
+        if (played && played.catch) played.catch(() => {});
+      });
+    });
+    howDialog.querySelector(".how-close").addEventListener("click", closeHow);
+    howDialog.addEventListener("click", (e) => { if (e.target === howDialog) closeHow(); });  // tap outside
+    howDialog.addEventListener("close", () => howVideo.pause());                          // Esc key
+  } else {
+    document.querySelectorAll("[data-how-video]").forEach((btn) => { btn.hidden = true; });
+  }
+
   /* ---------- Product photo carousels ----------
      Slides live in HTML. To swap in a real photo, set
      data-image-src="public/images/approved/<file>" (and data-alt)
