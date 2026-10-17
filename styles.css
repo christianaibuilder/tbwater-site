@@ -1848,6 +1848,7 @@ ul.card-panel li::before {
 
 /* Install shots: keep tanks in frame when cropping */
 .slide-fit-install img { object-position: center 40%; }
+.slide-pos-low img { object-position: center 70%; }   /* RO coil faucet: show the base of the kitchen faucet */
 
 /* Studio product shots (transparent/white PNGs): show whole unit */
 .slide-fit-contain { background: #fff; }
