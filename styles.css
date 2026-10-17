@@ -1712,7 +1712,18 @@ a { color: var(--brand-deep); }
   visibility: visible;
 }
 
-p.card-panel { font-size: 0.88rem; }
+p.card-panel, div.card-panel-overview p { font-size: 0.88rem; }
+div.card-panel-overview p { margin: 0; }
+
+/* Service line on a card: its own row under the overview, not a sentence tacked on the end. */
+.card-service {
+  display: flex; align-items: flex-start; gap: 0.45rem;
+  margin-top: 0.6rem !important; padding-top: 0.55rem;
+  border-top: 1px dashed var(--line);
+  color: var(--body-text);
+}
+.card-service svg { flex: none; width: 16px; height: 16px; margin-top: 0.15em; fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linejoin: round; }
+.card-service strong { color: var(--ink); }
 
 ul.card-panel {
   list-style: none;
