@@ -678,7 +678,7 @@
       } catch (err) {
         button.disabled = false;
         button.textContent = label;
-        if (note) note.innerHTML = 'That didn&rsquo;t go through. Please call or text Dave at <a href="tel:+17275858686">(727) 585-8686</a>.';
+        if (note) note.innerHTML = 'That didn&rsquo;t go through. Please call Dave at <a href="tel:+17275858686">(727) 585-8686</a>.';
       }
     });
   }
