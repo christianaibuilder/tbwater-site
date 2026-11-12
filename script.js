@@ -386,7 +386,7 @@
             <a class="button button-outline" href="tel:+17275858686">Call (727) 585-8686</a>
           </div>
         </div>
-        <p class="wr-foot">Source: <a href="${ewgUrl}" target="_blank" rel="noopener noreferrer">EWG Tap Water Database &mdash; ${esc(u.name)}</a>. ${esc(waterData.source.period)} On a private well? These reports cover city utilities only &mdash; well water needs its own test, and we&rsquo;ll write the results up for you.</p>`;
+        <p class="wr-foot">Source: <a href="${ewgUrl}" target="_blank" rel="noopener noreferrer">EWG Tap Water Database &mdash; ${esc(u.name)}</a>. ${esc(waterData.source.period)} On a private well? These reports cover city utilities only, and a well has no public report. Call Dave and tell him what you&rsquo;re noticing: a smell, stains or scale.</p>`;
 
       waterReport.hidden = false;
       waterReport.querySelectorAll(".wr-tab").forEach((tab) => {
