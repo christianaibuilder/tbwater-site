@@ -174,13 +174,23 @@
   }
 
   /* ---------- "Watch how it works" player ----------
-     One <dialog> shared by the cards that show the dual-media upflow system. */
+     One <dialog> shared by every "Watch how it works" button. A button with data-how-video="file" plays that
+     file (the twin tank videos, 2026-11-14); an empty one plays the softener video the dialog starts with. */
   const howDialog = document.getElementById("how-video");
   if (howDialog && typeof howDialog.showModal === "function") {
     const howVideo = howDialog.querySelector("video");
+    const howSource = howVideo.querySelector("source");
+    const howDefault = { src: howSource.getAttribute("src"), poster: howVideo.getAttribute("poster"), label: howDialog.getAttribute("aria-label") };
     const closeHow = () => { howVideo.pause(); howDialog.close(); };
     document.querySelectorAll("[data-how-video]").forEach((btn) => {
       btn.addEventListener("click", () => {
+        const src = btn.dataset.howVideo || howDefault.src;
+        if (howSource.getAttribute("src") !== src) {
+          howSource.setAttribute("src", src);
+          howVideo.setAttribute("poster", btn.dataset.howPoster || howDefault.poster);
+          howVideo.load();
+        }
+        howDialog.setAttribute("aria-label", btn.dataset.howLabel || howDefault.label);
         howDialog.showModal();
         const played = howVideo.play();
         if (played && played.catch) played.catch(() => {});
