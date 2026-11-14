@@ -631,9 +631,74 @@ window.TB_WATER_DATA = {
         { name: "Uranium", level: "0.43 pCi/L", legal: "20 pCi/L", guideline: "0.43 pCi/L" },
         { name: "Vanadium", level: "4.87 ppb", legal: null, guideline: "21 ppb" }
       ]
+    },
+    dadecity: {
+      name: "Dade City Water Department", pws: "FL6510424", pop: "15,561",
+      exceed: [
+        { name: "Arsenic", effect: "Cancer", level: "1.13 ppb", legal: "10 ppb", times: "283", guideline: "0.004 ppb" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "11.9 ppb", legal: "80 ppb", times: "79", guideline: "0.15 ppb" },
+        { name: "Haloacetic acids (HAA9)", effect: "Cancer", level: "2.89 ppb", legal: null, times: "48", guideline: "0.06 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "3.12 ppb", legal: "60 ppb", times: "31", guideline: "0.1 ppb" },
+        { name: "Chromium (hexavalent)", effect: "Cancer", level: "0.505 ppb", legal: null, times: "25", guideline: "0.02 ppb" },
+        { name: "Nitrate", effect: "Cancer", level: "1.89 ppm", legal: "10 ppm", times: "14", guideline: "0.14 ppm" },
+        { name: "PFOS (a “forever chemical”)", effect: "Harm to immune system", level: "3.92 ppt", legal: null, times: "13", guideline: "0.3 ppt" },
+        { name: "Dioxin (2,3,7,8-TCDD)", effect: "Cancer", level: "0.00200 ppt", legal: "0.03 ppt", times: "10", guideline: "0.0002 ppt" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.48 pCi/L", legal: "5 pCi/L", times: "9.5", guideline: "0.05 pCi/L" }
+      ],
+      other: [
+        { name: "Antimony", level: "0.333 ppb", legal: "6 ppb", guideline: "1 ppb" },
+        { name: "Barium", level: "5.60 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Beryllium", level: "0.500 ppb", legal: "4 ppb", guideline: "1 ppb" },
+        { name: "Chlorate", level: "111.1 ppb", legal: null, guideline: "210 ppb" },
+        { name: "Dalapon", level: "0.129 ppb", legal: "200 ppb", guideline: null },
+        { name: "Manganese", level: "0.554 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Molybdenum", level: "0.505 ppb", legal: null, guideline: "40 ppb" },
+        { name: "N-EtFOSAA (forever chemical)", level: "0.986 ppt", legal: null, guideline: "1 ppt" },
+        { name: "Nitrite", level: "0.00623 ppm", legal: "1 ppm", guideline: null },
+        { name: "PFBS (forever chemical)", level: "3.22 ppt", legal: null, guideline: "2,000 ppt" },
+        { name: "Strontium", level: "0.260 ppb", legal: null, guideline: "1,500 ppb" },
+        { name: "Uranium", level: "0.30 pCi/L", legal: "20 pCi/L", guideline: "0.43 pCi/L" },
+        { name: "Vanadium", level: "2.09 ppb", legal: null, guideline: "21 ppb" },
+        { name: "Xylenes (total)", level: "0.0629 ppb", legal: "10,000 ppb", guideline: "1,800 ppb" }
+      ]
+    },
+    sanantonio: {
+      name: "City of San Antonio Water Department", pws: "FL6510325", pop: "2,015",
+      exceed: [
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "12.8 ppb", legal: "80 ppb", times: "85", guideline: "0.15 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "4.79 ppb", legal: "60 ppb", times: "48", guideline: "0.1 ppb" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "1.85 pCi/L", legal: "5 pCi/L", times: "37", guideline: "0.05 pCi/L" },
+        { name: "Nitrate", effect: "Cancer", level: "2.69 ppm", legal: "10 ppm", times: "19", guideline: "0.14 ppm" }
+      ],
+      other: [
+        { name: "Manganese", level: "4.85 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Uranium", level: "0.57 pCi/L", legal: "20 pCi/L", guideline: "0.43 pCi/L" }
+      ]
+    },
+    hernandoeast: {
+      name: "Hernando County Utilities (East)", pws: "FL6277060", pop: "8,630",
+      exceed: [
+        { name: "Arsenic", effect: "Cancer", level: "1.68 ppb", legal: "10 ppb", times: "419", guideline: "0.004 ppb" },
+        { name: "Total trihalomethanes (TTHMs)", effect: "Cancer", level: "8.33 ppb", legal: "80 ppb", times: "56", guideline: "0.15 ppb" },
+        { name: "Haloacetic acids (HAA5)", effect: "Cancer", level: "4.47 ppb", legal: "60 ppb", times: "45", guideline: "0.1 ppb" },
+        { name: "Radium, combined (-226 and -228)", effect: "Cancer", level: "0.34 pCi/L", legal: "5 pCi/L", times: "6.7", guideline: "0.05 pCi/L" },
+        { name: "Nitrate", effect: "Cancer", level: "0.898 ppm", legal: "10 ppm", times: "6.4", guideline: "0.14 ppm" }
+      ],
+      other: [
+        { name: "Barium", level: "4.95 ppb", legal: "2,000 ppb", guideline: "700 ppb" },
+        { name: "Chloroform", level: "0.580 ppb", legal: null, guideline: "0.4 ppb" },
+        { name: "Chromium (total)", level: "3.13 ppb", legal: "100 ppb", guideline: null },
+        { name: "Manganese", level: "1.10 ppb", legal: null, guideline: "100 ppb" },
+        { name: "Mercury (inorganic)", level: "0.125 ppb", legal: "2 ppb", guideline: "1.2 ppb" },
+        { name: "Uranium", level: "0.36 pCi/L", legal: "20 pCi/L", guideline: "0.43 pCi/L" }
+      ]
     }
   },
   zipMap: {
+    // 2026-11-13 from EWG's ZIP search: Dade City 33525, 33523 (EWG lists Hernando County Utility-east first; it
+    // covers Ridge Manor), San Antonio 33576; St. Pete Beach, Indian Rocks Beach, Belleair Beach and Thonotosassa
+    // were reached only through the old 3-digit guess, EWG confirms the same utility.
+    "33525": "dadecity", "33523": "hernandoeast", "33576": "sanantonio", "33706": "pinellas", "33785": "pinellas", "33786": "pinellas", "33592": "hillssc",
     "34689": "tarpon", "34688": "tarpon",
     "34698": "dunedin",
     "34677": "oldsmar",
@@ -688,8 +753,45 @@ window.TB_WATER_DATA = {
     "34741": "toho", "34743": "toho", "34744": "toho", "34746": "toho",
     "34747": "toho", "34758": "toho", "34759": "toho"
   },
-  /* Prefix fallbacks only where one utility clearly dominates the range.
-     Fragmented areas (Polk 338xx beyond Lakeland/WH, greater Orlando)
-     intentionally fall through to the "we don't have your ZIP" path. */
-  prefixMap: { "337": "pinellas", "346": "pasco", "336": "tampa", "335": "hillssc", "342": "sarasotaco", "347": "toho" }
+  /* No more 3-digit guessing (2026-11-13): "335" sent Dade City, San Antonio and five Sumter County towns to
+     Hillsborough's report, "347" sent Lake County to Kissimmee's, "342" sent Charlotte and DeSoto to Sarasota's.
+     A ZIP gets a report only when zipMap names its utility. serviceZips is every ZIP in the counties the site
+     says Dave serves (Pinellas, Hillsborough, Pasco, Hernando, Manatee, Sarasota, Polk, Orange, Osceola), from
+     the zipcodes package: in it without a utility = "no report on file, call Dave"; not in it = out of area.
+     prefixMap stays empty so a browser holding the old script.js does not break. */
+  prefixMap: {},
+  serviceZips: [
+    "32703", "32704", "32709", "32710", "32712", "32733", "32751", "32768", "32777", "32789", "32790", "32792", "32793", "32794",
+    "32798", "32801", "32802", "32803", "32804", "32805", "32806", "32807", "32808", "32809", "32810", "32811", "32812", "32814",
+    "32816", "32817", "32818", "32819", "32820", "32821", "32822", "32824", "32825", "32826", "32827", "32828", "32829", "32830",
+    "32831", "32832", "32833", "32834", "32835", "32836", "32837", "32839", "32853", "32854", "32855", "32856", "32857", "32858",
+    "32859", "32860", "32861", "32862", "32867", "32868", "32869", "32872", "32877", "32878", "32885", "32886", "32887", "32890",
+    "32891", "32893", "32896", "32897", "32898", "33503", "33508", "33509", "33510", "33511", "33523", "33524", "33525", "33526",
+    "33527", "33530", "33534", "33537", "33539", "33540", "33541", "33542", "33543", "33544", "33545", "33547", "33548", "33549",
+    "33550", "33556", "33558", "33559", "33563", "33564", "33565", "33566", "33567", "33568", "33569", "33570", "33571", "33572",
+    "33573", "33574", "33575", "33576", "33578", "33579", "33583", "33584", "33586", "33587", "33592", "33593", "33594", "33595",
+    "33596", "33598", "33601", "33602", "33603", "33604", "33605", "33606", "33607", "33608", "33609", "33610", "33611", "33612",
+    "33613", "33614", "33615", "33616", "33617", "33618", "33619", "33620", "33621", "33622", "33623", "33624", "33625", "33626",
+    "33629", "33630", "33631", "33633", "33634", "33635", "33637", "33646", "33647", "33650", "33651", "33655", "33660", "33661",
+    "33662", "33663", "33664", "33672", "33673", "33674", "33675", "33677", "33679", "33680", "33681", "33682", "33684", "33685",
+    "33686", "33687", "33688", "33689", "33690", "33694", "33701", "33702", "33703", "33704", "33705", "33706", "33707", "33708",
+    "33709", "33710", "33711", "33712", "33713", "33714", "33715", "33716", "33729", "33730", "33731", "33732", "33733", "33734",
+    "33736", "33737", "33738", "33740", "33741", "33742", "33743", "33744", "33747", "33755", "33756", "33757", "33758", "33759",
+    "33760", "33761", "33762", "33763", "33764", "33765", "33766", "33767", "33769", "33770", "33771", "33772", "33773", "33774",
+    "33775", "33776", "33777", "33778", "33779", "33780", "33781", "33782", "33784", "33785", "33786", "33801", "33802", "33803",
+    "33804", "33805", "33806", "33807", "33809", "33810", "33811", "33812", "33813", "33815", "33820", "33823", "33827", "33830",
+    "33831", "33835", "33836", "33837", "33838", "33839", "33840", "33841", "33843", "33844", "33845", "33846", "33847", "33848",
+    "33849", "33850", "33851", "33853", "33854", "33855", "33856", "33858", "33859", "33860", "33863", "33867", "33868", "33877",
+    "33880", "33881", "33882", "33883", "33884", "33885", "33888", "33896", "33897", "33898", "34201", "34202", "34203", "34204",
+    "34205", "34206", "34207", "34208", "34209", "34210", "34211", "34212", "34215", "34216", "34217", "34218", "34219", "34220",
+    "34221", "34222", "34223", "34228", "34229", "34230", "34231", "34232", "34233", "34234", "34235", "34236", "34237", "34238",
+    "34239", "34240", "34241", "34242", "34243", "34249", "34250", "34251", "34260", "34264", "34270", "34272", "34274", "34275",
+    "34276", "34277", "34278", "34280", "34281", "34282", "34284", "34285", "34286", "34287", "34288", "34289", "34290", "34291",
+    "34292", "34293", "34295", "34601", "34602", "34603", "34604", "34605", "34606", "34607", "34608", "34609", "34610", "34611",
+    "34613", "34614", "34636", "34637", "34638", "34639", "34652", "34653", "34654", "34655", "34656", "34660", "34661", "34667",
+    "34668", "34669", "34673", "34674", "34677", "34679", "34680", "34681", "34682", "34683", "34684", "34685", "34688", "34689",
+    "34690", "34691", "34692", "34695", "34697", "34698", "34734", "34739", "34740", "34741", "34742", "34743", "34744", "34745",
+    "34746", "34747", "34758", "34759", "34760", "34761", "34769", "34770", "34771", "34772", "34773", "34777", "34778", "34786",
+    "34787"
+  ]
 };
