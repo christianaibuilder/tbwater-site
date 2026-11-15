@@ -372,6 +372,7 @@
           <h3>${esc(u.name)}</h3>
           <span class="wr-pop">Serves about ${esc(u.pop)} people &middot; ZIP ${esc(zip)}</span>
         </div>
+        <p class="wr-well"><b>On a private well?</b> This report is for city water. We don&rsquo;t do well water tests, so call Dave and tell him what you&rsquo;re noticing: a smell, stains or scale.</p>
         <p class="wr-overview">${esc(waterData.source.compliance)}</p>
         <div class="wr-summary">
           <strong>${u.exceed.length}</strong>
@@ -414,16 +415,12 @@
       waterReport.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
     };
 
-    // No report we can stand behind (2026-11-13, Christian): a private well, a ZIP in Dave's area whose utility
-    // isn't in the data, or a ZIP outside the area. Each gets a plain message, never a report for someone
-    // else's water, and the report email never goes out for these (auto_send.py checks the same data).
+    // No report we can stand behind (2026-11-13, Christian): a ZIP in Dave's area whose utility isn't in the
+    // data, or a ZIP outside the area. Each gets a plain message, never a report for someone else's water, and
+    // the report email never goes out for these (auto_send.py checks the same data). The city-or-well question
+    // came out again on 2026-11-15 (Christian): the report itself carries the well line instead.
     const callBtn = `<a class="button button-outline" href="tel:+17275858686">Call (727) 585-8686</a>`;
     const NOTICES = {
-      well: () => ({
-        title: "We can't run a report for a private well.",
-        text: "Our reports come from the test results city utilities have to publish, and nobody publishes results for a private well, so there's nothing we could show you that's about your water. If your well water smells like rotten eggs, stains orange or leaves scale, call Dave and tell him what you're noticing. He'll tell you straight what fits.",
-        actions: `<a class="button button-primary" href="#products">See the Well Water System</a>${callBtn}`,
-      }),
       nodata: (zip) => ({
         title: `We don't have a report for ZIP ${esc(zip)} yet.`,
         text: "Our reports come from the test results each city utility publishes, and yours isn't one we have on file. Dave serves your area, so call him and tell him what you're noticing at the tap. He'll tell you straight what fits.",
@@ -457,11 +454,6 @@
       field.addEventListener("input", clear);
       field.addEventListener("change", clear);
     });
-    waterForm.querySelectorAll('input[name="source"]').forEach((r) => r.addEventListener("change", () => {
-      waterForm.querySelector("#source-error").hidden = true;
-      waterForm.querySelector(".source-pick")?.classList.remove("is-invalid");
-      waterForm.querySelector("#source-city")?.removeAttribute("aria-invalid");
-    }));
 
     waterForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -469,7 +461,6 @@
       const last = (waterForm.querySelector("#check-last")?.value || "").trim();
       const contact = (waterForm.querySelector("#check-contact")?.value || "").trim();
       const zip = (waterForm.querySelector("#zip-code")?.value || "").trim();
-      const source = waterForm.querySelector('input[name="source"]:checked')?.value || (contact.toLowerCase() === "tbwater" ? "city" : "");
 
       // Demo code: Christian and Dave type "tbwater" as the email or phone to
       // show someone the tool. Report only - no name needed, nothing is sent,
@@ -490,7 +481,6 @@
         ["#check-contact", "#contact-error", !contactOk,
           contact ? "That doesn't look like an email or a phone number." : "Add an email or phone number."],
         ["#zip-code", "#zip-error", !/^\d{5}$/.test(zip), zip ? "ZIP codes are 5 digits." : "Add your 5-digit ZIP code."],
-        ["#source-city", "#source-error", !demo && !source, "Pick city water or a private well."],
         ["#check-consent", "#consent-error", !demo && !waterForm.querySelector("#check-consent")?.checked, "Tick the box to see your report."],
       ];
       let firstBad = null;
@@ -501,15 +491,13 @@
         if (bad) { err.textContent = msg; field.setAttribute("aria-invalid", "true"); firstBad = firstBad || field; }
         else field.removeAttribute("aria-invalid");
         if (field.type === "checkbox") field.closest(".consent")?.classList.toggle("is-invalid", bad);
-        if (field.type === "radio") field.closest(".source-pick")?.classList.toggle("is-invalid", bad);
       });
       if (firstBad) { firstBad.focus(); return; }
 
       // A ZIP gets a report only when the data names its utility (no 3-digit guessing since 2026-11-13).
-      const well = source === "well";
-      const key = well ? null : (waterData.zipMap[zip] || null);
+      const key = waterData.zipMap[zip] || null;
       const utility = key && waterData.utilities[key] ? waterData.utilities[key] : null;
-      const outcome = well ? "well" : utility ? "report" : serviceZips.has(zip) ? "nodata" : "outside";
+      const outcome = utility ? "report" : serviceZips.has(zip) ? "nodata" : "outside";
 
       // Silent lead capture. Fire-and-forget; never blocks the report, and a
       // failure here is invisible to the visitor - they still get their report.
@@ -527,7 +515,7 @@
         // first. `_subject` makes each email self-triaging in the inbox, and
         // `email` (when given) is what makes Reply go to the customer.
         const who = `${first} ${last}`.trim();
-        const where = well ? "Private well (no report)" : utility ? utility.name : "(no report on file)";
+        const where = utility ? utility.name : "(no report on file)";
         const lead = {
           _subject: `New water lead: ${who} - ${zip} ${where}${isEmail ? "" : " (phone - call or text)"}`,
           "Name": who,
@@ -535,9 +523,8 @@
         if (isEmail) lead.email = contact;            // also sets Reply-To
         else lead["Phone"] = contact;
         lead["ZIP"] = zip;
-        lead["Water source"] = well ? "Private well" : "City water";
-        lead["Their water utility"] = well ? "Private well (no public report)" : utility ? utility.name : "(not in our database)";
-        lead["Worst in their water"] = topConcerns || (well ? "(well - no report)" : "(no report generated)");
+        lead["Their water utility"] = utility ? utility.name : "(not in our database)";
+        lead["Worst in their water"] = topConcerns || "(no report generated)";
         lead["OK for Dave to reach out once"] = consentOK ? "Yes - they ticked the box" : "No - they did not tick the box";
         lead["Came from"] = "tbwater.com water report";
 

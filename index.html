@@ -76,7 +76,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261113">
+  <link rel="stylesheet" href="styles.css?v=20261115">
 </head>
 <body>
   <div class="announce" role="note">
@@ -344,17 +344,7 @@
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
           <p class="field-error" id="zip-error" hidden>Add your 5-digit ZIP code.</p>
 
-          <!-- 2026-11-13 (Christian): a well has no public report, so well owners get a message instead of a city
-               report that isn't their water, and the report email never goes to them. -->
-          <fieldset class="source-pick" aria-describedby="source-error">
-            <legend>Where does your water come from?</legend>
-            <div class="source-options">
-              <label><input type="radio" id="source-city" name="source" value="city" required><span>City water<small>I get a water bill</small></span></label>
-              <label><input type="radio" id="source-well" name="source" value="well"><span>Private well<small>My own well</small></span></label>
-            </div>
-          </fieldset>
-          <p class="field-error" id="source-error" hidden>Pick city water or a private well.</p>
-
+          <!-- 2026-11-15 (Christian): no city-or-well question; the report itself says we don't do well water tests. -->
           <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent" required aria-describedby="consent-error"><span>Dave may reach out once about my report, by the email or phone I gave. <b>No spam, just once.</b></span></label>
           <p class="field-error" id="consent-error" hidden>Tick the box to see your report.</p>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
@@ -1028,6 +1018,6 @@
   </footer>
 
   <script src="public/data/water-data.js?v=20261113"></script>
-  <script src="script.js?v=20261114"></script>
+  <script src="script.js?v=20261115"></script>
 </body>
 </html>
