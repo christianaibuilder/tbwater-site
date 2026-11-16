@@ -1851,6 +1851,26 @@ ul.card-panel li::before {
 .card-colors em { font-style: normal; font-weight: 600; color: var(--tx2, #5b7488); }
 @media (max-width: 359px) { .badges { grid-template-columns: minmax(0, 1fr); } }
 
+/* "Already have a system?" strip under the price cards, linking the services page. It sits in a
+   <template data-preview-only> until services.html launches, so on tbwater.com nothing uses it yet. */
+.service-strip {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.9rem 1.1rem;
+  margin: 1.6rem 0 0; padding: 1rem 1.25rem; border-radius: 18px; text-decoration: none;
+  background: var(--foam-2); border: 1px solid var(--line); color: var(--ink, #0a2536);
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.service-strip:hover { border-color: rgba(27, 135, 201, 0.45); box-shadow: 0 10px 24px -18px rgba(10, 37, 54, .45); transform: translateY(-1px); }
+.service-strip-icon { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 12px; background: rgba(27, 135, 201, 0.12); color: var(--brand-deep); }
+.service-strip-icon svg { width: 1.3rem; height: 1.3rem; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.service-strip-text { font-size: 0.95rem; line-height: 1.45; color: var(--tx2, #34546b); }
+.service-strip-text b { color: var(--brand-deep); }
+.service-strip-go { display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700; font-size: 0.92rem; color: var(--brand-deep); white-space: nowrap; }
+.service-strip-go svg { width: 1.05rem; height: 1.05rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 640px) {
+  .service-strip { grid-template-columns: auto minmax(0, 1fr); }
+  .service-strip-go { grid-column: 1 / -1; justify-content: center; padding-top: 0.2rem; border-top: 1px solid var(--line); padding-top: 0.75rem; }
+}
+
 .product-card .button { width: 100%; padding: 0.68rem 1rem; font-size: 0.88rem; margin-top: auto; }
 
 /* ---- Product media carousel ---- */
@@ -2624,9 +2644,17 @@ textarea:focus-visible {
   .site-footer .section-inner { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 860px) {
-  .lease-grid { grid-template-columns: repeat(2, 1fr); }
-  .hardness-band { grid-template-columns: 1fr; }
+/* Top bar (2026-11-16): it no longer wraps. With the Services link it holds 8 links, so the fold-out menu the
+   phone uses now takes over up to 1100 px (it was 860, and 861-1150 px already wrapped "Check Water" and
+   "Call Now" onto two lines with 7 links); from 1101 to 1240 px the Facebook and Instagram icons leave the bar
+   (they stay in the footer and the fold-out menu) and the gaps tighten. */
+.nav-links a, .nav-actions .button { white-space: nowrap; }
+@media (min-width: 1101px) and (max-width: 1240px) {
+  .nav-actions .social-icons { display: none; }
+  .nav-menu { gap: 1.2rem; }
+  .nav-links { gap: 1.05rem; }
+}
+@media (max-width: 1100px) {
   .menu-toggle { display: flex; }
 
   .nav-menu {
@@ -2663,6 +2691,11 @@ textarea:focus-visible {
   }
 
   .nav-actions .button { flex: 1; justify-content: center; }
+}
+
+@media (max-width: 860px) {
+  .lease-grid { grid-template-columns: repeat(2, 1fr); }
+  .hardness-band { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
