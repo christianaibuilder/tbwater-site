@@ -354,6 +354,7 @@ a { color: var(--brand-deep); }
 }
 
 .social-icon svg path[d^="M14.2"] { fill: currentColor; stroke: none; }
+.social-icon svg.fill-icon { fill: currentColor; stroke: none; } /* Yelp (2026-11-16) */
 
 .social-icon:hover {
   color: var(--brand-deep);
@@ -1845,10 +1846,12 @@ ul.card-panel li::before {
 .badges .badge-free { grid-column: 1 / -1; gap: 0.35rem; }
 .badges .badge-free svg { width: 0.95rem; height: 0.95rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 .card-colors {
-  align-self: stretch; display: flex; align-items: center; gap: 0.32rem; margin: -0.35rem 0 0.95rem;
+  align-self: stretch; display: flex; align-items: center; gap: 0.32rem; margin: 0.75rem 0 0;
   font-size: 0.75rem; font-weight: 600; color: var(--brand-dark);
 }
 .card-colors em { font-style: normal; font-weight: 600; color: var(--tx2, #5b7488); }
+/* The colours line sits above the chips (Christian, 2026-11-16), so the chips come in a little closer under it. */
+.card-colors + .badges, body.layout-a .card-colors + .badges { margin-top: 0.55rem; }
 @media (max-width: 359px) { .badges { grid-template-columns: minmax(0, 1fr); } }
 
 /* "Already have a system?" strip under the price cards, linking the services page. It sits in a
