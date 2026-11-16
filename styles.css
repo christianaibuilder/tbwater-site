@@ -1729,6 +1729,15 @@ a { color: var(--brand-deep); }
   visibility: visible;
 }
 
+/* Only the open tab takes room (Christian, 2026-11-16): reserving the What's Inside list's
+   height left a big gap between a short overview and the chips. The card now grows when
+   What's Inside opens; in a desktop row the spare height of shorter cards sits above the
+   button (its margin-top: auto), so the chips stay close to the text everywhere. */
+.card-panels { flex: none; }
+.card-panel:not(.is-active) { display: none; }
+.card-panel.is-active { animation: card-panel-in 200ms ease; }
+@keyframes card-panel-in { from { opacity: 0; } to { opacity: 1; } }
+
 p.card-panel, div.card-panel-overview p { font-size: 0.88rem; }
 div.card-panel-overview p { margin: 0; }
 
