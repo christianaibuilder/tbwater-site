@@ -76,7 +76,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261115">
+  <link rel="stylesheet" href="styles.css?v=20261116">
 </head>
 <body>
   <div class="announce" role="note">
@@ -344,7 +344,7 @@
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
           <p class="field-error" id="zip-error" hidden>Add your 5-digit ZIP code.</p>
 
-          <!-- 2026-11-15 (Christian): no city-or-well question; the report itself says we don't do well water tests. -->
+          <!-- 2026-11-15 (Christian): no city-or-well question; the report says it covers city water and points well owners to Dave. -->
           <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent" required aria-describedby="consent-error"><span>Dave may reach out once about my report, by the email or phone I gave. <b>No spam, just once.</b></span></label>
           <p class="field-error" id="consent-error" hidden>Tick the box to see your report.</p>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
@@ -487,7 +487,7 @@
                   <li>ProSeries Upflow Whole House Filter &mdash; 10&times;54 Vortech tank, 1.5 cu. ft. premium catalytic carbon with 10 lbs KDF 55</li>
                 </ul>
               </div>
-              <div class="badges"><span class="badge-install">Indoor or outdoor install</span><span>Lifetime warranty</span><span>Free basic installation</span></div>
+              <div class="badges"><span class="badge-install">Indoor or outdoor</span><span>Lifetime warranty</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -520,7 +520,7 @@
                   <li>ProSeries Upflow Whole House Filter &mdash; 9&times;48 Vortech tank, 1 cu. ft. premium catalytic carbon with 7 lbs KDF 55</li>
                 </ul>
               </div>
-              <div class="badges"><span class="badge-install">Indoor or outdoor install</span><span>Lifetime warranty</span><span>Free basic installation</span></div>
+              <div class="badges"><span class="badge-install">Indoor or outdoor</span><span>Lifetime warranty</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -557,7 +557,7 @@
                   <li>13&times;54 Vortech tank &mdash; 1 cu. ft. premium catalytic carbon filter + 1.5 cu. ft. premium Purolite 10% cross-link resin</li>
                 </ul>
               </div>
-              <div class="badges"><span>Whole-home system</span><span>Lifetime warranty</span><span>Free basic installation</span></div>
+              <div class="badges"><span>Whole-home system</span><span>Lifetime warranty</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -593,7 +593,7 @@
                   <li>10&times;54 Vortech tank &mdash; 0.5 cu. ft. premium catalytic carbon filter + 1 cu. ft. premium Purolite 10% cross-link resin</li>
                 </ul>
               </div>
-              <div class="badges"><span>Dual-media</span><span>Lifetime warranty</span><span>Free basic installation</span></div>
+              <div class="badges"><span>Dual-media</span><span>Lifetime warranty</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
               <a class="button button-primary" href="#contact">Request This System</a>
             </div>
           </article>
@@ -626,7 +626,8 @@
                   <li>0.5 cu. ft. standard activated carbon filter + standard 8% cross-link resin</li>
                 </ul>
               </div>
-              <div class="badges"><span>Budget-friendly</span><span>5-year warranty</span><span>Free basic installation</span><span class="chip-colors"><i class="color-dot color-dot-black" aria-hidden="true"></i><i class="color-dot color-dot-almond" aria-hidden="true"></i>Black or Almond <em>(outside model)</em></span></div>
+              <div class="badges"><span>Budget-friendly</span><span>5-year warranty</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
+              <p class="card-colors"><i class="color-dot color-dot-black" aria-hidden="true"></i><i class="color-dot color-dot-almond" aria-hidden="true"></i>Black or Almond <em>(outside model)</em></p>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -659,7 +660,8 @@
                   <li>15&times;17 brine tank with salt grid &amp; safety float &mdash; 200 lbs salt included</li>
                 </ul>
               </div>
-              <div class="badges"><span>Budget-friendly</span><span>Best starting point</span><span>Does not remove chlorine</span><span>Free basic installation</span><span class="chip-colors"><i class="color-dot color-dot-black" aria-hidden="true"></i><i class="color-dot color-dot-almond" aria-hidden="true"></i>Black or Almond <em>(outside model)</em></span></div>
+              <div class="badges"><span>Budget-friendly</span><span>No chlorine removal</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
+              <p class="card-colors"><i class="color-dot color-dot-black" aria-hidden="true"></i><i class="color-dot color-dot-almond" aria-hidden="true"></i>Black or Almond <em>(outside model)</em></p>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -692,7 +694,8 @@
                   <li>Stenner Econ 4.5 gpd pump, flow switch, 15-gal solution tank, 15 gal peroxide &amp; 200 lbs salt</li>
                 </ul>
               </div>
-              <div class="badges"><span>Well water</span><span>Free basic installation</span><span class="chip-colors"><i class="color-dot color-dot-black" aria-hidden="true"></i><i class="color-dot color-dot-almond" aria-hidden="true"></i>Black or Almond <em>(outside model)</em></span></div>
+              <div class="badges"><span>Well water</span><span>Smell &amp; stains</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
+              <p class="card-colors"><i class="color-dot color-dot-black" aria-hidden="true"></i><i class="color-dot color-dot-almond" aria-hidden="true"></i>Black or Almond <em>(outside model)</em></p>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -726,7 +729,7 @@
                   <li>Faucet of your choice: brushed nickel, premium brushed nickel, traditional brushed nickel, chrome, or matte black (see the photos)</li>
                 </ul>
               </div>
-              <div class="badges"><span>Kitchen tap upgrade</span><span>Great taste</span><span>Free basic installation</span></div>
+              <div class="badges"><span>Kitchen tap upgrade</span><span>Great taste</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -756,7 +759,7 @@
                   <li>Smallest whole-home footprint TB Water installs</li>
                 </ul>
               </div>
-              <div class="badges"><span>Smallest whole-home footprint</span><span>Free basic installation</span></div>
+              <div class="badges"><span>Smallest footprint</span><span>All-in-one cabinet</span><span class="badge-free"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>Free basic installation</span></div>
               <a class="button button-quiet" href="#contact">Request This System</a>
             </div>
           </article>
@@ -1018,6 +1021,6 @@
   </footer>
 
   <script src="public/data/water-data.js?v=20261113"></script>
-  <script src="script.js?v=20261115"></script>
+  <script src="script.js?v=20261116"></script>
 </body>
 </html>

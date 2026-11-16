@@ -1833,6 +1833,24 @@ ul.card-panel li::before {
 .color-dot-black { background: #1a1a1a; }
 .color-dot-almond { background: #e8dcc8; }
 
+/* Chips in one shape on every card (Christian, 2026-11-16: the ragged rows caught his eye). Two short chips share
+   the top row at equal width, "Free basic installation" runs the full width under them with a check, and the
+   Black-or-Almond note is a quiet line of its own, not a chip, so all nine chip blocks are the same two rows.
+   Labels are kept short enough for half a card at 375 px; under 360 px they stack one per row. */
+.badges { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem; align-self: stretch; width: 100%; }
+.badges span {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  white-space: normal; line-height: 1.25; min-height: 1.95rem; padding: 0.28rem 0.55rem;
+}
+.badges .badge-free { grid-column: 1 / -1; gap: 0.35rem; }
+.badges .badge-free svg { width: 0.95rem; height: 0.95rem; flex: none; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.card-colors {
+  align-self: stretch; display: flex; align-items: center; gap: 0.32rem; margin: -0.35rem 0 0.95rem;
+  font-size: 0.75rem; font-weight: 600; color: var(--brand-dark);
+}
+.card-colors em { font-style: normal; font-weight: 600; color: var(--tx2, #5b7488); }
+@media (max-width: 359px) { .badges { grid-template-columns: minmax(0, 1fr); } }
+
 .product-card .button { width: 100%; padding: 0.68rem 1rem; font-size: 0.88rem; margin-top: auto; }
 
 /* ---- Product media carousel ---- */
@@ -2044,7 +2062,7 @@ body.layout-a .product-card:nth-last-child(2):nth-child(3n + 1) { grid-column: 2
 body.layout-a .product-media { aspect-ratio: 4 / 5; }
 body.layout-a .product-body { padding: 1.1rem 1.15rem 1.25rem; }
 body.layout-a .badges { margin: 0.75rem 0 0.95rem; }
-body.layout-a .badges span { white-space: nowrap; }
+body.layout-a .badges span { white-space: normal; } /* 2026-11-16: grid chips may wrap on very narrow cards */
 
 /* ---- Variant B: 2-up horizontal showroom ---- */
 body.layout-b .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }

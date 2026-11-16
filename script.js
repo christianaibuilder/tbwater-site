@@ -372,7 +372,7 @@
           <h3>${esc(u.name)}</h3>
           <span class="wr-pop">Serves about ${esc(u.pop)} people &middot; ZIP ${esc(zip)}</span>
         </div>
-        <p class="wr-well"><b>On a private well?</b> This report is for city water. We don&rsquo;t do well water tests, so call Dave and tell him what you&rsquo;re noticing: a smell, stains or scale.</p>
+        <p class="wr-well"><b>On a private well?</b> This report is for city water. Call Dave and tell him what your well water is doing: a smell, stains or scale.</p>
         <p class="wr-overview">${esc(waterData.source.compliance)}</p>
         <div class="wr-summary">
           <strong>${u.exceed.length}</strong>
