@@ -1,0 +1,123 @@
+[
+  {
+    "slug": "yamaha",
+    "name": "Yamaha",
+    "title": "Yamaha outboard repair and service in Tampa Bay",
+    "models": "F25 through F450, F150 and F200 four-strokes, VMAX SHO, older HPDI and OX66 two-strokes",
+    "intro": "Yamaha is the most common outboard on Tampa Bay docks, and the F150 is probably the most common single engine. Our network includes Yamaha-trained mechanics who carry the F-series service kits and know the engines' habits.",
+    "intervals": "Yamaha specifies a 20-hour break-in service, then every 100 hours or annually. Water pump impeller every 300 hours or 3 years, sooner in silty water. VST (vapor separator) filter and low-pressure fuel pumps are the usual fuel-side service items on F150 and F200.",
+    "common": ["VST filter clogging from ethanol fuel: surging and stalling", "Low-pressure fuel pump failure on older F150s", "Thermostats and poppet valves sticking: overheat alarms", "Corroded exhaust passages on mid-2000s F-series (a known issue; inspection at service)", "Trim and tilt seals and relays", "Oxygen sensor and ECU faults on HPDI two-strokes"],
+    "parts": "Parts availability is excellent; most mechanics stock F-series service kits. Yamaha's YDS diagnostic software reads fault history and engine hours.",
+    "faqs": [
+      {"q": "Why does my F150 surge at cruise?", "a": "Nine times out of ten the VST filter or a weak low-pressure pump. It is a routine repair with the engine on the lift."},
+      {"q": "Can you read Yamaha fault codes?", "a": "Yes, mechanics in the network carry YDS or equivalent and will show you the history."},
+      {"q": "Is a 300-hour service really needed?", "a": "In salt water, yes. The water pump impeller and thermostats are the difference between a 3,000-hour engine and a powerhead replacement."}
+    ]
+  },
+  {
+    "slug": "mercury",
+    "name": "Mercury",
+    "title": "Mercury outboard repair and service in Tampa Bay",
+    "models": "FourStroke 40 to 150, Pro XS, Verado 200 to 400, SeaPro, older OptiMax and two-strokes",
+    "intro": "Mercury's FourStroke and Pro XS engines dominate the bay-boat and flats-boat fleet, and Verados power a lot of the offshore center consoles. Mercury-certified mechanics in the network handle routine service through supercharger work.",
+    "intervals": "100 hours or annually. Verado supercharger oil at 300 hours; gearcase lube annually; water pump at 300 hours or 3 years. OptiMax air compressors have their own service schedule.",
+    "common": ["Verado supercharger and belt service neglected: loss of top-end power", "Pro XS and FourStroke fuel pump and VST issues from ethanol", "Low oil pressure alarms at idle on high-hour Verados", "OptiMax air compressor failures and injector issues", "Trim limit and position sensors", "SmartCraft gauge and harness faults"],
+    "parts": "Parts are easy to source; the regional Mercury dealers are numerous. Mercury's CDS G3 diagnostics read Verado and SmartCraft data.",
+    "faqs": [
+      {"q": "My Verado lost top end. Supercharger?", "a": "Often. Supercharger oil, belt, and intercooler cleaning restore it if the bearings are still good. Catch it early."},
+      {"q": "Do you work on older two-stroke Mercurys?", "a": "Yes, carbureted and EFI two-strokes; parts for some OptiMax models are getting scarce."}
+    ]
+  },
+  {
+    "slug": "suzuki",
+    "name": "Suzuki",
+    "title": "Suzuki outboard repair and service in Tampa Bay",
+    "models": "DF25 through DF350A, including the DF140A, DF200 and DF300 family",
+    "intro": "Suzuki's lean-burn four-strokes are quiet, efficient, and popular on bay boats and pontoons around Clearwater and St. Pete. They reward clean fuel and punish bad fuel. Suzuki-certified mechanics in the network know the difference.",
+    "intervals": "20-hour break-in, then 100 hours or annually. Water pump every 2 years or 200 hours in Suzuki's schedule. Timing chain is maintenance-free; the belt-driven models are not.",
+    "common": ["Lean-burn fuel sensitivity: rough idle and stalling on ethanol-contaminated fuel", "Water pump impellers and thermostats", "Corrosion in the midsection cooling passages on older models", "Shift and trim sensor faults", "Fuel injector clogging after storage"],
+    "parts": "Good availability through the regional dealers, including the Largo dealer; service kits are stocked by Suzuki-trained mechanics.",
+    "faqs": [
+      {"q": "Why is my DF140 idling rough after sitting?", "a": "Stale or water-contaminated fuel on a lean-burn engine. Fresh fuel, filters, and an injector clean usually fix it."},
+      {"q": "Is Suzuki service any different?", "a": "The schedule is tighter on the water pump and the engines are sensitive to fuel quality. Otherwise routine."}
+    ]
+  },
+  {
+    "slug": "honda",
+    "name": "Honda Marine",
+    "title": "Honda outboard repair and service in Tampa Bay",
+    "models": "BF2.3 through BF250, with the BF90, BF150 and BF225 common locally",
+    "intro": "Honda outboards are automotive-grade engines with a reputation for running forever when serviced. The network has mechanics who service the BF series and know the quirks of the older BF225.",
+    "intervals": "100 hours or annually; water pump and thermostats at 300 hours or 3 years; timing belt on belt-driven models per Honda's schedule.",
+    "common": ["Water pump and thermostat issues: weak pee stream, overheat alarms on BF225", "Corroded anodes and cooling passages", "Carburetor varnish on small carbureted models", "Charging system and regulator faults", "Trim and tilt seals"],
+    "parts": "Fewer dealers than Yamaha or Mercury, so mechanics who stock Honda kits matter. Lead time on uncommon parts can be a week.",
+    "faqs": [
+      {"q": "Who services Hondas around here?", "a": "Several independents in the network do; tell us the model and hours and we match you to one who stocks the parts."}
+    ]
+  },
+  {
+    "slug": "tohatsu",
+    "name": "Tohatsu",
+    "title": "Tohatsu outboard repair and service in Tampa Bay",
+    "models": "MFS 2.5 through MFS 140, and Nissan-branded twins",
+    "intro": "Tohatsu powers a lot of skiffs, dinghies, and kicker setups on the bay, and also builds engines sold under other names. Small-engine specialists in the network keep them running.",
+    "intervals": "100 hours or annually; water pump every 2 years.",
+    "common": ["Carburetor varnish from ethanol in small carbureted models", "Water pump impellers", "Pull-start and ignition issues on portables", "Fuel connector and primer bulb leaks"],
+    "parts": "Parts flow through Tohatsu dealers and online; many Mercury small-engine parts cross over.",
+    "faqs": [
+      {"q": "Is it worth repairing a small Tohatsu?", "a": "Usually yes; a carburetor clean and impeller on a 20-horse is a fraction of a new engine."}
+    ]
+  },
+  {
+    "slug": "evinrude",
+    "name": "Evinrude and Johnson",
+    "title": "Evinrude E-TEC and legacy Johnson/Evinrude repair in Tampa Bay",
+    "models": "E-TEC G1 and G2, older Ficht and carbureted two-strokes, Johnson",
+    "intro": "Evinrude stopped production in 2020, which makes experienced two-stroke mechanics and parts knowledge valuable. The network includes mechanics who still service E-TECs and legacy engines.",
+    "intervals": "E-TEC: 300 hours or 3 years for scheduled service per the factory, though salt-water owners service annually. Carbureted engines annually.",
+    "common": ["E-TEC injector and EMM faults", "Oil injection and VRO issues on legacy engines", "Carburetor and reed valve problems", "Powerpack and stator failures", "Parts scarcity on specific models"],
+    "parts": "BRP committed to parts support after discontinuation, but some items are now scarce. Mechanics will tell you honestly when a repair is not worth it.",
+    "faqs": [
+      {"q": "Can I still get E-TEC parts?", "a": "Many, yes; some specific electronics are getting hard to find. Ask before committing to a big repair."}
+    ]
+  },
+  {
+    "slug": "mercruiser",
+    "name": "MerCruiser",
+    "title": "MerCruiser sterndrive and inboard repair in Tampa Bay",
+    "models": "Alpha One and Bravo drives, 3.0 through 8.2 gas inboards, MPI and carbureted",
+    "intro": "MerCruiser sterndrives power most of the runabouts and cruisers in Tampa Bay slips. Salt water is hard on them. Mechanics in the network handle drive service, bellows, manifolds and risers, and the engine itself.",
+    "intervals": "Annual engine service; drive oil annually; bellows every 2 to 3 years; manifolds and risers inspected annually and typically replaced every 5 to 7 years in salt water.",
+    "common": ["Manifold and riser corrosion: water in cylinders if ignored", "Bellows failure: water in the bilge and gimbal bearing damage", "Raw-water pump impellers", "Shift cable and interrupter adjustment", "Trim sender and pump issues"],
+    "parts": "Excellent availability. Mechanics carry common drive seals, impellers, and gaskets.",
+    "faqs": [
+      {"q": "How do I know my manifolds are due?", "a": "Age, rust weeping at the joints, and the mechanic's inspection. Catching it on the slip is routine; missing it is a new engine."}
+    ]
+  },
+  {
+    "slug": "volvo-penta",
+    "name": "Volvo Penta",
+    "title": "Volvo Penta sterndrive and diesel service in Tampa Bay",
+    "models": "SX and DPS gas drives, D3 through D6 diesels, IPS pods on larger yachts",
+    "intro": "Volvo Penta gas sterndrives and small diesels are common on cruisers and sailboats in St. Petersburg, Clearwater, and Tampa marinas. Volvo-certified mechanics in the network service both.",
+    "intervals": "Annual service; drive bellows and oil per schedule; diesel fuel filters and raw-water impellers annually; aftercooler and heat exchanger cleaning on diesels at interval.",
+    "common": ["Bellows and drive seals on SX/DPS", "Raw-water pump and heat exchanger fouling", "Injector and fuel issues on D-series diesels", "Electronic throttle and EVC faults", "Exhaust elbow corrosion"],
+    "parts": "Parts are available but priced like Volvo. Diagnostics require Volvo's VODIA tool, which the certified mechanics carry.",
+    "faqs": [
+      {"q": "Can a mobile mechanic read Volvo EVC codes?", "a": "Yes if they carry VODIA. Tell us it is a Volvo and we match accordingly."}
+    ]
+  },
+  {
+    "slug": "yanmar",
+    "name": "Yanmar",
+    "title": "Yanmar marine diesel service and repair in Tampa Bay",
+    "models": "1GM through 4JH sailboat diesels, 6LY and 8LV cruiser diesels",
+    "intro": "Yanmar is the sailboat diesel. Owners at the Municipal Marina, the Harborage, Davis Islands, and the Clearwater marinas need mechanics who understand low-load diesel life: carbon, raw-water cooling, and fuel.",
+    "intervals": "Every 250 hours or annually; raw-water impeller annually; heat exchanger cleaning and exhaust elbow inspection every few years; valve adjustment per model.",
+    "common": ["Raw-water pump and impeller failures", "Exhaust elbow and mixing elbow carbon and corrosion", "Fuel contamination and injector issues", "Heat exchanger fouling", "Glow plug and starting problems"],
+    "parts": "Good availability through regional distributors; mechanics stock impellers, belts, and filters for the common models.",
+    "faqs": [
+      {"q": "Why does my Yanmar overheat at high RPM only?", "a": "Usually a partly blocked heat exchanger or exhaust elbow. Both are serviceable on the slip."}
+    ]
+  }
+]

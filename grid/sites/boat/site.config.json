@@ -1,0 +1,20 @@
+{
+  "brand": "Tampa Bay Boat Mechanics",
+  "tagline": "Mobile boat mechanics to your dock, lift, or driveway. Answered in 5 minutes.",
+  "domain": "",
+  "siteUrl": "https://tampabayboatmechanics.com",
+  "phone": "(727) 555-0188",
+  "phoneE164": "+17275550188",
+  "email": "help@tampabayboatmechanics.com",
+  "categoryId": "marine",
+  "serviceCounties": ["Pinellas", "Hillsborough", "Pasco"],
+  "hqUrl": "",
+  "supabaseUrl": "",
+  "supabaseAnonKey": "",
+  "responseGoalMinutes": 5,
+  "entityName": "[ENTITY] LLC",
+  "baseCity": "Tarpon Springs, FL",
+  "googleReviewUrl": "",
+  "facebookUrl": "",
+  "analytics": { "gtmId": "" }
+}

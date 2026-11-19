@@ -1,0 +1,196 @@
+[
+  {
+    "slug": "outboard-service",
+    "name": "100 / 300-hour outboard service",
+    "title": "Outboard 100-hour and 300-hour service at your dock",
+    "intro": "Scheduled service is the cheapest thing you will ever do to an outboard. We send a mechanic who knows your engine to your lift, slip, or driveway, with the right oil, filters, plugs, and impeller for your make and model.",
+    "included": ["Engine oil and filter", "Gear lube (lower unit) with a check for water intrusion", "Spark plugs", "Fuel filter and fuel-water separator", "Water pump impeller at 300 hours or 3 years, or sooner if the stream is weak", "Thermostat and poppet check", "Grease fittings, trim and tilt, steering", "Anodes, prop, and corrosion check", "Battery and charging test", "Engine computer scan for stored fault codes"],
+    "when": "Every 100 hours or once a year, whichever comes first. In salt water, once a year even if you barely used it. The 300-hour service adds the water pump, thermostats, and a deeper fuel-system check.",
+    "duration": "2 to 4 hours for one engine",
+    "price_range": "$350 to $900 per engine for a 100-hour; $900 to $2,000 for a full 300-hour with impeller and thermostats. Mechanics set their own rates.",
+    "brands": ["yamaha", "mercury", "suzuki", "honda", "tohatsu"],
+    "faqs": [
+      {"q": "Do I need to be there?", "a": "No. Most customers leave the keys in a lockbox or the boat on the lift. The mechanic texts photos of what was done and the old parts."},
+      {"q": "Can you service a boat on a lift?", "a": "Yes. Lift-kept boats are most of what we do. The mechanic brings ear muffs or a bucket to run the engine, or lowers the boat if the lift allows."},
+      {"q": "What if the mechanic finds something else?", "a": "You get a call and a written quote before any extra work. Nothing is added to the bill without your OK."},
+      {"q": "Do you use OEM parts?", "a": "Mechanics default to the manufacturer's service kit. If a non-OEM part is used, it is listed on the invoice."}
+    ],
+    "local_note": "Tampa Bay boats run year-round, so the 'annual' service is really a sun and salt service. Ethanol fuel plus summer heat is the number one cause of the fuel problems mechanics find during these visits."
+  },
+  {
+    "slug": "outboard-repair",
+    "name": "Outboard won't start or runs rough",
+    "title": "Outboard won't start, stalls, or runs rough: mobile diagnosis and repair",
+    "intro": "No start, dies at idle, alarm beeping, loss of power, overheating, won't shift. A mechanic comes to the boat with a scan tool and the common parts, finds the cause, and quotes the fix on the spot.",
+    "included": ["Computer scan for fault codes and engine history", "Fuel pressure and fuel quality check", "Spark, compression, and timing checks as needed", "Cooling system and overheat alarm diagnosis", "Written quote before repair", "Repair on the same visit when parts are on the truck"],
+    "when": "As soon as it misbehaves. Running an outboard with an overheat or oil alarm turns a $400 fix into a powerhead.",
+    "duration": "1 to 2 hours to diagnose; repair time varies",
+    "price_range": "$100 to $150 diagnostic or trip fee, usually credited toward the repair. Most no-start and rough-running repairs land between $300 and $900.",
+    "brands": ["yamaha", "mercury", "suzuki", "honda", "tohatsu", "evinrude"],
+    "faqs": [
+      {"q": "My engine starts but dies when I put it in gear. What is it?", "a": "Often a fuel delivery problem (clogged filter, weak low-pressure pump, bad fuel) or an idle air issue. Sometimes the shift interrupt switch. The scan tool and a fuel pressure test narrow it in minutes."},
+      {"q": "The overheat alarm goes off after 20 minutes at speed.", "a": "Classic water pump impeller or thermostat, sometimes a blocked pickup from barnacles. Do not keep running it. This is one of the most common calls in Tampa Bay."},
+      {"q": "Can you fix it at the ramp or on the water?", "a": "At the ramp or dock, yes. On the water, no; we can help you arrange a tow."}
+    ],
+    "local_note": "Boats that sat through summer in Apollo Beach and Ruskin canals come back with varnished fuel and stuck injectors. Boats that live on lifts near the Gulf in Tarpon Springs and Dunedin see more corrosion-related electrical no-starts."
+  },
+  {
+    "slug": "lower-unit",
+    "name": "Lower unit and gearcase",
+    "title": "Lower unit repair: seals, bearings, shifting, milky gear oil",
+    "intro": "Milky gear oil, a grinding shift, a whine at speed, or a prop shaft that wobbles means the gearcase needs attention before it needs replacement. Mobile mechanics can pull a lower unit at your dock and reseal or rebuild it.",
+    "included": ["Gear oil drain and inspection for water and metal", "Pressure and vacuum test of the gearcase", "Prop shaft and drive shaft seal replacement", "Shift shaft seal, water pump housing seal", "Bearing and gear inspection, rebuild quote if needed", "Prop and hub inspection, spline grease"],
+    "when": "Milky or metallic gear oil, water in the oil at service time, hard or grinding shifting, fishing line around the prop shaft.",
+    "duration": "2 to 3 hours for seals; rebuilds go to a bench",
+    "price_range": "$400 to $900 for a reseal with pressure test; $1,500 to $3,500 for a rebuild depending on engine; a replacement gearcase can exceed that.",
+    "brands": ["yamaha", "mercury", "suzuki", "honda", "tohatsu"],
+    "faqs": [
+      {"q": "Why does fishing line matter?", "a": "Line cuts the prop shaft seal. Water gets in, bearings rust, and a $50 seal becomes a $2,500 rebuild. Check behind the prop every few trips."},
+      {"q": "Can the gearcase be pulled while the boat is on the lift?", "a": "Usually yes, with the engine tilted and the boat raised enough to clear."}
+    ],
+    "local_note": "Shallow flats off Anclote, Hudson, and the Pasco coast eat skegs and props. Grounding damage often shows up later as a seal leak."
+  },
+  {
+    "slug": "inboard-sterndrive",
+    "name": "Inboard and sterndrive",
+    "title": "Inboard and sterndrive service and repair: MerCruiser, Volvo Penta, inboard gas",
+    "intro": "Sterndrives and inboards in salt water need the service outboards get, plus a few more: bellows, gimbal bearings, manifolds and risers, raw-water pumps, and outdrive oil. Mobile mechanics handle it at the slip or on the lift.",
+    "included": ["Engine oil and filter, fuel filters", "Raw-water pump impeller", "Outdrive oil and seals, bellows inspection", "Manifolds and risers inspection (salt water)", "Belts, hoses, thermostats", "Shift cable and trim system", "Fault code scan (MPI and later engines)"],
+    "when": "Annually; bellows every 2 to 3 years; manifolds and risers typically 5 to 7 years in salt water.",
+    "duration": "3 to 6 hours",
+    "price_range": "$500 to $1,200 for annual service; manifold and riser jobs $1,200 to $3,000; bellows and gimbal work $800 to $1,800.",
+    "brands": ["mercruiser", "volvo-penta"],
+    "faqs": [
+      {"q": "Why are manifolds and risers such a big deal?", "a": "Salt water runs through them. When they rust through, water enters the cylinders and the engine is done. Inspection at service time catches it."},
+      {"q": "Can you haul the boat?", "a": "We do dockside and lift work. For bottom work or a drive that needs the boat out, we coordinate with a yard."}
+    ],
+    "local_note": "Many St. Petersburg and Tampa cruisers live in slips year-round. Annual service on the slip beats a yard wait list by weeks."
+  },
+  {
+    "slug": "diesel",
+    "name": "Marine diesel",
+    "title": "Marine diesel service and repair: Yanmar, Volvo Penta, Cummins and more",
+    "intro": "Sailboats, trawlers, and express cruisers around Tampa Bay run small to mid-size diesels that live hard lives at low load. Diesel-experienced mechanics come to the slip for service, hard-start and smoke diagnosis, fuel polishing, and cooling repairs.",
+    "included": ["Oil and filters, primary and secondary fuel filters", "Raw-water pump impeller, heat exchanger inspection", "Injector testing and cleaning", "Fuel polishing and tank inspection", "Belts, mounts, shaft seal and alignment check", "Exhaust elbow inspection", "Charging and glow system check"],
+    "when": "Every 250 hours or annually. Immediately for black or white smoke, hard cold starts, or rising temperature.",
+    "duration": "3 to 8 hours",
+    "price_range": "$600 to $1,500 for service; injector work $900 to $2,500; exhaust elbows and heat exchangers vary by engine.",
+    "brands": ["yanmar", "volvo-penta"],
+    "faqs": [
+      {"q": "Black smoke under load?", "a": "Usually fuel: dirty injectors, restricted air, or overloaded prop. A sea trial with the mechanic sorts it out."},
+      {"q": "Do you do fuel polishing?", "a": "Yes. Diesel bug and water in old fuel are common in boats that sit; polishing plus a tank clean fixes most repeat filter clogs."}
+    ],
+    "local_note": "The Harborage, St. Petersburg Municipal Marina, and the Clearwater and Tampa marinas hold a lot of diesel sail and trawler owners who wait weeks for yard techs."
+  },
+  {
+    "slug": "electrical",
+    "name": "Electrical and batteries",
+    "title": "Boat electrical repair: batteries, charging, wiring, bilge pumps, corrosion",
+    "intro": "Dead batteries every morning, gauges that drop out, nav lights that work when they feel like it, a bilge pump that doesn't. Marine electrical specialists trace it properly instead of swapping parts.",
+    "included": ["Battery load test and charging system test", "Parasitic draw diagnosis", "Switch panel, breakers, and wiring repair", "Bilge pump and float switch replacement", "Nav and courtesy lighting", "Battery switch and ACR/isolator setup", "Shore power and charger faults", "Corroded grounds and connections"],
+    "when": "Intermittent anything, dead batteries, burning smell, breakers that trip, before adding electronics or a trolling motor.",
+    "duration": "1 to 4 hours",
+    "price_range": "$150 to $700 for most diagnostics and repairs; battery replacements add $150 to $400 per battery; rewiring projects quoted.",
+    "brands": ["yamaha", "mercury", "suzuki", "honda", "mercruiser"],
+    "faqs": [
+      {"q": "Why do my batteries die overnight?", "a": "A parasitic draw (stereo memory, bilge pump cycling, a bad charger), a battery past its life, or a switch left on. A draw test with a clamp meter finds it in under an hour."},
+      {"q": "Lithium house batteries?", "a": "Yes, with the charger and alternator protection to match. The mechanic will say if your setup needs a DC-DC charger."}
+    ],
+    "local_note": "Salt air corrodes grounds first. Boats kept on lifts in Dunedin, Tarpon Springs, and Apollo Beach canals show ground corrosion long before anything else fails."
+  },
+  {
+    "slug": "electronics",
+    "name": "Electronics install",
+    "title": "Marine electronics installation: GPS, fishfinders, VHF, trolling motors, NMEA 2000",
+    "intro": "Buy the unit online or at the store; we send an installer who mounts it clean, runs the transducer right, networks it, and sets it up so it works the first time out.",
+    "included": ["Multifunction display and fishfinder mounting", "Transducer selection advice and install (transom, in-hull, through-hull)", "NMEA 2000 backbone and engine data", "VHF with DSC and GPS connection, antenna", "Trolling motor install with proper fusing and plug", "Radar, autopilot, and stereo on request", "Clean wiring, labeled, with drip loops"],
+    "when": "Before season, before a fishing trip, whenever the old unit dies.",
+    "duration": "2 to 6 hours",
+    "price_range": "$350 to $900 for a display and transducer; trolling motor installs $300 to $600 plus parts; networked helm projects quoted.",
+    "brands": ["yamaha", "mercury", "suzuki"],
+    "faqs": [
+      {"q": "Can you connect my engine data to the display?", "a": "Yes on most engines made in the last 15 years, via NMEA 2000 or the manufacturer's gateway. You will see fuel flow, hours, and alarms on screen."},
+      {"q": "Garmin, Simrad, Lowrance, Humminbird, Raymarine?", "a": "All of them."}
+    ],
+    "local_note": "Flats and nearshore fishing out of Hudson, Tarpon Springs, and St. Pete drives most installs: side-imaging transducers and trolling motors with spot-lock."
+  },
+  {
+    "slug": "fuel-system",
+    "name": "Fuel system and ethanol problems",
+    "title": "Boat fuel system repair: water in fuel, ethanol damage, pumps, injectors, carburetors",
+    "intro": "Florida's ethanol gasoline absorbs water from humid air and separates in the tank. The result is surging, stalling, varnished injectors, and rotted lines. Mechanics fix the system and set you up to prevent it.",
+    "included": ["Fuel quality test for water and phase separation", "Fuel-water separator and primer bulb replacement", "Fuel line and anti-siphon valve replacement with ethanol-rated line", "Low- and high-pressure fuel pump replacement", "Injector cleaning or replacement; carburetor rebuilds on older engines", "Tank inspection, pickup and sender check", "Stabilizer and storage advice"],
+    "when": "Surging at mid-range, stalling, fuel smell, water in the separator bowl, a boat that sat for months.",
+    "duration": "1 to 4 hours",
+    "price_range": "$200 to $600 for lines, filters, and bulbs; pumps $400 to $900; injector sets and carburetor rebuilds $500 to $1,200.",
+    "brands": ["yamaha", "mercury", "suzuki", "honda", "evinrude"],
+    "faqs": [
+      {"q": "Should I use ethanol-free gas?", "a": "If you can get it, yes. Several marinas on the bay sell it. If not, stabilize every fill and keep the tank full in storage."},
+      {"q": "My primer bulb never gets hard.", "a": "Air leak or a bad bulb, check valve, or pickup. It is one of the quickest fixes on the list and one of the most common causes of a no-start."}
+    ],
+    "local_note": "Humidity in the Tampa Bay summer is the enemy. Boats that sit from June to October without stabilizer are the fall no-start calls."
+  },
+  {
+    "slug": "trailer",
+    "name": "Trailer brakes, bearings and lights",
+    "title": "Boat trailer repair: bearings, hubs, brakes, lights, winches, bunks",
+    "intro": "A boat trailer dunked in salt water every weekend needs more than most owners give it. Bearings, hubs, surge brakes, lights, and bunks, done in your driveway so you make the ramp on Saturday.",
+    "included": ["Bearing repack or hub replacement, Bearing Buddies", "Surge or electric brake service, actuators, lines", "LED light conversion and wiring harness", "Winch, strap, bow stop, and safety chains", "Bunk boards and carpet, rollers", "Tires, spare, and jack", "Coupler and tongue inspection"],
+    "when": "Annually, or at any hub heat, grinding, pulling under braking, or lights out.",
+    "duration": "1 to 3 hours",
+    "price_range": "$150 to $400 for bearings and lights; brake jobs $300 to $800; bunk and roller work quoted.",
+    "brands": [],
+    "faqs": [
+      {"q": "How often should bearings be repacked in salt water?", "a": "Once a year for a weekend boat. Flush the hubs after every launch and check for heat at the first stop."},
+      {"q": "Can you come to the storage lot?", "a": "Yes, with the lot's permission."}
+    ],
+    "local_note": "Ramp-launch boats are the norm in Pasco and south Hillsborough: Hudson Beach, Nick's Park, E.G. Simmons, Williams Park. Trailer failures on US-19 and I-75 are a weekly sight in season."
+  },
+  {
+    "slug": "fiberglass-gelcoat",
+    "name": "Fiberglass and gelcoat",
+    "title": "Fiberglass and gelcoat repair: cracks, chips, blisters, transom and stringer work",
+    "intro": "Dock rash, a cracked chine, spider cracks on the deck, a soft transom. Fiberglass specialists repair it structurally and color-match the gelcoat so it disappears.",
+    "included": ["Gelcoat chip and crack repair with color match", "Impact and dock-rash repair", "Blister repair below the waterline", "Transom and stringer repair and replacement", "Deck soft-spot repair", "Through-hull and hardware rebedding"],
+    "when": "Any crack that holds water, soft spots underfoot, blisters at haul-out, after an impact.",
+    "duration": "Half a day to several days depending on scope",
+    "price_range": "$250 to $900 for cosmetic repairs; structural transom and stringer work $2,000 and up, quoted after inspection.",
+    "brands": [],
+    "faqs": [
+      {"q": "Can you match an older boat's faded color?", "a": "Yes. The repair is tinted to the current color, not the factory color, so it blends."},
+      {"q": "Is a soft transom urgent?", "a": "Yes if an outboard hangs on it. It is a safety issue, not a cosmetic one."}
+    ],
+    "local_note": "Oyster bars and the concrete seawalls of Pinellas canals account for most of the chine and keel damage mechanics see."
+  },
+  {
+    "slug": "detailing",
+    "name": "Wash, wax and oxidation removal",
+    "title": "Mobile boat detailing: wash, wax, compounding, oxidation removal, teak and vinyl",
+    "intro": "Florida sun chalks gelcoat in a season. Mobile detailers compound, polish, and seal the hull and deck at your slip or driveway, and keep it that way on a schedule.",
+    "included": ["Wash and salt removal", "Compound and polish to remove oxidation", "Wax or ceramic sealant", "Vinyl and upholstery cleaning and conditioning", "Teak cleaning and oiling", "Metal polish, isinglass care", "Monthly or quarterly maintenance plans"],
+    "when": "Twice a year minimum in Florida; monthly washes for slip-kept boats.",
+    "duration": "3 to 8 hours",
+    "price_range": "About $15 to $30 per foot for a full compound and wax; washes from $5 to $8 per foot; plans discounted.",
+    "brands": [],
+    "faqs": [
+      {"q": "Can you detail at the marina?", "a": "Yes where the marina allows outside vendors; the detailer carries insurance and follows the marina's wash rules."}
+    ],
+    "local_note": "Slip-kept boats at St. Petersburg, Clearwater Beach, and Tampa marinas are the bulk of wash plans."
+  },
+  {
+    "slug": "storm-prep",
+    "name": "Hurricane prep and layup",
+    "title": "Hurricane prep and post-storm inspection for boats in Tampa Bay",
+    "intro": "Before a storm: fuel stabilized, batteries and electronics protected, lines and chafe gear set, haul-out coordinated if needed. After a storm: a mechanic checks the engine, electrical, and hull before you turn a key.",
+    "included": ["Pre-season checklist visit (May)", "Named-storm prep: fuel, batteries, bilge, canvas, lines", "Haul-out and trailer coordination", "Post-storm inspection: engine, electrical, fuel, hull, lift and cradle", "Water-intrusion response: oil and fuel flush, electrical drying", "Insurance documentation photos"],
+    "when": "A pre-season visit in May or June; prep when a storm is forecast; inspection before the first start after any storm.",
+    "duration": "1 to 3 hours",
+    "price_range": "$150 to $400 for prep or inspection; flood-recovery work quoted.",
+    "brands": [],
+    "faqs": [
+      {"q": "My boat took on water in the storm. Can it be saved?", "a": "Often, if the engine is flushed before it is started. Do not try to start it. Call first."},
+      {"q": "Do you haul boats?", "a": "We coordinate with yards and trailers; the mechanics do the mechanical prep."}
+    ],
+    "local_note": "Helene and Milton in 2024 damaged or displaced hundreds of boats from Tarpon Springs to Gulfport. The boats that were flushed within days survived; the ones started on the first sunny morning did not."
+  }
+]

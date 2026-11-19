@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /thanks/
+Sitemap: https://tampabayboatmechanics.com/sitemap.xml
