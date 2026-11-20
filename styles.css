@@ -2545,6 +2545,12 @@ body.layout-c .product-card .button { padding: 0.58rem 0.9rem; font-size: 0.84re
 
 .footer-area span { font-size: 0.93rem; color: rgba(255, 255, 255, 0.72); }
 
+/* the counties as bullet points (Christian, 2026-11-20) */
+.footer-area-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.footer-area-list li { position: relative; padding-left: 1rem; font-size: 0.93rem; color: rgba(255, 255, 255, 0.72); }
+.footer-area-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--aqua); }
+
 .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); }
 
 .footer-bottom-inner {
