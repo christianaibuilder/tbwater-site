@@ -12,7 +12,7 @@ export function loadConfig() {
 }
 export function saveConfig(patch) {
   const next = { ...loadConfig(), ...patch };
-  localStorage.setItem(CONFIG_KEY, JSON.stringify(next));
+  try { localStorage.setItem(CONFIG_KEY, JSON.stringify(next)); } catch (_) { /* private mode or blocked storage */ }
   return next;
 }
 

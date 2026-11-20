@@ -24,6 +24,12 @@ const params = new URLSearchParams(location.search);
 const token = params.get('t');
 const root = document.getElementById('root');
 
+function showErr(text) {
+  let el = root.querySelector('#err');
+  if (!el) { el = document.createElement('p'); el.id = 'err'; el.className = 'notice bad'; (root.querySelector('.card') || root).appendChild(el); }
+  el.textContent = text;
+}
+
 function shell(brand, inner) {
   return `<header class="pub-head"><div><div class="pub-brand">${esc(brand?.name || 'Your technician')}</div>${brand?.phone ? `<div class="small"><a href="tel:${esc(brand.phone)}">${esc(brand.phone)}</a></div>` : ''}</div></header><main class="pub-main">${inner}</main>
     <footer class="pub-foot small muted">Independent technicians, introduced and billed through ${esc(brand?.name || 'the platform')}. <a href="../legal/customer-terms.md">Terms</a></footer>`;
@@ -50,7 +56,7 @@ export async function renderQuote() {
   </div>`);
   root.querySelector('#accept')?.addEventListener('click', async () => {
     try { await be.rpc('accept_quote', { t: token, note: root.querySelector('#note').value }); renderQuote(); }
-    catch (e) { alert(e.message); }
+    catch (e) { showErr(e.message); }
   });
 }
 
@@ -76,5 +82,5 @@ export async function renderPay() {
         </div>
         <p class="small muted" style="margin-top:12px">Both prices are shown so you can choose. Questions about the work? Call ${esc(brand?.phone || 'us')} before paying.</p>`}
   </div>`);
-  root.querySelectorAll('[data-pay]').forEach((b) => b.addEventListener('click', async () => { try { await be.rpc('demo_pay', { t: token, method: b.dataset.pay }); location.search = `?t=${token}&done=1`; } catch (e) { alert(e.message); } }));
+  root.querySelectorAll('[data-pay]').forEach((b) => b.addEventListener('click', async () => { try { await be.rpc('demo_pay', { t: token, method: b.dataset.pay }); location.search = `?t=${token}&done=1`; } catch (e) { showErr(e.message); } }));
 }

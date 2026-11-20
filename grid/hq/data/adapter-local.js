@@ -235,11 +235,12 @@ export class LocalAdapter {
     const s = Object.fromEntries(this._table('settings').map((x) => [x.key, x.value]));
     const total = Number(inv.total);
     const fee = round2(Math.max(total * (Number(s.platform_fee_pct ?? 10) / 100), Number(s.platform_fee_min ?? 25)));
-    const base = location.pathname.replace(/\/[^/]*$/, '');
+    // Resolve against the document's base URL so links work wherever HQ is hosted (subpath, artifact, local).
+    const pay = (m) => new URL(`public/pay.html?t=${inv.public_token}&method=${m}`, document.baseURI).href;
     Object.assign(inv, {
       status: 'sent', sent_at: nowIso(), platform_fee_pct: Number(s.platform_fee_pct ?? 10), platform_fee_min: Number(s.platform_fee_min ?? 25), card_fee_pct: Number(s.card_fee_pct ?? 3),
       platform_fee_amount: fee, tech_share_amount: round2(total - fee),
-      payment_link_url: `${base}/public/pay.html?t=${inv.public_token}&method=ach`, payment_link_card_url: `${base}/public/pay.html?t=${inv.public_token}&method=card`, updated_at: nowIso(),
+      payment_link_url: pay('ach'), payment_link_card_url: pay('card'), updated_at: nowIso(),
     });
     const lead = this._table('leads').find((l) => l.id === inv.lead_id);
     if (lead && ['assigned', 'quoted', 'scheduled', 'in_progress'].includes(lead.status)) { lead.status = 'completed'; lead.updated_at = nowIso(); }

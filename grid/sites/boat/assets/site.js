@@ -8,6 +8,13 @@
   const headers = { apikey: C.supabaseAnonKey, Authorization: `Bearer ${C.supabaseAnonKey}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' };
 
   function msg(form, text, kind) { const el = form.querySelector('.form-msg'); if (el) { el.textContent = text; el.className = `form-msg ${kind || ''}`; } }
+  // Where "/" is for this build: a custom domain, a GitHub Pages subpath, or page-relative (previews).
+  function siteBase() {
+    if (!C.relative) return C.base || '/';
+    const css = document.querySelector('link[rel=stylesheet][href*="site.css"]');
+    return (css ? css.getAttribute('href') : './assets/site.css').replace(/assets\/site\.css$/, '');
+  }
+  const thanksUrl = siteBase() + (C.relative ? 'thanks/index.html' : 'thanks/');
   function values(form) {
     const o = {};
     for (const el of form.querySelectorAll('[name]')) {
@@ -54,7 +61,7 @@
       const r = await fetch(`${C.supabaseUrl}/rest/v1/leads`, { method: 'POST', headers, body: JSON.stringify(lead) });
       if (!r.ok) throw new Error(`HTTP ${r.status}: ${await r.text()}`);
       try { window.dataLayer && window.dataLayer.push({ event: 'lead_submitted', source }); } catch (_) { /* no analytics */ }
-      location.href = '/thanks/';
+      location.href = thanksUrl;
     } catch (e) {
       btn.disabled = false;
       const body = encodeURIComponent(`Name: ${lead.customer_name}\nPhone: ${lead.phone}\nZip: ${lead.zip}\nService: ${lead.service_slug}\nBoat: ${[lead.equipment.year, lead.equipment.make, lead.equipment.model].filter(Boolean).join(' ')}\n\n${lead.description}`);

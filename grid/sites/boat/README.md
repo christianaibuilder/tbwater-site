@@ -52,3 +52,9 @@ Links are root-relative (`/services/...`), so preview from the `dist` root, not 
 - New brand: `content/brands.json` with intervals and common issues.
 
 Keep `docs/06-seo-plan.md` next to you: one page a week, each with facts that are true only of it.
+
+## Build modes
+
+- `node build.mjs` — root-relative URLs, for a custom domain (default).
+- `basePath` in `site.config.json` (for example `"/grid"`) — for a GitHub Pages project site served under a subpath.
+- `node build.mjs --relative --out <dir>` — page-relative URLs with explicit `index.html`, for previews and claude.ai artifacts.

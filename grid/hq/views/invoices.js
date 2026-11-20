@@ -22,8 +22,7 @@ export async function detail(root, { params }) {
   const [lead, tech, payouts] = await Promise.all([db.get('leads', inv.lead_id), db.get('techs', inv.tech_id), db.list('payouts', { filter: { invoice_id: inv.id } })]);
   const fileUrl = inv.file_path ? await db.fileUrl('invoices', inv.file_path) : null;
   const editable = ['uploaded', 'review', 'approved'].includes(inv.status);
-  const base = location.pathname.replace(/\/[^/]*$/, '');
-  const payUrl = `${location.origin}${base}/public/pay.html?t=${inv.public_token}`;
+  const payUrl = new URL(`public/pay.html?t=${inv.public_token}`, document.baseURI).href;
   let items = (inv.line_items || []).map((li) => ({ ...li }));
   let tax = Number(inv.tax || 0);
   const taxRate = store.taxRateFor(lead);

@@ -12,7 +12,32 @@ const cfg = JSON.parse(read('site.config.json'));
 const services = JSON.parse(read('content/services.json'));
 const brands = JSON.parse(read('content/brands.json'));
 const areas = JSON.parse(read('content/areas.json'));
-const out = path.join(here, 'dist');
+
+// Modes:
+//   default            root-relative URLs (/services/...), for a custom domain
+//   basePath in config URLs prefixed, e.g. "/grid" for a GitHub Pages project site
+//   --relative         page-relative URLs with explicit index.html, for previews and artifacts
+//   --out <dir>        write somewhere other than ./dist
+const argv = process.argv.slice(2);
+const RELATIVE = argv.includes('--relative');
+const outFlag = argv.indexOf('--out');
+const out = outFlag >= 0 && argv[outFlag + 1] ? path.resolve(argv[outFlag + 1]) : path.join(here, 'dist');
+const basePath = RELATIVE ? '' : String(cfg.basePath || '').replace(/\/$/, '');
+
+function rewriteUrls(html, urlPath) {
+  if (RELATIVE) {
+    const segs = urlPath.split('/').filter(Boolean);
+    const depth = urlPath.endsWith('/') ? segs.length : Math.max(0, segs.length - 1);
+    const prefix = depth > 0 ? '../'.repeat(depth) : './';
+    return html.replace(/(href|src|action)="\/(?!\/)([^"]*)"/g, (_m, attr, rest) => {
+      const [p, hash] = rest.split('#');
+      let fixed = p === '' ? 'index.html' : p.endsWith('/') ? p + 'index.html' : p;
+      return `${attr}="${prefix}${fixed}${hash !== undefined ? '#' + hash : ''}"`;
+    });
+  }
+  if (basePath) return html.replace(/(href|src|action)="\/(?!\/)([^"]*)"/g, (_m, attr, rest) => `${attr}="${basePath}/${rest}"`);
+  return html;
+}
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const site = cfg.siteUrl.replace(/\/$/, '');
@@ -124,7 +149,7 @@ ${gtm}
 function write(urlPath, html, { sitemap = true } = {}) {
   const file = urlPath.endsWith('/') ? path.join(out, urlPath, 'index.html') : path.join(out, urlPath);
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, html);
+  fs.writeFileSync(file, rewriteUrls(html, urlPath));
   if (sitemap) pages.push(urlPath);
 }
 
@@ -152,7 +177,7 @@ fs.mkdirSync(path.join(out, 'assets'), { recursive: true });
 for (const f of fs.readdirSync(path.join(here, 'assets'))) fs.copyFileSync(path.join(here, 'assets', f), path.join(out, 'assets', f));
 const zipCounty = {};
 for (const a of areas) for (const z of a.zips) zipCounty[z] = a.county;
-fs.writeFileSync(path.join(out, 'assets', 'config.js'), `window.SITE_CONFIG=${JSON.stringify({ brand: cfg.brand, phone: cfg.phone, phoneE164: cfg.phoneE164, email: cfg.email, categoryId: cfg.categoryId, supabaseUrl: cfg.supabaseUrl, supabaseAnonKey: cfg.supabaseAnonKey, responseGoalMinutes: cfg.responseGoalMinutes, zipCounty, counties: cfg.serviceCounties })};\n`);
+fs.writeFileSync(path.join(out, 'assets', 'config.js'), `window.SITE_CONFIG=${JSON.stringify({ brand: cfg.brand, phone: cfg.phone, phoneE164: cfg.phoneE164, email: cfg.email, categoryId: cfg.categoryId, supabaseUrl: cfg.supabaseUrl, supabaseAnonKey: cfg.supabaseAnonKey, responseGoalMinutes: cfg.responseGoalMinutes, zipCounty, counties: cfg.serviceCounties, base: RELATIVE ? null : `${basePath}/`, relative: RELATIVE })};\n`);
 
 // Home
 write('/', layout({
@@ -339,4 +364,4 @@ fs.writeFileSync(path.join(out, 'robots.txt'), `User-agent: *\nAllow: /\nDisallo
 if (cfg.domain) fs.writeFileSync(path.join(out, 'CNAME'), cfg.domain + '\n');
 fs.writeFileSync(path.join(out, '.nojekyll'), '');
 
-console.log(`Built ${pages.length} indexable pages (+ thanks, 404) into ${path.relative(process.cwd(), out)}`);
+console.log(`Built ${pages.length} indexable pages (+ thanks, 404) into ${path.relative(process.cwd(), out) || '.'}${RELATIVE ? ' [relative URLs]' : basePath ? ` [base ${basePath}]` : ''}`);

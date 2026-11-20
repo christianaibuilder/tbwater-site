@@ -23,8 +23,7 @@ export async function detail(root, { params }) {
   const lead = await db.get('leads', q.lead_id);
   const tech = q.tech_id ? await db.get('techs', q.tech_id) : null;
   const editable = ['draft', 'sent'].includes(q.status);
-  const base = location.pathname.replace(/\/[^/]*$/, '');
-  const customerUrl = `${location.origin}${base}/public/quote.html?t=${q.public_token}`;
+  const customerUrl = new URL(`public/quote.html?t=${q.public_token}`, document.baseURI).href;
   let items = (q.line_items || []).map((li) => ({ ...li }));
   let taxRate = Number(q.tax_rate ?? store.taxRateFor(lead));
 

@@ -1,5 +1,5 @@
 import { store, saveConfig, loadConfig } from '../data/store.js';
-import { esc, fmtDate, badge, modal, closeModal, toast, formValues, on, download } from '../lib/ui.js';
+import { esc, fmtDate, badge, modal, closeModal, toast, formValues, on, download, confirmTyped } from '../lib/ui.js';
 
 export default async function settings(root, { query }) {
   const cfg = loadConfig();
@@ -59,5 +59,5 @@ export default async function settings(root, { query }) {
   root.querySelector('#signout')?.addEventListener('click', async () => { await db.auth.signOut(); location.hash = '#/'; location.reload(); });
   root.querySelector('#export')?.addEventListener('click', () => download(`grid-demo-${new Date().toISOString().slice(0, 10)}.json`, db.exportJson(), 'application/json'));
   root.querySelector('#import')?.addEventListener('change', async (e) => { const f = e.target.files[0]; if (!f) return; try { db.importJson(await f.text()); toast('Imported'); } catch (err) { toast(err.message, 'bad'); } });
-  root.querySelector('#reset')?.addEventListener('click', () => { if (confirm('Reset all demo data to the seed? This cannot be undone.')) { db.reset(); toast('Demo data reset'); } });
+  root.querySelector('#reset')?.addEventListener('click', () => confirmTyped('Reset demo data', 'Everything in this browser goes back to the seeded Tampa Bay data.', 'RESET', async () => { db.reset(); toast('Demo data reset'); }));
 }

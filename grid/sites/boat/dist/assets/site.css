@@ -4,7 +4,7 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; color: var(--ink); background: var(--bg); line-height: 1.5; }
+body { margin: 0; color: var(--ink); background: var(--bg); line-height: 1.5; font-size: 16px; }
 a { color: var(--teal); }
 h1 { font-size: clamp(28px, 4.5vw, 44px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -.01em; }
 h1 span { color: var(--teal); }
