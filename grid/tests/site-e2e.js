@@ -40,7 +40,7 @@ ok('sitemap has 37 urls', (sitemap.match(/<url>/g) || []).length === 37, `${(sit
   page.on('pageerror', (e) => errors.push(e.message)); page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
 
   await page.goto(BASE + '/'); await page.waitForTimeout(400);
-  ok('home renders h1', /Answered in 5 minutes/i.test(await page.locator('h1').innerText()));
+  ok('home renders h1', /lift, slip or driveway/i.test(await page.locator('h1').innerText()));
   await page.screenshot({ path: SHOT + 'site-home.png', fullPage: false });
 
   // unconfigured form shows call-us message
