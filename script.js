@@ -447,7 +447,8 @@
 
     // Hide a field's error as soon as the person starts fixing it.
     [["#check-first", "#first-error"], ["#check-last", "#last-error"],
-     ["#check-contact", "#contact-error"], ["#zip-code", "#zip-error"], ["#check-consent", "#consent-error"]].forEach(([f, e]) => {
+     ["#check-phone", "#phone-error"], ["#check-email", "#email-error"],
+     ["#zip-code", "#zip-error"], ["#check-consent", "#consent-error"]].forEach(([f, e]) => {
       const field = waterForm.querySelector(f), err = waterForm.querySelector(e);
       if (!field || !err) return;
       const clear = () => { err.hidden = true; field.removeAttribute("aria-invalid"); field.closest(".consent")?.classList.remove("is-invalid"); };
@@ -459,27 +460,29 @@
       event.preventDefault();
       const first = (waterForm.querySelector("#check-first")?.value || "").trim();
       const last = (waterForm.querySelector("#check-last")?.value || "").trim();
-      const contact = (waterForm.querySelector("#check-contact")?.value || "").trim();
+      const phone = (waterForm.querySelector("#check-phone")?.value || "").trim();
+      const email = (waterForm.querySelector("#check-email")?.value || "").trim();
       const zip = (waterForm.querySelector("#zip-code")?.value || "").trim();
 
-      // Demo code: Christian and Dave type "tbwater" as the email or phone to
+      // Demo code: Christian and Dave type "tbwater" in the email (or phone) to
       // show someone the tool. Report only - no name needed, nothing is sent,
       // so demos don't use up the monthly Formspree submissions.
-      const demo = contact.toLowerCase() === "tbwater";
+      const demo = [phone, email].some((v) => v.toLowerCase() === "tbwater");
 
-      // Contact is required (since 2026-10-07): the report is worth one real
-      // email or phone, and it gives Dave a lead he can actually follow up.
-      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
-      const digits = contact.replace(/\D/g, "");
-      const isPhone = !isEmail && digits.length >= 10 && digits.length <= 11;
-      const contactOk = demo || isEmail || isPhone;
+      // Phone required, email optional (2026-11-24, Christian): every water lead
+      // is one Dave can call; an email only adds the emailed copy of the report.
+      const digits = phone.replace(/\D/g, "");
+      const phoneOk = demo || (digits.length === 10 || (digits.length === 11 && digits[0] === "1"));
+      const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      const emailOk = demo || !email || isEmail;
 
       // One message under each field that needs fixing.
       const problems = [
         ["#check-first", "#first-error", !demo && !first, "Add your first name."],
         ["#check-last", "#last-error", !demo && !last, "Add your last name."],
-        ["#check-contact", "#contact-error", !contactOk,
-          contact ? "That doesn't look like an email or a phone number." : "Add an email or phone number."],
+        ["#check-phone", "#phone-error", !phoneOk,
+          phone ? "That phone number looks incomplete. Use all 10 digits." : "Add your phone number."],
+        ["#check-email", "#email-error", !emailOk, "That doesn't look like an email. Fix it or leave it blank."],
         ["#zip-code", "#zip-error", !/^\d{5}$/.test(zip), zip ? "ZIP codes are 5 digits." : "Add your 5-digit ZIP code."],
         ["#check-consent", "#consent-error", !demo && !waterForm.querySelector("#check-consent")?.checked, "Tick the box to see your report."],
       ];
@@ -519,9 +522,9 @@
         const lead = {
           _subject: `New water lead: ${who} - ${zip} ${where}${isEmail ? "" : " (phone - call or text)"}`,
           "Name": who,
+          "Phone": phone,                             // always there since 2026-11-24
         };
-        if (isEmail) lead.email = contact;            // also sets Reply-To
-        else lead["Phone"] = contact;
+        if (isEmail) lead.email = email;              // also sets Reply-To; the report email goes here
         lead["ZIP"] = zip;
         lead["Their water utility"] = utility ? utility.name : "(not in our database)";
         lead["Worst in their water"] = topConcerns || "(no report generated)";

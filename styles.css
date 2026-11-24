@@ -3071,3 +3071,6 @@ textarea:focus-visible {
   .rv2-track { animation: none; }
   .rv2-ribbon { overflow-x: auto; }
 }
+
+/* Water check: phone required, email optional (2026-11-24, Christian) */
+.label-optional { font-weight: 500; opacity: 0.7; }

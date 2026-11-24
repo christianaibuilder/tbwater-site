@@ -77,7 +77,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261124">
+  <link rel="stylesheet" href="styles.css?v=20261124b">
 </head>
 <body>
   <div class="announce" role="note">
@@ -317,7 +317,8 @@
              utility, topConcerns} to Formspree ("TB Water" form in Christian's
              account). Contact is required since 2026-10-07 (Dave + Christian:
              a real email or phone is a fair trade for the report).
-             Demo code: typing "tbwater" as the email or phone shows the report
+             Since 2026-11-24 the phone is required and the email optional.
+             Demo code: typing "tbwater" in the email (or phone) shows the report
              for the ZIP without sending anything (Christian and Dave showing
              people the tool, so it doesn't burn the monthly submissions).
              Submissions tab: https://formspree.io/forms/xvkppydy -->
@@ -340,16 +341,26 @@
             </div>
           </div>
 
-          <label for="check-contact">Email or phone</label>
-          <input id="check-contact" name="contact" type="text" autocomplete="email" placeholder="you@email.com or (727) 555-0123" required aria-describedby="contact-error">
-          <p class="field-error" id="contact-error" hidden>Add an email or phone number.</p>
+          <!-- 2026-11-24 (Christian): phone required, email optional, so every water lead is one Dave can call. -->
+          <div class="form-row">
+            <div>
+              <label for="check-phone">Phone</label>
+              <input id="check-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(727) 555-0123" required aria-describedby="phone-error">
+              <p class="field-error" id="phone-error" hidden>Add your phone number.</p>
+            </div>
+            <div>
+              <label for="check-email">Email <span class="label-optional">(optional)</span></label>
+              <input id="check-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" aria-describedby="email-error">
+              <p class="field-error" id="email-error" hidden>That doesn't look like an email.</p>
+            </div>
+          </div>
 
           <label for="zip-code">ZIP code</label>
           <input id="zip-code" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="34689" pattern="\d{5}" maxlength="5" required aria-describedby="zip-error">
           <p class="field-error" id="zip-error" hidden>Add your 5-digit ZIP code.</p>
 
           <!-- 2026-11-15 (Christian): no city-or-well question; the report says it covers city water and points well owners to Dave. -->
-          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent" required aria-describedby="consent-error"><span>Dave may reach out once about my report, by the email or phone I gave. <b>No spam, just once.</b></span></label>
+          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent" required aria-describedby="consent-error"><span>Dave may call or text once about my report, and email me a copy if I added an email. <b>No spam.</b></span></label>
           <p class="field-error" id="consent-error" hidden>Tick the box to see your report.</p>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
@@ -1081,6 +1092,6 @@
   </footer>
 
   <script src="public/data/water-data.js?v=20261113"></script>
-  <script src="script.js?v=20261116"></script>
+  <script src="script.js?v=20261124"></script>
 </body>
 </html>
