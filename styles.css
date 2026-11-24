@@ -3002,3 +3002,72 @@ textarea:focus-visible {
   .svc-row .svc-price-text { white-space: normal; max-width: 6.5rem; }   /* "Priced by size" wraps instead of squeezing the text */
   .svc-photo, .svc-alt .svc-photo { aspect-ratio: 5 / 4; }
 }
+
+
+/* ---------- Reviews (redesign live 2026-11-24, Christian) ----------
+   Dark section: the three platform scores as links, one big quote, real 5-star reviews word for word (sources in
+   docs/reviews-sources.md) with name, site, stars and date on top, and a moving ribbon of real customers. Cards are
+   sized to their own text (no empty white space) and the excerpts are kept to a similar length. */
+.rv2 { padding: var(--section-pad) 0 calc(var(--section-pad) * .8); background: var(--ink); color: #fff; overflow: hidden; }
+.rv2-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.6rem 2.5rem;
+  margin-bottom: clamp(1.8rem, 4vw, 2.8rem); }
+.rv2-head > div:first-child { max-width: 34rem; min-width: 0; }
+.rv2 h2 { color: #fff; margin: 0 0 .7rem; text-wrap: balance; }
+.rv2-sub { margin: 0; color: rgba(255, 255, 255, .72); font-size: 1.02rem; }
+.rv2-scores { display: flex; flex-wrap: wrap; gap: .7rem; }
+.rv2-score { display: grid; gap: .1rem; min-width: 8.5rem; padding: .85rem 1.1rem; border-radius: var(--radius);
+  background: rgba(255, 255, 255, .06); border: 1px solid rgba(111, 212, 242, .28); color: #fff; text-decoration: none;
+  transition: border-color 200ms ease, background 200ms ease; }
+.rv2-score:hover, .rv2-score:focus-visible { border-color: var(--aqua); background: rgba(111, 212, 242, .1); }
+.rv2-score-src { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--aqua); }
+.rv2-score-num { font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; line-height: 1.05; }
+.rv2-star { color: var(--sun); font-size: 1.2rem; vertical-align: .25em; }
+.rv2-score-count { font-size: .8rem; color: rgba(255, 255, 255, .66); }
+.rv2-top { display: flex; flex-direction: column; gap: .3rem; }
+.rv2-who { display: flex; align-items: center; justify-content: space-between; gap: .6rem; }
+.rv2-rate { display: flex; align-items: center; gap: .55rem; margin: 0; }
+.rv2-stars { color: var(--sun); letter-spacing: .14em; font-size: .95rem; line-height: 1; }
+.rv2-name { font-weight: 700; font-size: .95rem; }
+.rv2-date { font-size: .8rem; }
+.rv2-src { padding: .14rem .55rem; border-radius: 999px; font-size: .68rem; font-weight: 700; letter-spacing: .04em;
+  background: rgba(111, 212, 242, .12); color: var(--aqua-soft); border: 1px solid rgba(111, 212, 242, .3); }
+.rv2-feature { margin: 0 0 clamp(1.6rem, 3.5vw, 2.4rem); padding: clamp(1.3rem, 3.5vw, 2.2rem) clamp(1.3rem, 4vw, 2.8rem);
+  border-left: 4px solid var(--aqua); background: rgba(255, 255, 255, .05); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+.rv2-feature .rv2-who { justify-content: flex-start; }
+.rv2-feature .rv2-name { color: #fff; }
+.rv2-feature .rv2-date { color: rgba(255, 255, 255, .66); }
+.rv2-feature blockquote { margin: .9rem 0 0; font-family: var(--font-display); font-weight: 700; color: #fff;
+  font-size: clamp(1.35rem, 3.2vw, 2.15rem); line-height: 1.22; letter-spacing: -.01em; text-wrap: balance; }
+/* masonry columns: every card sizes to its text and every gap is the same (independent QA, 2026-11-24) */
+.rv2-wall { columns: 3; column-gap: 1.1rem; }
+.rv2-card { break-inside: avoid; margin: 0 0 1.1rem; padding: 1.2rem 1.3rem 1.3rem; border-radius: var(--radius-lg); background: var(--surface);
+  color: var(--ink-2); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: .8rem; min-width: 0; }
+.rv2-card .rv2-top { padding-bottom: .75rem; border-bottom: 1px solid var(--line-soft); }
+.rv2-card .rv2-name { color: var(--ink); }
+.rv2-card .rv2-src { background: var(--foam-2); color: var(--brand-dark); border-color: var(--line); }
+.rv2-card .rv2-date { color: var(--body-text); }
+.rv2-card .rv2-stars { color: #d97706; }  /* the brand sun is too pale on white (1.8:1); this amber is 3.2:1 */
+.rv2-quote { margin: 0; font-size: .97rem; line-height: 1.55; }
+.rv2-ribbon { margin-top: clamp(1.8rem, 4vw, 2.8rem); }
+.rv2-track { display: flex; gap: .6rem; width: max-content; animation: rv2-scroll 80s linear infinite; }
+@media (hover: hover) { .rv2-ribbon:hover .rv2-track { animation-play-state: paused; } }  /* mouse only: a tap on Android must not freeze it */
+.rv2-track img { width: 132px; height: 176px; object-fit: cover; border-radius: var(--radius); display: block;
+  border: 1px solid rgba(255, 255, 255, .12); }
+@keyframes rv2-scroll { to { transform: translateX(calc(-50% - .3rem)); } }  /* half the gap: a seamless loop */
+.rv2-caption { margin: 1rem 0 0; text-align: center; font-size: .86rem; color: rgba(255, 255, 255, .62); }
+.rv2-links { margin: 1.4rem 0 0; text-align: center; font-size: .9rem; color: rgba(255, 255, 255, .72); }
+.rv2-links a { color: var(--aqua); font-weight: 600; }
+@media (min-width: 961px) { .rv2-feature blockquote { text-wrap: wrap; } }
+@media (max-width: 960px) { .rv2-wall { columns: 2; } }
+@media (max-width: 720px) {
+  .rv2-wall { columns: auto; display: flex; align-items: flex-start; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: .6rem; margin-inline: -1.25rem; padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
+  .rv2-card { flex: 0 0 84%; margin: 0; scroll-snap-align: start; }
+  .rv2-score { min-width: 0; flex: 1 1 6.5rem; padding: .7rem .8rem; }
+  .rv2-score-num { font-size: 1.5rem; }
+  .rv2-track img { width: 104px; height: 139px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv2-track { animation: none; }
+  .rv2-ribbon { overflow-x: auto; }
+}

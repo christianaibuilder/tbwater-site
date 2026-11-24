@@ -77,7 +77,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261117">
+  <link rel="stylesheet" href="styles.css?v=20261124">
 </head>
 <body>
   <div class="announce" role="note">
@@ -796,67 +796,8 @@
     </section>
 
     <!-- ============ REVIEWS ============ -->
-    <!-- Reviews redesign, PREVIEW ONLY (Christian 2026-11-20): inert on tbwater.com; the preview server unwraps it and
-         its style hides the old #reviews there. To launch: delete the old #reviews section and this wrapper (keep the
-         inside), move the CSS into styles.css, rename id="reviews-new" to id="reviews". Quotes are word for word. -->
-    <template data-preview-only>
-    <style>
-  #reviews { display: none; }
-  .rv2 { padding: var(--section-pad) 0 calc(var(--section-pad) * .8); background: var(--ink); color: #fff; overflow: hidden; }
-  .rv2-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.6rem 2.5rem;
-    margin-bottom: clamp(1.8rem, 4vw, 2.8rem); }
-  .rv2-head > div:first-child { max-width: 34rem; min-width: 0; }
-  .rv2 h2 { color: #fff; margin: 0 0 .7rem; text-wrap: balance; }
-  .rv2-sub { margin: 0; color: rgba(255, 255, 255, .72); font-size: 1.02rem; }
-  .rv2-scores { display: flex; flex-wrap: wrap; gap: .7rem; }
-  .rv2-score { display: grid; gap: .1rem; min-width: 8.5rem; padding: .85rem 1.1rem; border-radius: var(--radius);
-    background: rgba(255, 255, 255, .06); border: 1px solid rgba(111, 212, 242, .28); color: #fff; text-decoration: none;
-    transition: border-color 200ms ease, background 200ms ease; }
-  .rv2-score:hover, .rv2-score:focus-visible { border-color: var(--aqua); background: rgba(111, 212, 242, .1); }
-  .rv2-score-src { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--aqua); }
-  .rv2-score-num { font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; line-height: 1.05; }
-  .rv2-star { color: var(--sun); font-size: 1.2rem; vertical-align: .25em; }
-  .rv2-score-count { font-size: .8rem; color: rgba(255, 255, 255, .66); }
-  .rv2-feature { margin: 0 0 clamp(1.6rem, 3.5vw, 2.4rem); padding: clamp(1.4rem, 3.5vw, 2.4rem) clamp(1.3rem, 4vw, 2.8rem);
-    border-left: 4px solid var(--aqua); background: rgba(255, 255, 255, .05); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
-  .rv2-feature blockquote { margin: .4rem 0 1rem; font-family: var(--font-display); font-weight: 700; color: #fff;
-    font-size: clamp(1.35rem, 3.2vw, 2.15rem); line-height: 1.22; letter-spacing: -.01em; text-wrap: balance; }
-  .rv2-stars { margin: 0; color: var(--sun); letter-spacing: .18em; font-size: 1rem; }
-  .rv2-feature figcaption, .rv2-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin: 0; }
-  .rv2-name { font-weight: 700; font-size: .88rem; }
-  .rv2-feature .rv2-name { color: #fff; }
-  .rv2-src { padding: .14rem .55rem; border-radius: 999px; font-size: .68rem; font-weight: 700; letter-spacing: .04em;
-    background: rgba(111, 212, 242, .12); color: var(--aqua-soft); border: 1px solid rgba(111, 212, 242, .3); }
-  .rv2-wall { columns: 3 18rem; column-gap: 1.1rem; }
-  .rv2-card { break-inside: avoid; margin: 0 0 1.1rem; padding: 1.4rem 1.35rem 1.15rem; border-radius: var(--radius-lg);
-    background: var(--surface); color: var(--ink-2); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: .7rem; }
-  .rv2-card p.rv2-quote { margin: 0; font-size: .97rem; line-height: 1.55; }
-  .rv2-card .rv2-name { color: var(--ink); }
-  .rv2-card .rv2-src { background: var(--foam-2); color: var(--brand-dark); border-color: var(--line); }
-  .rv2-year { font-size: .78rem; color: var(--body-text); }
-  .rv2-ribbon { margin-top: clamp(1.8rem, 4vw, 2.8rem); }
-  .rv2-track { display: flex; gap: .6rem; width: max-content; animation: rv2-scroll 80s linear infinite; }
-  .rv2-ribbon:hover .rv2-track { animation-play-state: paused; }
-  .rv2-track img { width: 132px; height: 176px; object-fit: cover; border-radius: var(--radius); display: block;
-    border: 1px solid rgba(255, 255, 255, .12); }
-  @keyframes rv2-scroll { to { transform: translateX(-50%); } }
-  .rv2-caption { margin: 1rem 0 0; text-align: center; font-size: .86rem; color: rgba(255, 255, 255, .62); }
-  .rv2-links { margin: 1.4rem 0 0; text-align: center; font-size: .9rem; color: rgba(255, 255, 255, .72); }
-  .rv2-links a { color: var(--aqua); font-weight: 600; }
-  @media (max-width: 720px) {
-    .rv2-wall { columns: auto; display: flex; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory;
-      padding-bottom: .6rem; margin-inline: -1.25rem; padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
-    .rv2-card { flex: 0 0 84%; margin: 0; scroll-snap-align: start; }
-    .rv2-score { min-width: 0; flex: 1 1 6.5rem; padding: .7rem .8rem; }
-    .rv2-score-num { font-size: 1.5rem; }
-    .rv2-track img { width: 104px; height: 139px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .rv2-track { animation: none; }
-    .rv2-ribbon { overflow-x: auto; }
-  }
-    </style>
-    <section class="rv2" id="reviews-new" aria-labelledby="rv2-title">
+    <section class="rv2" id="reviews" aria-labelledby="rv2-title">
+      <!-- Reviews, live 2026-11-24. Every quote is word for word from docs/reviews-sources.md; "…" marks a cut. -->
       <div class="section-inner">
         <div class="rv2-head">
           <div>
@@ -871,70 +812,57 @@
           </div>
         </div>
         <figure class="rv2-feature">
-          <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
+          <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Matt M.</span><span class="rv2-src">Google</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2026">2026</time></p></div>
           <blockquote>“His pricing is very competitive and the prices are exactly what he lists on his website. No sales pitch or upselling equipment you don’t need.”</blockquote>
-          <figcaption><span class="rv2-name">Matt M.</span><span class="rv2-src">Google</span></figcaption>
         </figure>
         <div class="rv2-wall">
           <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">Dave at TB Water is exactly who you want installing a water softener. He’s responsive, professional, reliable, and clearly knows his stuff. You can tell he actually cares about doing it right, not just selling you equipment.</p>
-            <p class="rv2-meta"><span class="rv2-name">R. W.</span><span class="rv2-src">Yelp</span><span class="rv2-year">2026</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">Dave provided upfront, flat-rate pricing with installation included and took the time to walk me through every step of the system and its maintenance. It’s rare to find someone so knowledgeable, thorough, and genuinely committed to customer satisfaction.</p>
-            <p class="rv2-meta"><span class="rv2-name">Tyler C.</span><span class="rv2-src">Yelp</span><span class="rv2-year">2025</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">We had a plumber come out and he did not know what was going on. … David came out and figured out the problem in a very methodical and logical way. … Our water is now in great shape, and we have full and consistent water pressure.</p>
-            <p class="rv2-meta"><span class="rv2-name">Rab B.</span><span class="rv2-src">Facebook</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">I called him on Saturday and he was out ready to install the new system Monday morning. About 4 hours later my new system was installed. The new system is awesome and my wife and I couldn’t be more pleased.</p>
-            <p class="rv2-meta"><span class="rv2-name">Harvey G.</span><span class="rv2-src">Yelp</span><span class="rv2-year">2025</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">Best of all he doesn’t try to up-sell you or sell you components you don’t need for your particular water issues. As busy as he is, he’s very responsive via text or phone if you have any issues or questions and even checks in to see how you like your new system.</p>
-            <p class="rv2-meta"><span class="rv2-name">Kurt S.</span><span class="rv2-src">Google</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">He even ran a line (along the same wall) from our under sink RO to our refrigerator so our ice cubes and fridge water would be as pure as our drinking water. … This is the best water we’ve ever had!</p>
-            <p class="rv2-meta"><span class="rv2-name">Sheila M.</span><span class="rv2-src">Yelp</span><span class="rv2-year">2025</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">Don’t buy a junk system from the big box stores, call TB Water. You won’t regret it.</p>
-            <p class="rv2-meta"><span class="rv2-name">Suzie W.</span><span class="rv2-src">Yelp</span><span class="rv2-year">2021</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">I’ve used TB Water for 4 years and love them! … The water in my house is now soft, clear and delicious because of them.</p>
-            <p class="rv2-meta"><span class="rv2-name">SA C.</span><span class="rv2-src">Google</span><span class="rv2-year">2025</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">Dave stands behind all of his work. He continues with an open line of communication answering any questions, and providing any maintenance necessary.</p>
-            <p class="rv2-meta"><span class="rv2-name">Ryan O.</span><span class="rv2-src">Facebook</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">David installed my water softener 7 years ago … Service throughout the years has always been at the outstanding level. You can’t go wrong with Dave and Tampa Bay water.</p>
-            <p class="rv2-meta"><span class="rv2-name">John B.</span><span class="rv2-src">Google</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
-            <p class="rv2-quote">David is so professional he explained everything and installed the same day! He even delivers our salt now so that’s one less thing to worry about!</p>
-            <p class="rv2-meta"><span class="rv2-name">Shaunna T.</span><span class="rv2-src">Google</span></p>
-          </article>
-          <article class="rv2-card">
-            <p class="rv2-stars" aria-label="Five star review">★★★★★</p>
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">J.d. W.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2026-02-25">Feb 2026</time></p></div>
             <p class="rv2-quote">This guy was absolutely amazing. Everything all the reviews said. Don’t even read another review. Just get your product from him.</p>
-            <p class="rv2-meta"><span class="rv2-name">J.D. W.</span><span class="rv2-src">Yelp</span><span class="rv2-year">2026</span></p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">R W.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2026-01-31">Jan 2026</time></p></div>
+            <p class="rv2-quote">Dave at TB Water is exactly who you want installing a water softener. … You can tell he actually cares about doing it right, not just selling you equipment.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">SA C.</span><span class="rv2-src">Google</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2026">2026</time></p></div>
+            <p class="rv2-quote">I’ve used TB Water for 4 years and love them! … The water in my house is now soft, clear and delicious because of them.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Sheila M.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2025-08-20">Aug 2025</time></p></div>
+            <p class="rv2-quote">He even ran a line (along the same wall) from our under sink RO to our refrigerator so our ice cubes and fridge water would be as pure as our drinking water.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">James R.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2025-05-05">May 2025</time></p></div>
+            <p class="rv2-quote">TB Water provided the best quality and value for my family drinking water. Dave’s expertise and profound knowledge made all the difference.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Harvey G.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2025-01-08">Jan 2025</time></p></div>
+            <p class="rv2-quote">I called him on Saturday and he was out ready to install the new system Monday morning. About 4 hours later my new system was installed.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Tyler C.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2025-01-03">Jan 2025</time></p></div>
+            <p class="rv2-quote">Dave provided upfront, flat-rate pricing with installation included and took the time to walk me through every step of the system and its maintenance.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Brandon B.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2022-04-25">Apr 2022</time></p></div>
+            <p class="rv2-quote">Dave came over on short notice to disassemble our old water softener system (which was flooding our garage) and install his water softener within a couple of hours.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Rob D.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2022-04-24">Apr 2022</time></p></div>
+            <p class="rv2-quote">For a year we looked at every water softening technology that is on the market and it kept coming back to David and his company.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Suzie W.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2021-05-21">May 2021</time></p></div>
+            <p class="rv2-quote">David really knows his stuff and is super friendly. … Don’t buy a junk system from the big box stores, call TB Water. You won’t regret it.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Morgan B.</span><span class="rv2-src">Yelp</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2021-05-17">May 2021</time></p></div>
+            <p class="rv2-quote">I always prefer to work with the owner and not someone who is new to the job. Worked directly with David and he did the full install.</p>
+          </article>
+          <article class="rv2-card">
+            <div class="rv2-top"><div class="rv2-who"><span class="rv2-name">Ryan O.</span><span class="rv2-src">Facebook</span></div><p class="rv2-rate"><span class="rv2-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span><time class="rv2-date" datetime="2016-08-01">Aug 2016</time></p></div>
+            <p class="rv2-quote">Dave stands behind all of his work. He continues with an open line of communication answering any questions, and providing any maintenance necessary.</p>
           </article>
         </div>
       </div>
@@ -986,86 +914,6 @@
       <p class="rv2-links">Read them all on <a href="https://maps.google.com/?cid=5444908487945296808" target="_blank" rel="noopener">Google</a>,
         <a href="https://www.yelp.com/biz/tb-water-technologies-tampa-2" target="_blank" rel="noopener">Yelp</a> and
         <a href="https://www.facebook.com/premiumwatertreatment/reviews" target="_blank" rel="noopener">Facebook</a>.</p>
-    </section>
-    </template>
-    <section class="reviews" id="reviews">
-      <div class="section-inner">
-        <div class="section-heading" data-reveal>
-          <p class="eyebrow">Reviews</p>
-          <h2>Trusted by Tampa Bay homeowners.</h2>
-          <p class="section-sub">Highly rated on Google, Yelp, Facebook, and Porch for clear recommendations and dependable local service.</p>
-        </div>
-        <div class="review-rotator" data-review-rotator data-reveal>
-          <div class="review-grid" aria-label="Customer testimonials">
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">Dave at TB Water is exactly who you want installing a water softener. He&rsquo;s responsive, professional, reliable, and clearly knows his stuff.</p>
-              <p class="review-meta"><span class="review-name">R. W.</span><span class="review-source">Yelp</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">This guy was absolutely amazing. Everything all the reviews said. Don&rsquo;t even read another review. Just get your product from him.</p>
-              <p class="review-meta"><span class="review-name">J.D. W.</span><span class="review-source">Yelp</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">Dave is very knowledgeable and passionate about his work. We had him install a twin tank whole home water softener and 5 stage RO system.</p>
-              <p class="review-meta"><span class="review-name">Sheila M.</span><span class="review-source">Yelp</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">TB Water exceeded all of our expectations!</p>
-              <p class="review-meta"><span class="review-name">Tyler C.</span><span class="review-source">Yelp</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">My wife and I moved to Florida in 2022 and the home we bought had an older softener/filtration system the previous homeowner had installed.</p>
-              <p class="review-meta"><span class="review-name">Harvey G.</span><span class="review-source">Yelp</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">OUTSTANDING IN ALL REGARDS! No need to shop around. TRUSTWORTHY, RELIABLE PROFESSIONAL!!!</p>
-              <p class="review-meta"><span class="review-name">Gary Roberts</span><span class="review-source">Facebook</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">Dave came out in just days notice and replaced the old system with the platinum pro series and what a difference.</p>
-              <p class="review-meta"><span class="review-name">Jimmy Piccorelli</span><span class="review-source">Facebook</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">Dave is excellent to work with. He responded to my inquiry of a water softener system within an hour.</p>
-              <p class="review-meta"><span class="review-name">Kevin Fox</span><span class="review-source">Facebook</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">Very good experience with TB Water. Dave was very responsive from the initial call while I was looking for systems all the way through the installation.</p>
-              <p class="review-meta"><span class="review-name">Kip Goulder</span><span class="review-source">Facebook</span></p>
-            </article>
-            <article class="review-card">
-              <p class="review-stars" aria-label="Five star review">★★★★★</p>
-              <p class="review-quote">We just had our new water system put in a few weeks ago and we are extremely happy! We had horrible well water that would turn our tubs, toilets and sinks gold within a week.</p>
-              <p class="review-meta"><span class="review-name">Brittany Coleman</span><span class="review-source">Facebook</span></p>
-            </article>
-          </div>
-          <div class="review-controls">
-            <button class="review-arrow review-prev" type="button" aria-label="Previous reviews"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6 8.5 12l6 6"/></svg></button>
-            <div class="review-dots"></div>
-            <button class="review-arrow review-next" type="button" aria-label="Next reviews"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg></button>
-          </div>
-        </div>
-        <div class="customer-strip" data-reveal aria-label="Real TB Water customers with their new systems">
-          <figure><img src="public/images/approved/happy-family-1.jpg" alt="Tampa Bay family with their newly installed TB Water system" loading="lazy" width="360" height="480"></figure>
-          <figure><img src="public/images/approved/happy-family-2.jpg" alt="Family of four next to their TB Water whole-home system" loading="lazy" width="360" height="480"></figure>
-          <figure><img src="public/images/approved/happy-couple-1.jpg" alt="Couple in their garage with a new TB Water treatment system" loading="lazy" width="360" height="480"></figure>
-          <figure><img src="public/images/approved/happy-family-3.jpg" alt="Dad and kids with their new TB Water system" loading="lazy" width="360" height="480"></figure>
-          <figure><img src="public/images/approved/happy-couple-2.jpg" alt="Homeowners beside their TB Water install outside their house" loading="lazy" width="360" height="480"></figure>
-          <figure><img src="public/images/approved/happy-customer-6.jpg" alt="Homeowner with his newly installed TB Water twin tank system" loading="lazy" width="360" height="480"></figure>
-          <figure><img src="public/images/tbwater-photos/twin-tank/happy-customer.jpg" alt="Customer giving a thumbs up next to his new TB Water twin tank system" loading="lazy" width="360" height="480"></figure>
-          <figure><img src="public/images/tbwater-photos/dual-media/dual-install-2.jpg" alt="Customer showing off his new TB Water conditioner install" loading="lazy" width="360" height="480"></figure>
-        </div>
-        <p class="customer-strip-caption" data-reveal>Real TB Water customers on installation day.</p>
-      </div>
     </section>
 
     <!-- ============ GALLERY ============ -->
