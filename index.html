@@ -302,7 +302,7 @@
           <h2>See what&rsquo;s really in <em>your</em> water. <span class="check-free">Free, right now.</span></h2>
           <p class="check-lede">Type in your name, ZIP code and phone number, and TB Water pulls your own utility&rsquo;s latest testing data &mdash; every contaminant they detected, how it compares to health guidelines, and what it would cost to fix. No appointment. Nobody at your door. No catch.</p>
           <ol class="check-steps">
-            <li><span aria-hidden="true">1</span><b>Enter your name, ZIP and a way to reach you</b>Your report opens on this page in seconds</li>
+            <li><span aria-hidden="true">1</span><b>Enter your name, ZIP and a way to reach you</b>Your report opens on this page in seconds, plus a PDF copy by email</li>
             <li><span aria-hidden="true">2</span><b>See what&rsquo;s in it</b>Every contaminant above health guidelines, in plain English</li>
             <li><span aria-hidden="true">3</span><b>See what it costs</b>Exact system pricing &mdash; then decide in your own time</li>
           </ol>
@@ -341,7 +341,7 @@
             </div>
           </div>
 
-          <!-- 2026-11-24 (Christian): phone required, email optional, so every water lead is one Dave can call. 2026-11-25: consent line shortened to his wording. -->
+          <!-- 2026-11-24 (Christian): phone required, email optional, so every water lead is one Dave can call. 2026-11-25: consent line shortened to his wording, then back to the 11-24 wording with "the PDF" (he liked it better; he wants people to know they get a PDF). -->
           <div class="form-row">
             <div>
               <label for="check-phone">Phone</label>
@@ -349,7 +349,7 @@
               <p class="field-error" id="phone-error" hidden>Add your phone number.</p>
             </div>
             <div>
-              <label for="check-email">Email <span class="label-optional">(optional)</span></label>
+              <label for="check-email">Email <span class="label-optional">(optional, for the PDF)</span></label>
               <input id="check-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" aria-describedby="email-error">
               <p class="field-error" id="email-error" hidden>That doesn't look like an email.</p>
             </div>
@@ -360,7 +360,7 @@
           <p class="field-error" id="zip-error" hidden>Add your 5-digit ZIP code.</p>
 
           <!-- 2026-11-15 (Christian): no city-or-well question; the report says it covers city water and points well owners to Dave. -->
-          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent" required aria-describedby="consent-error"><span>You'll get your water report PDF, or Dave will call or text.</span></label>
+          <label class="consent" for="check-consent"><input type="checkbox" id="check-consent" name="Contact consent" required aria-describedby="consent-error"><span>Dave may call or text once about my report, and email me the PDF if I added an email. <b>No spam.</b></span></label>
           <p class="field-error" id="consent-error" hidden>Tick the box to see your report.</p>
           <button class="button button-primary button-lg check-submit" type="submit">See My Water Report</button>
           <p class="form-note" role="status">Free &amp; instant &mdash; or just call <a href="tel:+17275858686">(727) 585-8686</a>.</p>
