@@ -2,24 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Grid HQ</title>
   <meta name="description" content="Dispatch back end: leads, techs, quotes, invoices, payouts.">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#ffffff">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
   <link rel="stylesheet" href="styles.css">
   <script src="config.js"></script>
 </head>
 <body>
   <div id="app" class="app">
-    <aside class="side" id="side">
-      <div class="brand"><span class="logo">▦</span> <span>Grid HQ</span><button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button></div>
+    <aside class="side" id="side" aria-label="Main navigation">
+      <a class="brand" href="#/"><span class="mark" aria-hidden="true"></span><span>Grid HQ</span></a>
       <nav id="nav"></nav>
       <div class="side-foot" id="side-foot"></div>
     </aside>
-    <main class="main" id="main"><div class="loading">Loading…</div></main>
+    <div class="shell">
+      <header class="topbar">
+        <button class="icon-btn menu-btn" id="menu-btn" aria-label="Open menu" type="button"></button>
+        <div class="search" role="search">
+          <span class="search-icon" aria-hidden="true"></span>
+          <input id="q" type="search" placeholder="Search leads, techs, phone numbers" autocomplete="off" aria-label="Search">
+          <kbd class="search-key" aria-hidden="true">/</kbd>
+          <div id="q-results" class="q-results" hidden></div>
+        </div>
+        <button class="btn primary" id="top-new-lead" type="button">New lead</button>
+      </header>
+      <main class="main" id="main"><div class="loading">Loading…</div></main>
+    </div>
+    <nav class="tabbar" id="tabbar" aria-label="Quick navigation"></nav>
   </div>
+  <div class="scrim" id="scrim" hidden></div>
   <script type="module" src="app.js"></script>
 </body>
 </html>

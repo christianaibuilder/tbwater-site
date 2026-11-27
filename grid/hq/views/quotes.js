@@ -30,8 +30,8 @@ export async function detail(root, { params }) {
   const render = () => {
     const t = act.computeTotals(items, taxRate);
     root.innerHTML = `
-      <a href="#/leads/${lead.id}" class="small">← ${esc(lead.customer_name)}</a>
-      <div class="row between"><h1 style="margin:4px 0">Quote ${badge(q.status)}</h1><div class="small muted">${tech ? `Tech: <a href="#/techs/${tech.id}">${esc(tech.business_name)}</a> · ${money(tech.hourly_rate)}/hr, trip ${money(tech.trip_fee)}` : 'No tech assigned'}</div></div>
+      <a href="#/leads/${lead.id}" class="back">${esc(lead.customer_name)}</a>
+      <div class="row between"><h1 class="title-row">Quote ${badge(q.status)}</h1><div class="small muted">${tech ? `Tech: <a href="#/techs/${tech.id}">${esc(tech.business_name)}</a> · ${money(tech.hourly_rate)}/hr, trip ${money(tech.trip_fee)}` : 'No tech assigned'}</div></div>
       <div class="actions">
         ${editable ? `<button class="btn" data-a="save">Save</button>` : ''}
         ${q.status === 'draft' ? `<button class="btn primary" data-a="send">Send to customer</button>` : ''}

@@ -10,7 +10,7 @@ export default async function techs(root, { query }) {
   const rows = tab === 'roster' ? all.filter((t) => t.status === 'approved') : tab === 'paused' ? all.filter((t) => ['paused', 'rejected', 'applied'].includes(t.status)) : all;
 
   root.innerHTML = `
-    <div class="row between"><h1>Techs</h1><button class="btn primary" id="add">+ Add tech manually</button></div>
+    <div class="page-head"><h1>Techs</h1><button class="btn primary" id="add">Add a tech</button></div>
     <div class="tabs"><a href="#/techs?tab=roster" class="${tab === 'roster' ? 'active' : ''}">Roster <span class="muted">${all.filter((t) => t.status === 'approved').length}</span></a>
       <a href="#/techs?tab=applications" class="${tab === 'applications' ? 'active' : ''}">Applications <span class="muted">${newApps.length}</span></a>
       <a href="#/techs?tab=paused" class="${tab === 'paused' ? 'active' : ''}">Paused / other <span class="muted">${all.filter((t) => t.status !== 'approved').length}</span></a></div>
@@ -56,8 +56,8 @@ export async function detail(root, { params }) {
   const cat = store.category((t.category_ids || [])[0]) || store.categories[0];
 
   root.innerHTML = `
-    <a href="#/techs" class="small">← Techs</a>
-    <div class="row between"><h1 style="margin:4px 0">${esc(t.business_name)} ${badge(t.status)}</h1>
+    <a href="#/techs" class="back">Techs</a>
+    <div class="row between"><h1 class="title-row">${esc(t.business_name)} ${badge(t.status)}</h1>
       <div class="actions">${t.status === 'approved' ? `<button class="btn" data-a="pause">Pause</button>` : `<button class="btn ok" data-a="approve">Approve</button>`}<button class="btn primary" data-a="edit">Edit</button>${store.setting('payout_rail') === 'stripe_connect' ? `<button class="btn" data-a="connect">${t.stripe_account_id ? 'Stripe onboarding link' : 'Set up Stripe payouts'}</button>` : ''}</div></div>
     ${!t.w9_path || !t.insurance_expires || d < 0 ? `<p class="notice">${!t.w9_path ? 'No W-9 on file — payouts are blocked until you mark it received. ' : ''}${!t.insurance_expires ? 'No insurance expiry recorded. ' : d < 0 ? 'Insurance expired. ' : ''}</p>` : ''}
     <div class="grid c4">

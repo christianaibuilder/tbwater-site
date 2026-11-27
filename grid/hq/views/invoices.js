@@ -33,8 +33,8 @@ export async function detail(root, { params }) {
     const fp = act.feePreview(total);
     const conf = inv.extracted?.confidence;
     root.innerHTML = `
-      <a href="#/leads/${lead.id}" class="small">← ${esc(lead.customer_name)}</a>
-      <div class="row between"><h1 style="margin:4px 0">Invoice ${badge(inv.status)}</h1><div class="small muted">Tech: <a href="#/techs/${tech?.id}">${esc(tech?.business_name || '?')}</a> · ${esc(titleCase(lead.service_slug))}</div></div>
+      <a href="#/leads/${lead.id}" class="back">${esc(lead.customer_name)}</a>
+      <div class="row between"><h1 class="title-row">Invoice ${badge(inv.status)}</h1><div class="small muted">Tech: <a href="#/techs/${tech?.id}">${esc(tech?.business_name || '?')}</a> · ${esc(titleCase(lead.service_slug))}</div></div>
       ${inv.status === 'uploaded' ? '<p class="notice">Not read yet. Run the AI read or enter lines by hand.</p>' : ''}
       ${conf !== undefined && conf !== null && editable ? `<p class="notice ${conf >= 0.85 ? 'ok' : ''}">AI read this invoice with ${Math.round(conf * 100)}% confidence${inv.extracted?.demo ? ' (demo simulation)' : ''}. Check the total against the picture before sending.</p>` : ''}
       <div class="actions">

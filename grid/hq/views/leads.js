@@ -18,7 +18,7 @@ export default async function leads(root, { query }) {
   const tabLink = (k, label) => `<a href="#/leads?tab=${k}" class="${tab === k ? 'active' : ''}">${label} <span class="muted">${counts[k]}</span></a>`;
 
   root.innerHTML = `
-    <div class="row between"><h1>Leads</h1><button class="btn primary" id="new-lead">+ Phone lead</button></div>
+    <div class="page-head"><h1>Leads</h1><button class="btn" id="new-lead">Add a phone lead</button></div>
     <div class="tabs">${tabLink('answer', 'Needs answer')}${tabLink('active', 'Active')}${tabLink('done', 'Completed')}${tabLink('dead', 'Dead')}${tabLink('all', 'All')}</div>
     <div class="card table-wrap">
       ${filtered.length ? `<table><thead><tr><th>${tab === 'answer' ? 'Waiting' : 'Updated'}</th><th>Customer</th><th>Where</th><th>Job</th><th>Status</th><th>Tech</th><th class="num">Value</th></tr></thead><tbody>
@@ -34,7 +34,7 @@ export default async function leads(root, { query }) {
   root.querySelector('#new-lead').addEventListener('click', () => newLeadModal());
 }
 
-function newLeadModal() {
+export function newLeadModal() {
   const cats = store.categories.filter((c) => c.status === 'active');
   const marine = cats[0];
   modal(`<h3>New lead from a phone call</h3><form id="f">
@@ -94,22 +94,22 @@ export async function detail(root, { params }) {
   const primary = [];
   const secondary = [];
   if (['new', 'contacted'].includes(l.status)) {
-    primary.push(`<button class="btn primary" data-a="call">📞 Log call</button>`, `<button class="btn" data-a="text">💬 Log text</button>`, `<button class="btn ok" data-a="offer">Approve & offer to techs</button>`);
+    primary.push(`<button class="btn primary" data-a="call">Log call</button>`, `<button class="btn" data-a="text">Log text</button>`, `<button class="btn ok" data-a="offer">Approve & offer to techs</button>`);
     secondary.push(`<button class="btn" data-a="assign">Assign directly</button>`, `<button class="btn danger" data-a="dead">Mark dead</button>`);
   } else if (l.status === 'approved') {
     primary.push(`<button class="btn ok" data-a="offer">Offer to techs</button>`, `<button class="btn" data-a="assign">Assign directly</button>`);
-    secondary.push(`<button class="btn" data-a="call">📞 Log call</button>`, `<button class="btn danger" data-a="dead">Mark dead</button>`);
+    secondary.push(`<button class="btn" data-a="call">Log call</button>`, `<button class="btn danger" data-a="dead">Mark dead</button>`);
   } else if (l.status === 'offered') {
     primary.push(`<button class="btn" data-a="assign">Assign directly</button>`, `<button class="btn" data-a="reoffer">Offer to more techs</button>`);
-    secondary.push(`<button class="btn" data-a="call">📞 Log call</button>`, `<button class="btn danger" data-a="dead">Mark dead</button>`);
+    secondary.push(`<button class="btn" data-a="call">Log call</button>`, `<button class="btn danger" data-a="dead">Mark dead</button>`);
   } else if (['assigned', 'quoted', 'scheduled', 'in_progress'].includes(l.status)) {
     if (!quotes.some((q) => ['sent', 'accepted'].includes(q.status))) primary.push(`<button class="btn primary" data-a="quote">Build quote</button>`);
-    primary.push(`<button class="btn" data-a="schedule">📅 ${l.scheduled_at ? 'Reschedule' : 'Schedule'}</button>`);
+    primary.push(`<button class="btn" data-a="schedule">${l.scheduled_at ? 'Reschedule' : 'Schedule'}</button>`);
     if (l.status !== 'in_progress') primary.push(`<button class="btn" data-a="start">Mark in progress</button>`);
     primary.push(`<button class="btn ok" data-a="invoice">Upload invoice</button>`);
-    secondary.push(`<button class="btn" data-a="call">📞 Log call</button>`, `<button class="btn" data-a="assign">Reassign</button>`, `<button class="btn danger" data-a="dead">Mark dead</button>`);
+    secondary.push(`<button class="btn" data-a="call">Log call</button>`, `<button class="btn" data-a="assign">Reassign</button>`, `<button class="btn danger" data-a="dead">Mark dead</button>`);
   } else if (l.status === 'completed') {
-    primary.push(`<button class="btn" data-a="call">📞 Log call</button>`);
+    primary.push(`<button class="btn" data-a="call">Log call</button>`);
   } else if (l.status === 'dead') {
     primary.push(`<button class="btn" data-a="revive">Reopen</button>`);
   }
@@ -117,12 +117,13 @@ export async function detail(root, { params }) {
 
   root.innerHTML = `
     <div class="row between">
-      <div><a href="#/leads" class="small">← Leads</a><h1 style="margin:4px 0">${esc(l.customer_name)} ${badge(l.status)} ${l.urgency === 'asap' ? '<span class="badge s-new">ASAP</span>' : ''}</h1>
+      <div><a href="#/leads" class="back">Leads</a><h1 class="title-row">${esc(l.customer_name)} ${badge(l.status)} ${l.urgency === 'asap' ? '<span class="badge s-new">ASAP</span>' : ''}</h1>
         <div class="row gap"><a href="${telLink(l.phone)}">${esc(l.phone)}</a>${l.sms_consent ? `<a href="${smsLink(l.phone, `Hi ${l.customer_name.split(' ')[0]}, this is ${cat?.brand_name || 'the shop'} about your boat.`)}">Text</a>` : '<span class="muted small">no text consent</span>'}${l.email ? `<a href="mailto:${esc(l.email)}">${esc(l.email)}</a>` : ''}</div></div>
-      <div class="right">${l.status === 'new' ? `<div class="timer ${waiting <= sla ? 'green' : waiting <= 30 ? 'yellow' : 'red'}" style="font-size:28px">${ago(l.created_at)}</div><div class="small muted">waiting · goal ${sla} min</div>` : resp !== null ? `<div class="timer ${resp <= sla ? 'green' : resp <= 30 ? 'yellow' : 'red'}" style="font-size:22px">${Math.round(resp)} min</div><div class="small muted">first response</div>` : ''}</div>
+      <div class="right">${l.status === 'new' ? `<div class="timer ${waiting <= sla ? 'green' : waiting <= 30 ? 'yellow' : 'red'}" style="font-size:28px">${ago(l.created_at)}</div><div class="small muted">waiting, goal ${sla} min</div>` : resp !== null ? `<div class="timer ${resp <= sla ? 'green' : resp <= 30 ? 'yellow' : 'red'}" style="font-size:22px">${Math.round(resp)} min</div><div class="small muted">first response</div>` : ''}</div>
     </div>
+    ${stepper(l)}
     <div class="actions">${primary.join('')}</div>
-    <div class="actions">${secondary.join('')}</div>
+    <div class="actions secondary">${secondary.join('')}</div>
 
     <div class="grid c2">
       <div class="card">
@@ -240,4 +241,21 @@ function editModal(l) {
     <label class="inline"><input type="checkbox" name="sms_consent" ${l.sms_consent ? 'checked' : ''}> OK to text</label>
     <div class="row end gap"><button class="btn" type="button" data-close>Cancel</button><button class="btn primary" type="submit">Save</button></div></form>`,
     { onMount(m) { m.querySelector('#f').addEventListener('submit', async (e) => { e.preventDefault(); const v = formValues(e.target); const { make, model, year, hours, ...rest } = v; await store.db.update('leads', l.id, { ...rest, email: rest.email || null, equipment: { ...l.equipment, make: make || null, model, year, hours } }); closeModal(); toast('Saved'); }); } });
+}
+
+// Where the job is in the pipeline, shown on every lead.
+const STAGES = [
+  { key: 'answer', label: 'Answer', statuses: ['new', 'contacted'] },
+  { key: 'dispatch', label: 'Dispatch', statuses: ['approved', 'offered'] },
+  { key: 'assigned', label: 'Assigned', statuses: ['assigned'] },
+  { key: 'quote', label: 'Quote', statuses: ['quoted'] },
+  { key: 'scheduled', label: 'Scheduled', statuses: ['scheduled'] },
+  { key: 'work', label: 'Working', statuses: ['in_progress'] },
+  { key: 'invoice', label: 'Invoice', statuses: ['completed'] },
+  { key: 'paid', label: 'Paid', statuses: ['paid'] },
+];
+function stepper(l) {
+  if (l.status === 'dead') return `<p class="notice">This lead is closed${l.lost_reason ? `: ${esc(l.lost_reason)}` : ''}. Reopen it to continue.</p>`;
+  const at = STAGES.findIndex((s) => s.statuses.includes(l.status));
+  return `<ol class="stepper" aria-label="Job progress">${STAGES.map((s, i) => `<li class="${i < at || l.status === 'paid' ? 'done' : i === at ? 'now' : ''}" ${i === at ? 'aria-current="step"' : ''}><span class="dotmark" aria-hidden="true"></span>${s.label}</li>`).join('')}</ol>`;
 }

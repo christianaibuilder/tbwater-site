@@ -24,7 +24,7 @@ const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR
   await page.goto(BASE + '#/settings'); await settle(600);
   await page.evaluate(() => { localStorage.clear(); });
   await page.goto(BASE + '#/'); await settle(800);
-  ok('dashboard renders', (await text()).includes('the loop'));
+  ok('dashboard renders', (await text()).includes('do next'));
   ok('level card renders', /level \d/i.test(await text()));
   await page.screenshot({ path: SHOT + 'dashboard.png' });
 

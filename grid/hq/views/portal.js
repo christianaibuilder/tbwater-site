@@ -12,7 +12,7 @@ export default async function portal(root, { query }) {
   const techId = user?.tech_id || null;
   const canAct = user?.role === 'tech' || demo;
 
-  const header = `<div class="row between"><h1>Tech portal</h1>
+  const header = `<div class="page-head"><h1>Tech portal</h1>
     ${showPicker ? `<div class="row gap"><span class="small muted">${demo ? 'Acting as' : 'Preview as'}</span><select id="actas"><option value="">— pick a tech —</option>${allTechs.map((t) => `<option value="${t.id}" ${t.id === techId ? 'selected' : ''}>${esc(t.business_name)}</option>`).join('')}</select>${techId && demo ? `<button class="btn sm" id="back-admin">Back to admin</button>` : ''}</div>` : ''}</div>`;
 
   if (!techId) {
